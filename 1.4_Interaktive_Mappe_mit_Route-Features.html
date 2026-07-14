@@ -4910,32 +4910,37 @@
             {
                 name: 'Morayshire',
                 fill: '#e08a3c',
-                coords: [[57.75,-3.70],[57.75,-2.85],[57.62,-2.85],[57.55,-3.15],[57.53,-3.55],[57.58,-3.70]],
-                labelPos: [57.66,-3.15]
+                // Coastal strip: Nairn/Forres border → Forres → Elgin → Lossiemouth → Buckie → Keith
+                coords: [[57.70,-3.68],[57.80,-3.35],[57.85,-2.85],[57.75,-2.55],[57.58,-2.55],[57.45,-2.85],[57.40,-3.20],[57.48,-3.50],[57.60,-3.65]],
+                labelPos: [57.63,-3.10]
             },
             {
                 name: 'Speyside',
                 fill: '#8a6fb0',
-                coords: [[57.53,-3.55],[57.55,-3.15],[57.45,-2.95],[57.30,-3.05],[57.20,-3.30],[57.25,-3.55],[57.35,-3.65]],
-                labelPos: [57.42,-3.28]
+                // Whisky country: Dufftown / Aberlour / Craigellachie / Ballindalloch / Tomintoul / Glenlivet
+                coords: [[57.48,-3.50],[57.40,-3.20],[57.45,-2.85],[57.32,-2.55],[57.12,-2.60],[57.00,-2.90],[57.02,-3.25],[57.15,-3.50],[57.30,-3.58]],
+                labelPos: [57.25,-3.10]
             },
             {
                 name: 'Strathspey & Badenoch',
                 fill: '#c9a227',
-                coords: [[57.35,-3.65],[57.30,-3.45],[57.20,-3.55],[57.05,-3.95],[56.95,-4.25],[57.05,-4.35],[57.20,-4.10],[57.30,-3.85]],
-                labelPos: [57.14,-3.88]
+                // Aviemore / Boat of Garten / Carrbridge / Kingussie / Newtonmore / Dalwhinnie
+                coords: [[57.30,-3.58],[57.15,-3.50],[57.02,-3.60],[56.85,-3.85],[56.78,-4.20],[56.90,-4.45],[57.05,-4.40],[57.20,-4.15],[57.30,-3.85]],
+                labelPos: [57.05,-3.95]
             },
             {
                 name: 'Cairngorms',
                 fill: '#7a9c5a',
-                coords: [[57.20,-3.55],[57.25,-3.05],[57.10,-2.85],[56.95,-2.95],[56.85,-3.35],[56.95,-3.75],[57.05,-3.95],[57.20,-3.55]],
-                labelPos: [57.02,-3.25]
+                // National Park core extending south to Deeside: Braemar / Ballater / Aboyne
+                coords: [[57.15,-3.50],[57.02,-3.25],[57.00,-2.90],[56.90,-2.70],[56.70,-2.75],[56.60,-3.10],[56.65,-3.55],[56.78,-3.85],[56.85,-3.85],[57.02,-3.60]],
+                labelPos: [56.85,-3.25]
             },
             {
                 name: 'Inverness-shire',
                 fill: '#8a8f96',
-                coords: [[57.65,-4.35],[57.65,-3.95],[57.35,-3.85],[57.15,-4.15],[57.15,-4.45],[57.35,-4.60],[57.55,-4.55]],
-                labelPos: [57.42,-4.30]
+                // Inverness / Beauly / Dingwall, extending southwest along the Great Glen / Loch Ness
+                coords: [[57.70,-4.15],[57.68,-3.70],[57.45,-3.60],[57.20,-3.75],[56.95,-4.00],[56.70,-4.30],[56.65,-4.80],[56.90,-5.15],[57.25,-5.10],[57.55,-4.80],[57.68,-4.45]],
+                labelPos: [57.25,-4.35]
             }
         ];
 
@@ -4954,7 +4959,7 @@
 
         // Nairnshire is too small a coastal sliver to label in place — draw the
         // shape, then connect a callout label box via thin leader lines instead.
-        const nairnshireCoords = [[57.63,-4.05],[57.64,-3.70],[57.57,-3.68],[57.50,-3.80],[57.52,-4.05]];
+        const nairnshireCoords = [[57.70,-3.85],[57.72,-3.65],[57.60,-3.60],[57.50,-3.70],[57.50,-3.90],[57.60,-3.95]];
         L.polygon(nairnshireCoords, {
             pane: 'regionsPane',
             interactive: false,
@@ -4964,9 +4969,9 @@
             fillColor: '#6fa8c9',
             fillOpacity: 0.55
         }).addTo(map);
-        const nairnshireLabelPos = [57.78, -4.15];
+        const nairnshireLabelPos = [57.90, -3.95];
         L.marker(nairnshireLabelPos, { icon: makeRegionLabel('Nairnshire', '#fff'), interactive: false, keyboard: false }).addTo(map);
-        L.polyline([nairnshireLabelPos, [57.68, -4.00], [57.60, -3.90]], {
+        L.polyline([nairnshireLabelPos, [57.80, -3.85], [57.68, -3.75]], {
             pane: 'regionsPane', color: '#c0392b', weight: 1.5, dashArray: '3,4', interactive: false
         }).addTo(map);
 
