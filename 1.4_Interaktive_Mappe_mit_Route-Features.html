@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grantown-on-Spey – Your Perfect Highland Base</title>
+    <meta name="description" content="Interactive map of Grantown-on-Spey and the surrounding Highlands: 50+ curated destinations across Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness and the Moray Firth coast – whisky distilleries, castles, beaches, wildlife spots, family activities, restaurants and ready-made day trips.">
+    <link rel="canonical" href="https://www.garden-park.co.uk/grantown-map/">
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Grantown-on-Spey – Your Perfect Highland Base">
+    <meta property="og:description" content="Interactive map of 50+ curated Highland destinations around Grantown-on-Spey: whisky distilleries, castles, beaches, wildlife, day trips and more.">
+    <meta property="og:url" content="https://www.garden-park.co.uk/grantown-map/">
+    <!-- TODO: replace with a real hosted preview image URL once available -->
+    <meta property="og:image" content="https://www.garden-park.co.uk/grantown-map-preview.jpg">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grantown-on-Spey – Your Perfect Highland Base">
+    <meta name="twitter:description" content="Interactive map of 50+ curated Highland destinations around Grantown-on-Spey.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Google Fonts -->
@@ -414,6 +427,36 @@
         }
         .popup-contact a:hover {
             text-decoration: underline;
+        }
+        /* Garden Park hover tooltip (hover-only, kept subtle on purpose) */
+        .garden-park-tooltip {
+            background: rgba(26, 47, 26, 0.97);
+            border: 2px solid #c9a227;
+            border-radius: 10px;
+            padding: 10px 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+            opacity: 1;
+            white-space: normal;
+            width: 220px;
+        }
+        .garden-park-tooltip::before {
+            border-top-color: #c9a227;
+        }
+        .garden-park-tooltip .popup-title {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .garden-park-tooltip .popup-desc {
+            font-size: 0.82rem;
+            line-height: 1.35;
+        }
+        .garden-park-tooltip-photo {
+            display: block;
+            width: 100%;
+            max-width: 220px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(201, 162, 39, 0.5);
         }
         /* Hidden cards */
         .destination-card.hidden {
@@ -1409,6 +1452,48 @@
   ]
 }
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Grantown-on-Spey",
+  "description": "Grantown-on-Spey is a Highland town in Strathspey & Badenoch, Scotland, ideally positioned to explore Speyside, Morayshire, Nairnshire, Inverness and the Moray Firth coast.",
+  "url": "https://www.garden-park.co.uk/grantown-map/",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 57.3279,
+    "longitude": -3.6105
+  },
+  "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Highlands, Scotland"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Top destinations around Grantown-on-Spey",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Park", "name": "Cairngorms National Park", "description": "Britain's largest National Park, with skiing, hiking and wildlife including red deer and golden eagles." } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "LandmarksOrHistoricalBuildings", "name": "Cawdor Castle", "url": "https://cawdorcastle.com", "description": "Shakespeare's Macbeth castle, with beautiful gardens and historic interiors." } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "LandmarksOrHistoricalBuildings", "name": "Balmoral Castle", "url": "https://balmoralcastle.com", "description": "The Royal Family's Scottish residence, with stunning gardens and grounds." } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "LandmarksOrHistoricalBuildings", "name": "Dunnottar Castle", "url": "https://dunnottarcastle.co.uk", "description": "Dramatic cliff-top fortress overlooking the North Sea, one of Scotland's most iconic castles." } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "TouristAttraction", "name": "Loch Ness", "description": "Scotland's most famous loch, home to Urquhart Castle and the Loch Ness legend." } },
+    { "@type": "ListItem", "position": 6, "item": { "@type": "TouristAttraction", "name": "Chanonry Point", "description": "One of the best places in the UK to see bottlenose dolphins from the shore." } },
+    { "@type": "ListItem", "position": 7, "item": { "@type": "Distillery", "name": "The Macallan", "url": "https://themacallan.com", "description": "Iconic Speyside distillery with contemporary architecture and premium tours." } },
+    { "@type": "ListItem", "position": 8, "item": { "@type": "Distillery", "name": "Glenfiddich", "url": "https://glenfiddich.com", "description": "World's most awarded single malt whisky, with an excellent visitor centre." } },
+    { "@type": "ListItem", "position": 9, "item": { "@type": "TouristAttraction", "name": "Speyside Cooperage", "url": "https://speysidecooperage.co.uk", "description": "See master coopers at work crafting the casks that mature Speyside whisky." } },
+    { "@type": "ListItem", "position": 10, "item": { "@type": "TouristAttraction", "name": "Highland Wildlife Park", "url": "https://highlandwildlifepark.org.uk", "description": "Drive-through wildlife park near Kingussie, home to European bison and tundra species." } },
+    { "@type": "ListItem", "position": 11, "item": { "@type": "AmusementPark", "name": "Landmark Forest Adventure Park", "url": "https://landmarkpark.co.uk", "description": "Adventure park in Carrbridge with treetop trails, waterslides and forest walks." } },
+    { "@type": "ListItem", "position": 12, "item": { "@type": "TouristAttraction", "name": "Loch an Eilein", "url": "https://rothiemurchus.net", "description": "One of Scotland's most beautiful lochside walks, with historic island castle ruins." } },
+    { "@type": "ListItem", "position": 13, "item": { "@type": "LandmarksOrHistoricalBuildings", "name": "Clava Cairns", "description": "4,000-year-old Bronze Age burial cairns in ancient woodland near Inverness." } },
+    { "@type": "ListItem", "position": 14, "item": { "@type": "LandmarksOrHistoricalBuildings", "name": "Culloden Battlefield Visitor Centre", "description": "Scotland's most important battlefield, near Clava Cairns and Inverness." } },
+    { "@type": "ListItem", "position": 15, "item": { "@type": "TouristAttraction", "name": "Anagach Woods", "url": "https://anagachwoods.org.uk", "description": "Ancient Caledonian pine woodland two minutes from Garden Park Guest House, home to red squirrels and rare species." } }
+  ]
+}
+    </script>
 </head>
 <body>
     <div class="container">
@@ -1446,7 +1531,7 @@
         <!-- NEW: Intro Section -->
         <div class="intro-section">
             <h1 data-translate="introTitle">Grantown-on-Spey – Your Perfect Highland Base</h1>
-            <p data-translate="introText">Nestled in the heart of the Cairngorms, Grantown-on-Spey is the ideal base to explore Strathspey, Speyside, Moray, and Inverness. This interactive map highlights 50 carefully curated destinations, from world-renowned whisky distilleries and historic castles to scenic beaches, wildlife spots, family activities, and top local restaurants. Each location includes useful links, postcodes, and contact details, making it easy for you to plan your day trips or simply discover the region at your own pace. Click on a category to explore whisky experiences, town highlights, or ready-made day trips – your Highland adventure starts here!</p>
+            <p data-translate="introText">Perfectly positioned to explore Strathspey &amp; Badenoch, Speyside, Morayshire, Nairnshire, Inverness and the Moray Firth coast, Grantown-on-Spey is the ideal north east Highland base. This interactive map highlights 50+ carefully curated destinations, from world-renowned whisky distilleries and historic castles to scenic beaches, wildlife hotspots, family activities, and excellent local restaurants. Each location includes useful links, postcodes, and contact details, making it easy for you to plan your day trips or simply discover the region at your own pace. Click on a category to explore whisky experiences, town highlights, or ready-made day trips – your Highland adventure starts here! With around 40 hotels, B&amp;Bs, guest houses, camping and self-catering options, as well as a wide range of shops, cafés and restaurants, Grantown-on-Spey is not only a gateway to multiple Highland regions, but also an excellent place to base yourself for a few days while exploring them in star shaped day trips.</p>
         </div>
 
         <div class="map-wrapper">
@@ -1849,6 +1934,7 @@
                 sunset: "Sunset",
                 daylight: "Daylight",
                 readBlog: "Read Daniel's Blog",
+                gardenParkHoverText: "Garden Park Guest House offers traditional Bed and Breakfast in a Victorian building from 1868. As an alternative, you can also book the self-catering Butterfly Cottage, a cottage from the early 1800s that was completely renovated in 2022. 5 parking spaces are available, one with an EV charging station.",
                 dayTripSubtitle: "Curated itineraries for your Highland adventure",
                 routeLabel: "Route",
                 optionalLabel: "Optional",
@@ -1861,7 +1947,7 @@
                 gtShops: "Shops & Art",
                 // NEW: Intro, Day Trips, Highlights translations
                 introTitle: "Grantown-on-Spey – Your Perfect Highland Base",
-                introText: "Nestled in the heart of the Cairngorms, Grantown-on-Spey is the ideal base to explore Strathspey, Speyside, Moray, and Inverness. This interactive map highlights 50 carefully curated destinations, from world-renowned whisky distilleries and historic castles to scenic beaches, wildlife spots, family activities, and top local restaurants. Each location includes useful links, postcodes, and contact details, making it easy for you to plan your day trips or simply discover the region at your own pace. Click on a category to explore whisky experiences, town highlights, or ready-made day trips – your Highland adventure starts here!",
+                introText: "Perfectly positioned to explore Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness and the Moray Firth coast, Grantown-on-Spey is the ideal north east Highland base. This interactive map highlights 50+ carefully curated destinations, from world-renowned whisky distilleries and historic castles to scenic beaches, wildlife hotspots, family activities, and excellent local restaurants. Each location includes useful links, postcodes, and contact details, making it easy for you to plan your day trips or simply discover the region at your own pace. Click on a category to explore whisky experiences, town highlights, or ready-made day trips – your Highland adventure starts here! With around 40 hotels, B&Bs, guest houses, camping and self-catering options, as well as a wide range of shops, cafés and restaurants, Grantown-on-Spey is not only a gateway to multiple Highland regions, but also an excellent place to base yourself for a few days while exploring them in star shaped day trips.",
                 dayTripsTitle: "Day Trip Ideas",
                 dayTripsSubtitle: "Curated itineraries for your Highland adventure – Click to expand",
                 hours: "hours",
@@ -2000,6 +2086,7 @@
                 sunset: "Sonnenuntergang",
                 daylight: "Tageslicht",
                 readBlog: "Daniels Blog lesen",
+                gardenParkHoverText: "Garden Park Guest House bietet traditionelles Bed and Breakfast in einem viktorianischen Gebäude aus dem Jahr 1868. Alternativ können Sie auch das Self-Catering Butterfly Cottage buchen, ein Cottage aus den frühen 1800er-Jahren, das 2022 komplett saniert und renoviert wurde. Es stehen 5 Parkplätze zur Verfügung, einer davon mit einer EV-Ladestation.",
                 dayTripSubtitle: "Kuratierte Routen für Ihr Highland-Abenteuer",
                 routeLabel: "Route",
                 optionalLabel: "Optional",
@@ -2012,7 +2099,7 @@
                 gtShops: "Geschäfte & Kunst",
                 // NEW: Intro, Day Trips, Highlights translations (German)
                 introTitle: "Grantown-on-Spey – Ihre perfekte Highland-Basis",
-                introText: "Im Herzen der Cairngorms gelegen, ist Grantown-on-Spey die ideale Basis, um Strathspey, Speyside, Moray und Inverness zu erkunden. Diese interaktive Karte zeigt 50 sorgfältig ausgewählte Ziele, von weltberühmten Whisky-Destillerien und historischen Burgen bis hin zu malerischen Stränden, Wildtiergebieten, Familienaktivitäten und erstklassigen lokalen Restaurants. Jeder Ort enthält nützliche Links, Postleitzahlen und Kontaktdaten, damit Sie Ihre Tagesausflüge einfach planen oder die Region in Ihrem eigenen Tempo entdecken können.",
+                introText: "Perfekt gelegen, um Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness und die Küste des Moray Firth zu erkunden, ist Grantown-on-Spey die ideale Basis im Nordosten der Highlands. Diese interaktive Karte zeigt über 50 sorgfältig ausgewählte Ziele, von weltberühmten Whisky-Destillerien und historischen Burgen bis hin zu malerischen Stränden, Wildtier-Hotspots, Familienaktivitäten und exzellenten lokalen Restaurants. Jeder Ort enthält nützliche Links, Postleitzahlen und Kontaktdaten, damit Sie Ihre Tagesausflüge einfach planen oder die Region in Ihrem eigenen Tempo entdecken können. Klicken Sie auf eine Kategorie, um Whisky-Erlebnisse, Highlights der Stadt oder fertige Tagesausflüge zu entdecken – Ihr Highland-Abenteuer beginnt hier! Mit rund 40 Hotels, B&Bs, Gästehäusern, Campingplätzen und Selbstversorger-Unterkünften sowie einer großen Auswahl an Geschäften, Cafés und Restaurants ist Grantown-on-Spey nicht nur ein Tor zu mehreren Highland-Regionen, sondern auch ein hervorragender Ort, um sich für ein paar Tage niederzulassen und sie in sternförmigen Tagesausflügen zu erkunden.",
                 dayTripsTitle: "Tagesausflug-Ideen",
                 dayTripsSubtitle: "Kuratierte Routen für Ihr Highland-Abenteuer – Klicken zum Erweitern",
                 hours: "Stunden",
@@ -2151,6 +2238,7 @@
                 sunset: "Coucher du soleil",
                 daylight: "Lumière du jour",
                 readBlog: "Lire le blog de Daniel",
+                gardenParkHoverText: "Garden Park Guest House propose un Bed and Breakfast traditionnel dans un bâtiment victorien datant de 1868. Vous pouvez aussi réserver le Butterfly Cottage en location indépendante, un cottage du début des années 1800 entièrement rénové en 2022. 5 places de parking sont disponibles, dont une avec borne de recharge pour véhicules électriques.",
                 dayTripSubtitle: "Itinéraires sélectionnés pour votre aventure Highland",
                 routeLabel: "Itinéraire",
                 optionalLabel: "Optionnel",
@@ -2163,7 +2251,7 @@
                 gtShops: "Boutiques & Art",
                 // NEW French translations
                 introTitle: "Grantown-on-Spey – Votre Base Parfaite dans les Highlands",
-                introText: "Niché au cœur des Cairngorms, Grantown-on-Spey est la base idéale pour explorer Strathspey, Speyside, Moray et Inverness. Cette carte interactive met en valeur 50 destinations soigneusement sélectionnées, des distilleries de whisky mondialement reconnues et châteaux historiques aux plages pittoresques, sites d'observation de la faune, activités familiales et meilleurs restaurants locaux. Chaque lieu comprend des liens utiles, des codes postaux et des coordonnées, facilitant la planification de vos excursions ou la découverte de la région à votre rythme. Cliquez sur une catégorie pour explorer les expériences whisky, les points forts de la ville ou les excursions prêtes à l'emploi – votre aventure dans les Highlands commence ici!",
+                introText: "Idéalement situé pour explorer Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness et la côte du Moray Firth, Grantown-on-Spey est la base idéale dans le nord-est des Highlands. Cette carte interactive met en valeur plus de 50 destinations soigneusement sélectionnées, des distilleries de whisky mondialement reconnues et châteaux historiques aux plages pittoresques, hauts lieux de la faune, activités familiales et excellents restaurants locaux. Chaque lieu comprend des liens utiles, des codes postaux et des coordonnées, facilitant la planification de vos excursions ou la découverte de la région à votre rythme. Cliquez sur une catégorie pour explorer les expériences whisky, les points forts de la ville ou les excursions prêtes à l'emploi – votre aventure dans les Highlands commence ici ! Avec environ 40 hôtels, B&Bs, guest houses, campings et locations meublées, ainsi qu'un large choix de boutiques, cafés et restaurants, Grantown-on-Spey n'est pas seulement une porte d'entrée vers plusieurs régions des Highlands, mais aussi un excellent point d'ancrage pour séjourner quelques jours et les explorer en excursions en étoile.",
                 dayTripsTitle: "Idées d'Excursions",
                 dayTripsSubtitle: "Itinéraires sélectionnés pour votre aventure Highland – Cliquez pour développer",
                 hours: "heures",
@@ -2302,6 +2390,7 @@
                 sunset: "Tramonto",
                 daylight: "Luce diurna",
                 readBlog: "Leggi il blog di Daniel",
+                gardenParkHoverText: "Garden Park Guest House offre un tradizionale Bed and Breakfast in un edificio vittoriano del 1868. In alternativa, potete prenotare il Butterfly Cottage, un cottage self-catering dei primi anni del 1800, completamente ristrutturato nel 2022. Sono disponibili 5 posti auto, uno dei quali con stazione di ricarica per veicoli elettrici.",
                 dayTripSubtitle: "Itinerari curati per la tua avventura nelle Highlands",
                 routeLabel: "Percorso",
                 optionalLabel: "Opzionale",
@@ -2314,7 +2403,7 @@
                 gtShops: "Negozi & Arte",
                 // NEW Italian translations
                 introTitle: "Grantown-on-Spey – La Vostra Base Perfetta nelle Highlands",
-                introText: "Situato nel cuore dei Cairngorms, Grantown-on-Spey è la base ideale per esplorare Strathspey, Speyside, Moray e Inverness. Questa mappa interattiva evidenzia 50 destinazioni accuratamente selezionate, dalle distillerie di whisky di fama mondiale e castelli storici alle spiagge panoramiche, luoghi di osservazione della fauna selvatica, attività per famiglie e migliori ristoranti locali. Ogni luogo include link utili, codici postali e dettagli di contatto, rendendo facile pianificare le vostre gite o semplicemente scoprire la regione al vostro ritmo. Cliccate su una categoria per esplorare esperienze di whisky, punti salienti della città o gite già pronte – la vostra avventura nelle Highlands inizia qui!",
+                introText: "Perfettamente posizionata per esplorare Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness e la costa del Moray Firth, Grantown-on-Spey è la base ideale nel nord-est delle Highlands. Questa mappa interattiva evidenzia oltre 50 destinazioni accuratamente selezionate, dalle distillerie di whisky di fama mondiale e castelli storici alle spiagge panoramiche, punti di osservazione della fauna selvatica, attività per famiglie ed eccellenti ristoranti locali. Ogni luogo include link utili, codici postali e dettagli di contatto, rendendo facile pianificare le vostre gite o semplicemente scoprire la regione al vostro ritmo. Cliccate su una categoria per esplorare esperienze di whisky, punti salienti della città o gite già pronte – la vostra avventura nelle Highlands inizia qui! Con circa 40 hotel, B&B, guest house, campeggi e soluzioni self-catering, oltre a un'ampia scelta di negozi, caffè e ristoranti, Grantown-on-Spey non è solo una porta d'accesso a più regioni delle Highlands, ma anche un ottimo punto d'appoggio per soggiornare qualche giorno ed esplorarle con gite a raggiera.",
                 dayTripsTitle: "Idee per Gite",
                 dayTripsSubtitle: "Itinerari curati per la vostra avventura Highland – Clicca per espandere",
                 hours: "ore",
@@ -2453,6 +2542,7 @@
                 sunset: "Atardecer",
                 daylight: "Luz del día",
                 readBlog: "Leer el blog de Daniel",
+                gardenParkHoverText: "Garden Park Guest House ofrece un tradicional Bed and Breakfast en un edificio victoriano de 1868. Como alternativa, también puede reservar el Butterfly Cottage de autoalojamiento, una casa de campo de principios del siglo XIX completamente renovada en 2022. Hay 5 plazas de aparcamiento disponibles, una de ellas con estación de carga para vehículos eléctricos.",
                 dayTripSubtitle: "Itinerarios seleccionados para tu aventura en las Highlands",
                 routeLabel: "Ruta",
                 optionalLabel: "Opcional",
@@ -2465,7 +2555,7 @@
                 gtShops: "Tiendas y Arte",
                 // NEW Spanish translations
                 introTitle: "Grantown-on-Spey – Tu Base Perfecta en las Highlands",
-                introText: "Ubicado en el corazón de los Cairngorms, Grantown-on-Spey es la base ideal para explorar Strathspey, Speyside, Moray e Inverness. Este mapa interactivo destaca 50 destinos cuidadosamente seleccionados, desde destilerías de whisky de renombre mundial y castillos históricos hasta playas panorámicas, lugares de observación de vida silvestre, actividades familiares y los mejores restaurantes locales. Cada ubicación incluye enlaces útiles, códigos postales y detalles de contacto, facilitando la planificación de sus excursiones o simplemente descubrir la región a su propio ritmo. Haga clic en una categoría para explorar experiencias de whisky, puntos destacados de la ciudad o excursiones listas para usar: ¡su aventura en las Highlands comienza aquí!",
+                introText: "Perfectamente situada para explorar Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness y la costa del Moray Firth, Grantown-on-Spey es la base ideal en el noreste de las Highlands. Este mapa interactivo destaca más de 50 destinos cuidadosamente seleccionados, desde destilerías de whisky de renombre mundial y castillos históricos hasta playas panorámicas, puntos de observación de vida silvestre, actividades familiares y excelentes restaurantes locales. Cada ubicación incluye enlaces útiles, códigos postales y detalles de contacto, facilitando la planificación de sus excursiones o simplemente descubrir la región a su propio ritmo. Haga clic en una categoría para explorar experiencias de whisky, puntos destacados de la ciudad o excursiones listas para usar: ¡su aventura en las Highlands comienza aquí! Con alrededor de 40 hoteles, B&Bs, guest houses, campings y opciones de alojamiento con cocina propia, además de una amplia variedad de tiendas, cafés y restaurantes, Grantown-on-Spey no solo es una puerta de entrada a varias regiones de las Highlands, sino también un excelente lugar para alojarse unos días y explorarlas mediante excursiones en forma de estrella.",
                 dayTripsTitle: "Ideas de Excursiones",
                 dayTripsSubtitle: "Itinerarios seleccionados para tu aventura Highland – Haz clic para expandir",
                 hours: "horas",
@@ -2604,6 +2694,7 @@
                 sunset: "Zonsondergang",
                 daylight: "Daglicht",
                 readBlog: "Lees Daniëls blog",
+                gardenParkHoverText: "Garden Park Guest House biedt traditionele Bed and Breakfast in een Victoriaans pand uit 1868. Als alternatief kunt u ook het self-catering Butterfly Cottage boeken, een cottage uit het begin van de 19e eeuw dat in 2022 volledig is gerenoveerd. Er zijn 5 parkeerplaatsen beschikbaar, waarvan één met een EV-laadstation.",
                 dayTripSubtitle: "Samengestelde routes voor je Highland avontuur",
                 routeLabel: "Route",
                 optionalLabel: "Optioneel",
@@ -2616,7 +2707,7 @@
                 gtShops: "Winkels & Kunst",
                 // NEW Dutch translations
                 introTitle: "Grantown-on-Spey – Uw Perfecte Highland Basis",
-                introText: "Genesteld in het hart van de Cairngorms, is Grantown-on-Spey de ideale uitvalsbasis om Strathspey, Speyside, Moray en Inverness te verkennen. Deze interactieve kaart toont 50 zorgvuldig geselecteerde bestemmingen, van wereldberoemde whisky distilleerderijen en historische kastelen tot schilderachtige stranden, wildspotlocaties, familieactiviteiten en top lokale restaurants. Elke locatie bevat nuttige links, postcodes en contactgegevens, waardoor het gemakkelijk is om uw dagtochten te plannen of gewoon de regio in uw eigen tempo te ontdekken. Klik op een categorie om whisky-ervaringen, stadshoogtepunten of kant-en-klare dagtochten te verkennen – uw Highland avontuur begint hier!",
+                introText: "Perfect gelegen om Strathspey & Badenoch, Speyside, Morayshire, Nairnshire, Inverness en de kust van de Moray Firth te verkennen, is Grantown-on-Spey de ideale uitvalsbasis in het noordoosten van de Highlands. Deze interactieve kaart toont meer dan 50 zorgvuldig geselecteerde bestemmingen, van wereldberoemde whisky-distilleerderijen en historische kastelen tot schilderachtige stranden, wildlife-hotspots, familieactiviteiten en uitstekende lokale restaurants. Elke locatie bevat nuttige links, postcodes en contactgegevens, waardoor het gemakkelijk is om uw dagtochten te plannen of gewoon de regio in uw eigen tempo te ontdekken. Klik op een categorie om whisky-ervaringen, stadshoogtepunten of kant-en-klare dagtochten te verkennen – uw Highland-avontuur begint hier! Met ongeveer 40 hotels, B&Bs, guest houses, camping- en self-catering opties, evenals een ruime keuze aan winkels, cafés en restaurants, is Grantown-on-Spey niet alleen een poort naar meerdere Highland-regio's, maar ook een uitstekende uitvalsbasis om een paar dagen te verblijven en deze in stervormige dagtochten te verkennen.",
                 dayTripsTitle: "Dagtocht Ideeën",
                 dayTripsSubtitle: "Samengestelde routes voor uw Highland avontuur – Klik om uit te vouwen",
                 hours: "uur",
@@ -2755,6 +2846,10 @@
             // Re-render FAQ if active
             if (faqMode) {
                 renderFAQ();
+            }
+            // Refresh Garden Park hover tooltip text for the new language
+            if (typeof updateGardenParkTooltip === 'function') {
+                updateGardenParkTooltip();
             }
         }
 
@@ -4793,6 +4888,88 @@
             maxZoom: 19
         }).addTo(map);
 
+        // ── Region colour overlays ─────────────────────────────────────────────
+        // Approximate regional boundaries (not official GIS precision) so a visitor
+        // instantly grasps how central Grantown-on-Spey sits among the surrounding
+        // Highland regions. Rendered on a dedicated pane below markerPane so pins,
+        // popups and labels always stay fully legible on top.
+        map.createPane('regionsPane');
+        map.getPane('regionsPane').style.zIndex = 350;
+        map.getPane('regionsPane').style.pointerEvents = 'none';
+
+        function makeRegionLabel(text, accentColor) {
+            return L.divIcon({
+                className: 'heart-label',
+                html: '<div style="background: rgba(26, 47, 26, 0.95); color: ' + accentColor + '; padding: 5px 11px; border-radius: 8px; font-family: Playfair Display, serif; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; border: 2px solid ' + accentColor + '; box-shadow: 0 3px 10px rgba(0,0,0,0.3); text-transform: uppercase; text-align: center;">' + text + '</div>',
+                iconSize: [200, 30],
+                iconAnchor: [100, 15]
+            });
+        }
+
+        const regions = [
+            {
+                name: 'Morayshire',
+                fill: '#e08a3c',
+                coords: [[57.75,-3.70],[57.75,-2.85],[57.62,-2.85],[57.55,-3.15],[57.53,-3.55],[57.58,-3.70]],
+                labelPos: [57.66,-3.15]
+            },
+            {
+                name: 'Speyside',
+                fill: '#8a6fb0',
+                coords: [[57.53,-3.55],[57.55,-3.15],[57.45,-2.95],[57.30,-3.05],[57.20,-3.30],[57.25,-3.55],[57.35,-3.65]],
+                labelPos: [57.42,-3.28]
+            },
+            {
+                name: 'Strathspey & Badenoch',
+                fill: '#c9a227',
+                coords: [[57.35,-3.65],[57.30,-3.45],[57.20,-3.55],[57.05,-3.95],[56.95,-4.25],[57.05,-4.35],[57.20,-4.10],[57.30,-3.85]],
+                labelPos: [57.14,-3.88]
+            },
+            {
+                name: 'Cairngorms',
+                fill: '#7a9c5a',
+                coords: [[57.20,-3.55],[57.25,-3.05],[57.10,-2.85],[56.95,-2.95],[56.85,-3.35],[56.95,-3.75],[57.05,-3.95],[57.20,-3.55]],
+                labelPos: [57.02,-3.25]
+            },
+            {
+                name: 'Inverness-shire',
+                fill: '#8a8f96',
+                coords: [[57.65,-4.35],[57.65,-3.95],[57.35,-3.85],[57.15,-4.15],[57.15,-4.45],[57.35,-4.60],[57.55,-4.55]],
+                labelPos: [57.42,-4.30]
+            }
+        ];
+
+        regions.forEach(r => {
+            L.polygon(r.coords, {
+                pane: 'regionsPane',
+                interactive: false,
+                color: r.fill,
+                weight: 1.5,
+                opacity: 0.75,
+                fillColor: r.fill,
+                fillOpacity: 0.5
+            }).addTo(map);
+            L.marker(r.labelPos, { icon: makeRegionLabel(r.name, '#fff'), interactive: false, keyboard: false }).addTo(map);
+        });
+
+        // Nairnshire is too small a coastal sliver to label in place — draw the
+        // shape, then connect a callout label box via thin leader lines instead.
+        const nairnshireCoords = [[57.63,-4.05],[57.64,-3.70],[57.57,-3.68],[57.50,-3.80],[57.52,-4.05]];
+        L.polygon(nairnshireCoords, {
+            pane: 'regionsPane',
+            interactive: false,
+            color: '#6fa8c9',
+            weight: 1.5,
+            opacity: 0.75,
+            fillColor: '#6fa8c9',
+            fillOpacity: 0.55
+        }).addTo(map);
+        const nairnshireLabelPos = [57.78, -4.15];
+        L.marker(nairnshireLabelPos, { icon: makeRegionLabel('Nairnshire', '#fff'), interactive: false, keyboard: false }).addTo(map);
+        L.polyline([nairnshireLabelPos, [57.68, -4.00], [57.60, -3.90]], {
+            pane: 'regionsPane', color: '#c0392b', weight: 1.5, dashArray: '3,4', interactive: false
+        }).addTo(map);
+
         // Garden Park marker
         const heartIcon = L.divIcon({
             className: 'heart-label',
@@ -4801,9 +4978,30 @@
             iconAnchor: [16, 16]
         });
 
+        // Placeholder inline photo of Sarah & Daniel — swap this for a hosted image
+        // URL once one exists (single-line change, see buildGardenParkTooltipHtml).
+        const GARDEN_PARK_PHOTO_SRC = 'data:image/jpeg;base64,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';
+
+        function buildGardenParkTooltipHtml() {
+            const t = (translations[currentLang] && translations[currentLang].gardenParkHoverText) ? translations[currentLang] : translations.en;
+            return '<div class="popup-title">❤️ Garden Park Guest House</div>'
+                + '<img class="garden-park-tooltip-photo" src="' + GARDEN_PARK_PHOTO_SRC + '" alt="Sarah and Daniel, your hosts at Garden Park Guest House">'
+                + '<div class="popup-desc">' + t.gardenParkHoverText + '</div>';
+        }
+
         const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon })
             .addTo(map)
-            .bindPopup('<div class="popup-title">❤️ Garden Park Guest House</div><div class="popup-desc">Your Highland home base!</div>');
+            .bindTooltip(buildGardenParkTooltipHtml(), {
+                direction: 'top',
+                offset: [0, -12],
+                sticky: false,
+                className: 'garden-park-tooltip',
+                maxWidth: 240
+            });
+
+        function updateGardenParkTooltip() {
+            gardenParkMarker.setTooltipContent(buildGardenParkTooltipHtml());
+        }
 
         const labelIcon = L.divIcon({
             className: 'heart-label',
