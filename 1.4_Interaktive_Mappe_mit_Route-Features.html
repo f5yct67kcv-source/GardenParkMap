@@ -4911,14 +4911,14 @@
                 name: 'Morayshire',
                 fill: '#e08a3c',
                 // Coastal strip: Nairn border → Forres → Elgin → Lossiemouth → Buckie → Banff → Keith
-                coords: [[57.59,-3.68],[57.63,-3.64],[57.72,-3.49],[57.73,-2.56],[57.66,-2.52],[57.59,-2.63],[57.55,-2.94],[57.56,-3.16],[57.57,-3.39],[57.56,-3.57]],
+                coords: [[57.66,-3.62],[57.70,-3.56],[57.72,-3.49],[57.73,-2.56],[57.66,-2.52],[57.59,-2.63],[57.55,-2.94],[57.56,-3.16],[57.57,-3.39],[57.56,-3.57]],
                 labelPos: [57.58,-3.25]
             },
             {
                 name: 'Speyside',
                 fill: '#8a6fb0',
                 // Whisky country: Dufftown / Craigellachie / Ballindalloch / Tomintoul / Glenlivet
-                coords: [[57.59,-3.68],[57.56,-3.57],[57.57,-3.39],[57.56,-3.16],[57.46,-3.02],[57.37,-3.13],[57.36,-3.39],[57.36,-3.67],[57.39,-3.76],[57.51,-3.76]],
+                coords: [[57.66,-3.62],[57.56,-3.57],[57.57,-3.39],[57.56,-3.16],[57.47,-2.93],[57.36,-3.05],[57.36,-3.39],[57.36,-3.67],[57.39,-3.76],[57.51,-3.76]],
                 labelPos: [57.45,-3.45]
             },
             {
@@ -4932,14 +4932,14 @@
                 name: 'Cairngorms',
                 fill: '#7a9c5a',
                 // National Park core extending southeast to Deeside: Braemar / Ballater / Aboyne
-                coords: [[57.36,-3.67],[57.36,-3.39],[57.37,-3.13],[57.34,-2.74],[57.23,-2.34],[57.07,-2.44],[57.05,-2.98],[57.10,-3.54],[57.27,-3.68]],
+                coords: [[57.36,-3.67],[57.36,-3.39],[57.36,-3.05],[57.34,-2.74],[57.23,-2.34],[57.07,-2.44],[57.05,-2.98],[57.10,-3.54],[57.27,-3.68]],
                 labelPos: [57.18,-3.30]
             },
             {
                 name: 'Inverness-shire',
                 fill: '#8a8f96',
                 // Inverness / Beauly / Dingwall, extending southwest along the Great Glen / Loch Ness
-                coords: [[57.75,-4.35],[57.72,-4.08],[57.60,-3.76],[57.52,-4.19],[57.30,-4.49],[57.19,-4.55],[57.10,-4.90],[57.35,-5.10],[57.65,-4.85]],
+                coords: [[57.72,-4.35],[57.68,-4.05],[57.56,-3.72],[57.52,-4.19],[57.30,-4.49],[57.19,-4.55],[57.10,-4.90],[57.35,-5.10],[57.65,-4.85]],
                 labelPos: [57.41,-4.28]
             }
         ];
@@ -4959,7 +4959,7 @@
 
         // Nairnshire is too small a coastal sliver to label in place — draw the
         // shape, then connect a callout label box via thin leader lines instead.
-        const nairnshireCoords = [[57.68,-3.80],[57.66,-3.65],[57.58,-3.62],[57.53,-3.72],[57.55,-3.85],[57.62,-3.90]];
+        const nairnshireCoords = [[57.75,-3.75],[57.72,-3.52],[57.66,-3.62],[57.56,-3.72],[57.58,-3.88],[57.68,-3.90]];
         L.polygon(nairnshireCoords, {
             pane: 'regionsPane',
             interactive: false,
@@ -4969,9 +4969,9 @@
             fillColor: '#6fa8c9',
             fillOpacity: 0.55
         }).addTo(map);
-        const nairnshireLabelPos = [57.62, -3.95];
+        const nairnshireLabelPos = [57.87, -3.78];
         L.marker(nairnshireLabelPos, { icon: makeRegionLabel('Nairnshire', '#fff'), interactive: false, keyboard: false }).addTo(map);
-        L.polyline([nairnshireLabelPos, [57.66, -3.80], [57.60, -3.75]], {
+        L.polyline([nairnshireLabelPos, [57.75, -3.68], [57.68, -3.62]], {
             pane: 'regionsPane', color: '#c0392b', weight: 1.5, dashArray: '3,4', interactive: false
         }).addTo(map);
 
