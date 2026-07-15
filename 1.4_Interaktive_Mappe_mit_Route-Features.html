@@ -4906,6 +4906,16 @@
             });
         }
 
+        // Plain text region label (no box), styled like the reference map
+        function makeRegionTextLabel(text, color) {
+            return L.divIcon({
+                className: 'region-text-label',
+                html: '<div style="color: ' + color + '; font-family: Playfair Display, serif; font-size: 19px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; line-height: 1.05; white-space: nowrap; text-shadow: 0 0 4px #fff, 0 0 4px #fff, 1px 1px 2px #fff, -1px -1px 2px #fff;">' + text + '</div>',
+                iconSize: [240, 44],
+                iconAnchor: [120, 22]
+            });
+        }
+
         const regions = [
             {
                 name: 'Morayshire',
@@ -4950,7 +4960,18 @@
                 fillColor: r.fill,
                 fillOpacity: 0.5
             }).addTo(map);
-            // region name labels intentionally omitted (kept clean per request)
+        });
+
+        // Region name labels as plain coloured text (matching the reference map)
+        const regionTextLabels = [
+            { text: 'MORAYSHIRE',                 color: '#a1571f', pos: [57.5700, -3.1000] },
+            { text: 'SPEYSIDE',                   color: '#5a4a86', pos: [57.4200, -3.3400] },
+            { text: 'INVERNESS-<br>SHIRE',        color: '#4a5a6a', pos: [57.3600, -4.4800] },
+            { text: 'STRATHSPEY &amp;<br>BADENOCH', color: '#b5741a', pos: [57.1500, -3.9800] },
+            { text: 'CAIRNGORMS',                 color: '#3f6b39', pos: [57.0800, -3.2500] }
+        ];
+        regionTextLabels.forEach(l => {
+            L.marker(l.pos, { icon: makeRegionTextLabel(l.text, l.color), interactive: false, keyboard: false }).addTo(map);
         });
 
         // Nairnshire — small coastal county around Nairn town, on the plain between
@@ -4965,6 +4986,23 @@
             lineJoin: 'round',
             fillColor: '#93bcd6',
             fillOpacity: 0.5
+        }).addTo(map);
+
+        // Nairnshire callout — too small to label in place, so a red-outlined text
+        // box sits over the firth with leader lines pointing to the region (as in the reference)
+        const nairnshireCalloutIcon = L.divIcon({
+            className: 'region-text-label',
+            html: '<div style="color: #2c5aa0; font-family: Playfair Display, serif; font-size: 18px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-align: center; white-space: nowrap; background: rgba(255,255,255,0.9); border: 2px solid #d0433a; border-radius: 6px; padding: 3px 10px;">Nairnshire</div>',
+            iconSize: [170, 34],
+            iconAnchor: [85, 17]
+        });
+        const nairnshireCalloutPos = [57.7350, -3.8600];
+        L.marker(nairnshireCalloutPos, { icon: nairnshireCalloutIcon, interactive: false, keyboard: false }).addTo(map);
+        L.polyline([nairnshireCalloutPos, [57.6300, -3.8900]], {
+            pane: 'regionsPane', color: '#d0433a', weight: 2, dashArray: '4,4', interactive: false
+        }).addTo(map);
+        L.polyline([nairnshireCalloutPos, [57.5700, -3.7900]], {
+            pane: 'regionsPane', color: '#d0433a', weight: 2, dashArray: '4,4', interactive: false
         }).addTo(map);
 
         // Garden Park marker
