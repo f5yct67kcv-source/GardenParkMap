@@ -4965,10 +4965,10 @@
         // Region name labels as plain coloured text (matching the reference map)
         const regionTextLabels = [
             { text: 'MORAYSHIRE',                 color: '#a1571f', pos: [57.5700, -3.1000] },
-            { text: 'SPEYSIDE',                   color: '#5a4a86', pos: [57.4200, -3.3400] },
-            { text: 'INVERNESS-<br>SHIRE',        color: '#4a5a6a', pos: [57.3600, -4.4800] },
-            { text: 'STRATHSPEY &amp;<br>BADENOCH', color: '#b5741a', pos: [57.1500, -3.9800] },
-            { text: 'CAIRNGORMS',                 color: '#3f6b39', pos: [57.0800, -3.2500] }
+            { text: 'SPEYSIDE',                   color: '#5a4a86', pos: [57.4450, -3.5900] },
+            { text: 'INVERNESS-<br>SHIRE',        color: '#4a5a6a', pos: [57.4650, -4.5300] },
+            { text: 'STRATHSPEY &amp;<br>BADENOCH', color: '#b5741a', pos: [57.0600, -4.1600] },
+            { text: 'CAIRNGORMS',                 color: '#3f6b39', pos: [57.1500, -3.0800] }
         ];
         regionTextLabels.forEach(l => {
             L.marker(l.pos, { icon: makeRegionTextLabel(l.text, l.color), interactive: false, keyboard: false }).addTo(map);
