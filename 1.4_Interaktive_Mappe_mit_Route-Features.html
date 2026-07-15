@@ -5024,7 +5024,7 @@
                 + '<div class="popup-desc">' + t.gardenParkHoverText + '</div>';
         }
 
-        const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon })
+        const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon, zIndexOffset: 1000 })
             .addTo(map)
             .bindTooltip(buildGardenParkTooltipHtml(), {
                 direction: 'top',
