@@ -428,27 +428,38 @@
         .popup-contact a:hover {
             text-decoration: underline;
         }
-        /* Garden Park hover tooltip (hover-only, kept subtle on purpose) */
-        .garden-park-tooltip {
+        /* Garden Park info popup (auto-pans into view; stays open to reach the CTA) */
+        .garden-park-popup .leaflet-popup-content-wrapper {
             background: rgba(26, 47, 26, 0.97);
             border: 2px solid #c9a227;
             border-radius: 10px;
-            padding: 10px 12px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.35);
-            opacity: 1;
-            white-space: normal;
-            width: 220px;
-            pointer-events: auto;   /* let the Check availability button/link receive clicks/taps */
+            color: #d4d4c8;
         }
-        .garden-park-tooltip .gp-book-btn { pointer-events: auto; }
-        .garden-park-tooltip::before {
-            border-top-color: #c9a227;
+        .garden-park-popup .leaflet-popup-content {
+            margin: 10px 14px;
+            width: 220px !important;
+            line-height: 1.4;
         }
-        .garden-park-tooltip .popup-title {
+        .garden-park-popup .leaflet-popup-tip {
+            background: rgba(26, 47, 26, 0.97);
+            border-right: 2px solid #c9a227;
+            border-bottom: 2px solid #c9a227;
+            box-shadow: none;
+        }
+        .garden-park-popup .leaflet-popup-close-button {
+            color: #c9a227;
+            font-size: 20px;
+            width: 26px;
+            height: 26px;
+            padding: 4px 6px 0 0;
+        }
+        .garden-park-popup .leaflet-popup-close-button:hover { color: #e0b833; background: transparent; }
+        .garden-park-popup .popup-title {
             font-size: 1rem;
             margin-bottom: 6px;
         }
-        .garden-park-tooltip .popup-desc {
+        .garden-park-popup .popup-desc {
             font-size: 0.82rem;
             line-height: 1.35;
         }
@@ -456,11 +467,18 @@
             display: block;
             width: 100%;
             max-width: 220px;
+            height: 92px;               /* keep the whole popup short enough to fit inside the 400px mobile map */
+            object-fit: cover;
+            object-position: center 35%;
             border-radius: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             border: 1px solid rgba(201, 162, 39, 0.5);
         }
-        /* Check availability CTA button (site CI: gold on dark green) */
+        /* Check availability CTA button (site CI: gold on dark green).
+           The a.gp-book-btn selector out-specifies Leaflet's default
+           `.leaflet-container a { color:#0078A8 }`, which would otherwise
+           turn the button label link-blue inside the popup. */
+        .garden-park-popup a.gp-book-btn,
         .gp-book-btn {
             display: block;
             width: 100%;
@@ -5059,45 +5077,50 @@
                 + '<a class="gp-book-btn" href="' + BOOKING_URL + '" target="_blank" rel="noopener">📅 ' + btnLabel + '</a>';
         }
 
+        // The Garden Park info box is a Leaflet POPUP (not a tooltip) on purpose:
+        //  - popups auto-pan so the whole box is always fully visible inside the
+        //    map, even near the edges (no manual scrolling / re-centring needed);
+        //  - popups stay open while you move the pointer into them, so on desktop
+        //    you can travel from the heart down to the "Check availability" button
+        //    without the box vanishing;
+        //  - Leaflet popups apply disableClickPropagation to their content, so the
+        //    native booking link works reliably on tap (iOS-safe).
         const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon, zIndexOffset: 1000 })
             .addTo(map)
-            .bindTooltip(buildGardenParkTooltipHtml(), {
-                direction: 'top',
-                offset: [0, -12],
-                sticky: false,
-                className: 'garden-park-tooltip',
-                maxWidth: 240
+            .bindPopup(buildGardenParkTooltipHtml(), {
+                className: 'garden-park-popup',
+                maxWidth: 240,
+                minWidth: 220,
+                autoPan: true,
+                autoPanPadding: [16, 16],
+                closeButton: true,
+                offset: [0, -6]
             });
-        // Keep the tooltip's native link tappable: stop Leaflet from processing
-        // taps on the tooltip (this only stops propagation to the map, it does NOT
-        // preventDefault), so the real <a> navigates normally — the reliable way to
-        // open a link on iOS/Safari (window.open would be popup-blocked there).
-        gardenParkMarker.on('tooltipopen', function(e){
-            const el = e.tooltip.getElement();
-            if (el) { L.DomEvent.disableClickPropagation(el); L.DomEvent.disableScrollPropagation(el); }
+
+        // Desktop hover behaviour: open on hover, and keep the box open while the
+        // pointer is over the heart, the label, or the popup itself. A short close
+        // delay bridges the small gap between the heart and the popup so moving
+        // toward the button never dismisses it. On touch devices we skip hover and
+        // rely on tap (default popup toggle), so a tap can't flash it open-then-shut.
+        let gpCloseTimer = null;
+        function gpCancelClose() { clearTimeout(gpCloseTimer); gpCloseTimer = null; }
+        function gpScheduleClose() { gpCancelClose(); gpCloseTimer = setTimeout(function () { gardenParkMarker.closePopup(); }, 350); }
+
+        gardenParkMarker.on('popupopen', function (e) {
+            const el = e.popup.getElement();
+            if (el && !L.Browser.mobile) {
+                el.addEventListener('mouseenter', gpCancelClose);
+                el.addEventListener('mouseleave', gpScheduleClose);
+            }
         });
 
-        // Flip the info tooltip below the marker when the marker sits in the
-        // upper half of the view (so it never pops off the top / covers the map).
-        function updateGardenParkTooltipDirection() {
-            const tt = gardenParkMarker.getTooltip();
-            if (!tt) return;
-            const pt = map.latLngToContainerPoint(gardenParkMarker.getLatLng());
-            const dir = pt.y < map.getSize().y * 0.5 ? 'bottom' : 'top';
-            if (tt.options.direction !== dir) {
-                tt.options.direction = dir;
-                tt.options.offset = dir === 'bottom' ? [0, 12] : [0, -12];
-                if (gardenParkMarker.isTooltipOpen()) {
-                    gardenParkMarker.closeTooltip();
-                    gardenParkMarker.openTooltip();
-                }
-            }
+        if (!L.Browser.mobile) {
+            gardenParkMarker.on('mouseover', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
+            gardenParkMarker.on('mouseout', gpScheduleClose);
         }
-        map.on('zoomend moveend', updateGardenParkTooltipDirection);
-        updateGardenParkTooltipDirection();
 
         function updateGardenParkTooltip() {
-            gardenParkMarker.setTooltipContent(buildGardenParkTooltipHtml());
+            gardenParkMarker.setPopupContent(buildGardenParkTooltipHtml());
         }
 
 
@@ -5109,17 +5132,14 @@
         });
         const labelMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: labelIcon }).addTo(map);
 
-        // Tapping/clicking the "Garden Park Guest House" label box opens the SAME
-        // info tooltip as the heart icon. We deliberately reuse the heart marker's
-        // tooltip (a single, already tap-tested code path with a working booking
-        // link) rather than giving the label its own tooltip: the label box is a
-        // large interactive element sitting at the same location, so a separate
-        // tooltip could overlap it and steal taps meant for the "Check
-        // availability" link. Routing through the heart's tooltip makes the link
-        // behave identically whether you tap the heart or the label.
-        labelMarker.on('click', function(){
-            gardenParkMarker.openTooltip();
-        });
+        // The "Garden Park Guest House" label box opens the SAME info popup as the
+        // heart icon. A click/tap opens it on every device; on desktop it also
+        // responds to hover and shares the heart's close-delay bridge.
+        labelMarker.on('click', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
+        if (!L.Browser.mobile) {
+            labelMarker.on('mouseover', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
+            labelMarker.on('mouseout', gpScheduleClose);
+        }
 
         // Helper function to build contact HTML
         function buildContactHtml(dest, isPopup) {
