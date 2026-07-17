@@ -5126,6 +5126,25 @@
         // since a hover tooltip's button can be fiddly to click).
         gardenParkMarker.on('click', function(e){ if (e && e.originalEvent) { L.DomEvent.stop(e.originalEvent); } openBookingModal(); });
 
+        // Flip the info tooltip below the marker when the marker sits in the
+        // upper half of the view (so it never pops off the top / covers the map).
+        function updateGardenParkTooltipDirection() {
+            const tt = gardenParkMarker.getTooltip();
+            if (!tt) return;
+            const pt = map.latLngToContainerPoint(gardenParkMarker.getLatLng());
+            const dir = pt.y < map.getSize().y * 0.5 ? 'bottom' : 'top';
+            if (tt.options.direction !== dir) {
+                tt.options.direction = dir;
+                tt.options.offset = dir === 'bottom' ? [0, 12] : [0, -12];
+                if (gardenParkMarker.isTooltipOpen()) {
+                    gardenParkMarker.closeTooltip();
+                    gardenParkMarker.openTooltip();
+                }
+            }
+        }
+        map.on('zoomend moveend', updateGardenParkTooltipDirection);
+        updateGardenParkTooltipDirection();
+
         function updateGardenParkTooltip() {
             gardenParkMarker.setTooltipContent(buildGardenParkTooltipHtml());
         }
