@@ -4881,7 +4881,7 @@
         let distilleryMarkers = {};
         let grantownMarkers = {};
 
-        const map = L.map('map').setView([GARDEN_PARK.lat, GARDEN_PARK.lng], 8);
+        const map = L.map('map', { minZoom: 7 }).setView([GARDEN_PARK.lat, GARDEN_PARK.lng], 8);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
