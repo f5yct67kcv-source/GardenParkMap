@@ -5056,8 +5056,32 @@
             return '<div class="popup-title">❤️ Garden Park Guest House</div>'
                 + '<img class="garden-park-tooltip-photo" src="' + GARDEN_PARK_PHOTO_SRC + '" alt="Sarah and Daniel, your hosts at Garden Park Guest House">'
                 + '<div class="popup-desc">' + t.gardenParkHoverText + '</div>'
-                + '<a class="gp-book-btn" href="' + BOOKING_URL + '" target="_blank" rel="noopener" onclick="event.stopPropagation();">📅 ' + btnLabel + '</a>';
+                + '<a class="gp-book-btn" href="' + BOOKING_URL + '" target="_blank" rel="noopener">📅 ' + btnLabel + '</a>';
         }
+
+        // Reliable tap handling for the Check availability link: on iOS/Safari a
+        // quick tap's synthetic click inside a Leaflet tooltip gets swallowed
+        // (only a long-press worked). Catch touchend/click in the CAPTURE phase —
+        // before Leaflet can stop it — and open the booking page immediately.
+        (function(){
+            let touchHandledAt = 0;
+            function openBooking(ev){
+                if (ev) { ev.preventDefault(); ev.stopPropagation(); }
+                window.open(BOOKING_URL, '_blank', 'noopener');
+            }
+            function hitBtn(e){
+                return e.target && e.target.closest ? e.target.closest('.gp-book-btn') : null;
+            }
+            document.addEventListener('touchend', function(e){
+                if (hitBtn(e)) { touchHandledAt = Date.now(); openBooking(e); }
+            }, { passive: false, capture: true });
+            document.addEventListener('click', function(e){
+                if (hitBtn(e)) {
+                    if (Date.now() - touchHandledAt < 800) { e.preventDefault(); return; } // already opened via touchend
+                    openBooking(e);
+                }
+            }, true);
+        })();
 
         const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon, zIndexOffset: 1000 })
             .addTo(map)
