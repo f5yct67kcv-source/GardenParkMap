@@ -438,7 +438,9 @@
             opacity: 1;
             white-space: normal;
             width: 220px;
+            pointer-events: auto;   /* let the Check availability button/link receive clicks/taps */
         }
+        .garden-park-tooltip .gp-book-btn { pointer-events: auto; }
         .garden-park-tooltip::before {
             border-top-color: #c9a227;
         }
@@ -5063,7 +5065,6 @@
                 direction: 'top',
                 offset: [0, -12],
                 sticky: false,
-                interactive: true,
                 className: 'garden-park-tooltip',
                 maxWidth: 240
             });
