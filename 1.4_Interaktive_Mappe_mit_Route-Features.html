@@ -5098,6 +5098,9 @@
 
         function updateGardenParkTooltip() {
             gardenParkMarker.setTooltipContent(buildGardenParkTooltipHtml());
+            if (typeof labelMarker !== 'undefined' && labelMarker.getTooltip()) {
+                labelMarker.setTooltipContent(buildGardenParkTooltipHtml());
+            }
         }
 
 
@@ -5108,6 +5111,32 @@
             iconAnchor: [90, -10]
         });
         const labelMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: labelIcon }).addTo(map);
+
+        // The "Garden Park Guest House" label box shows the same info box as the heart
+        labelMarker.bindTooltip(buildGardenParkTooltipHtml(), {
+            direction: 'top',
+            offset: [0, -12],
+            sticky: false,
+            className: 'garden-park-tooltip',
+            maxWidth: 240
+        });
+        labelMarker.on('tooltipopen', function(e){
+            const el = e.tooltip.getElement();
+            if (el) { L.DomEvent.disableClickPropagation(el); L.DomEvent.disableScrollPropagation(el); }
+        });
+        function updateLabelTooltipDirection() {
+            const tt = labelMarker.getTooltip();
+            if (!tt) return;
+            const pt = map.latLngToContainerPoint(labelMarker.getLatLng());
+            const dir = pt.y < map.getSize().y * 0.5 ? 'bottom' : 'top';
+            if (tt.options.direction !== dir) {
+                tt.options.direction = dir;
+                tt.options.offset = dir === 'bottom' ? [0, 12] : [0, -12];
+                if (labelMarker.isTooltipOpen()) { labelMarker.closeTooltip(); labelMarker.openTooltip(); }
+            }
+        }
+        map.on('zoomend moveend', updateLabelTooltipDirection);
+        updateLabelTooltipDirection();
 
         // Helper function to build contact HTML
         function buildContactHtml(dest, isPopup) {
