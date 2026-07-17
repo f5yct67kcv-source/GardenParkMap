@@ -762,6 +762,57 @@
             .destinations-grid {
                 grid-template-columns: 1fr;
             }
+            /* Mobile: hide the main destination cards (Kacheln) to cut endless
+               scrolling. The clickable map icons and the crawlable list below stay
+               available. Portal modes (distilleries, day trips, way-to-Grantown,
+               plan) still use the grid, so only the normal browse view is hidden. */
+            #destinationsGrid[data-mode="main"] {
+                display: none;
+            }
+            /* Mobile portal buttons — 4 on top, 3 below (Garden Park layout spec):
+               Row 1: All · Whisky & Gin · Day Trips · Discover Grantown
+               Row 2: The Way to Grantown · FAQ · Plan My Day */
+            .portal-section {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                gap: 8px;
+            }
+            .portal-section .filter-btn {
+                flex: 0 1 calc(25% - 6px);
+                min-width: 0;
+                padding: 8px 4px;
+                font-size: 0.72rem;
+                text-align: center;
+                line-height: 1.15;
+            }
+            .portal-section .filter-btn[data-category="all"] { order: 1; }
+            .portal-section #whiskyMapBtn      { order: 2; }
+            .portal-section #dayTripsBtn       { order: 3; }
+            .portal-section #grantownBtn       { order: 4; }
+            .portal-section #wayToGrantownBtn  { order: 5; }
+            .portal-section #faqBtn            { order: 6; }
+            .portal-section #planDayBtn        { order: 7; }
+            /* Mobile destination (theme) buttons — 2 / 3 / 3:
+               Row 1: Nature · Wildlife
+               Row 2: Castles & History · Mystic & Ancient · Coast & Villages
+               Row 3: Family Fun · Restaurants & Bistros · Rainy Days */
+            .category-section {
+                width: 100%;
+                gap: 8px;
+            }
+            .category-section .filter-btn {
+                flex: 0 1 calc(33.333% - 6px);
+                min-width: 0;
+                padding: 8px 4px;
+                font-size: 0.72rem;
+                text-align: center;
+                line-height: 1.15;
+            }
+            .category-section .filter-btn:nth-child(1),
+            .category-section .filter-btn:nth-child(2) {
+                flex-basis: calc(50% - 6px);
+            }
             .language-selector {
                 position: relative;
                 top: 0;
@@ -1690,7 +1741,7 @@
             <!-- Library categories populated by buildDestinationLibrary() JS function -->
             <details class="lib-details" id="libNature">
                 <summary>🌲 Nature &amp; Wildlife</summary>
-                <div class="lib-entries" id="libNatureEntries"><div class="lib-entry"><div class="lib-entry-name">⛰️ Cairngorms National Park</div><div class="lib-entry-desc">Britain's largest National Park. Skiing, hiking, wildlife – red deer, golden eagles, and red squirrels.</div><div class="lib-entry-meta">🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🧚 An Lochan Uaine (Green Loch)</div><div class="lib-entry-desc">Magical turquoise fairy loch. Easy 45-min walk through ancient Caledonian pine forest.</div><div class="lib-entry-meta">🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦕 Loch Ness</div><div class="lib-entry-desc">Scotland's most famous loch. Urquhart Castle and maybe spot Nessie!</div><div class="lib-entry-meta">🚗 ~60-90 min</div></div><div class="lib-entry"><div class="lib-entry-name">🚡 Cairngorm Funicular</div><div class="lib-entry-desc">Scenic mountain railway to Ptarmigan station. Spectacular views from 1,097m altitude.</div><div class="lib-entry-meta">📍 PH22 1RB &nbsp;·&nbsp; ☎ <a href="tel:+441479861261">+44 1479 861 261</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">⛵ Fort Augustus</div><div class="lib-entry-desc">Charming village where Caledonian Canal meets Loch Ness. Watch boats navigate the locks, spot dolphins, visit the Abbey.</div><div class="lib-entry-meta">🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏖️ Roseisle Beach Car Park</div><div class="lib-entry-desc">Great starting point for a walk to Findhorn and back. Beautiful mix of beach and forest trails.</div><div class="lib-entry-meta">📍 IV36 2UB &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">💧 Lower Fall of Foyers</div><div class="lib-entry-desc">Spectacular waterfall with large car park and café on site. Perfect stop on the way to Fort Augustus / Loch Ness.</div><div class="lib-entry-meta">📍 IV2 6XU &nbsp;·&nbsp; 🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦌 Cairngorm Reindeer Herd</div><div class="lib-entry-desc">Britain's only free-ranging reindeer! Guided hill trips to meet the herd.</div><div class="lib-entry-meta">📍 PH22 1QU &nbsp;·&nbsp; ☎ <a href="tel:+441479861228">+44 1479 861 228</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🐬 Chanonry Point</div><div class="lib-entry-desc">One of the best places in the UK to see bottlenose dolphins from shore!</div><div class="lib-entry-meta">🚗 ~80 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦭 Portgordon</div><div class="lib-entry-desc">Excellent spot for grey seals on the way to Buckie. Beautiful coastal scenery.</div><div class="lib-entry-meta">🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦆 RSPB Loch Spynie</div><div class="lib-entry-desc">A haven for wildlife and birdwatchers alike. Largest freshwater reedbed in Scotland – ideal spot for ducks, geese, and swans.</div><div class="lib-entry-meta">📍 IV30 5PQ &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-spynie" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-spynie</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦅 Loch Garten Osprey Centre</div><div class="lib-entry-desc">Visit during spring and summer and spot breeding Osprey, Crested Tits, Red Squirrels, Bank Voles among the Caledonian forest wildlife.</div><div class="lib-entry-meta">📍 PH25 3EF &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-garten-abernethy" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-garten-abernethy</a> &nbsp;·&nbsp; 🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏰 Loch an Eilein</div><div class="lib-entry-desc">One of Scotland's most beautiful lochside walks. Historic island castle ruins surrounded by Caledonian pine forest. Ideal for walking, photography and wildlife watching.</div><div class="lib-entry-meta">📍 PH22 1QH &nbsp;·&nbsp; 🌐 <a href="https://rothiemurchus.net" target="_blank" rel="noopener">rothiemurchus.net</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🌲 Anagach Woods</div><div class="lib-entry-desc">Anagach Woods provides habitat for rare and endangered species such as the capercaillie, twinflower, and pine hoverfly. Scots pine, birch, juniper, and rowan sit amongst primeval peat-bogs, hidden lochans and ancient eskers. 2 minutes walk from Garden Park Guest House.</div><div class="lib-entry-meta">📍 PH26 3JL &nbsp;·&nbsp; 🌐 <a href="https://anagachwoods.org.uk" target="_blank" rel="noopener">anagachwoods.org.uk</a> &nbsp;·&nbsp; 🚗 ~2 min walk</div></div><div class="lib-entry"><div class="lib-entry-name">🐦 Findhorn Bay Local Nature Reserve</div><div class="lib-entry-desc">Findhorn Bay is a wide sandy estuary of national importance for birds, with significant numbers of migrant wildfowl and waders. Beautiful coastal scenery.</div><div class="lib-entry-meta">📍 IV36 3TD &nbsp;·&nbsp; 🌐 <a href="https://visitforres.scot/listing/findhorn-bay/" target="_blank" rel="noopener">visitforres.scot/listing/findhorn-bay/</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏪 House of Bruar</div><div class="lib-entry-desc">One of Scotland's most famous country stores. Luxury food hall, Scottish products, gifts, clothing and excellent café facilities. Sarah and Daniel absolutely love the butter croissants.</div><div class="lib-entry-meta">📍 PH18 5TW &nbsp;·&nbsp; 🌐 <a href="https://houseofbruar.com" target="_blank" rel="noopener">houseofbruar.com</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">⚗️ Dalwhinnie Distillery</div><div class="lib-entry-desc">Highest distillery in Scotland at 326m altitude. Visitor tours available. Spectacular mountain scenery.</div><div class="lib-entry-meta">📍 PH19 1AA &nbsp;·&nbsp; 🌐 <a href="https://malts.com" target="_blank" rel="noopener">malts.com</a> &nbsp;·&nbsp; 🚗 ~50 min</div></div></div>
+                <div class="lib-entries" id="libNatureEntries"><div class="lib-entry"><div class="lib-entry-name">⛰️ Cairngorms National Park</div><div class="lib-entry-desc">Britain's largest National Park. Skiing, hiking, wildlife – red deer, golden eagles, and red squirrels.</div><div class="lib-entry-meta">🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🧚 An Lochan Uaine (Green Loch)</div><div class="lib-entry-desc">Magical turquoise fairy loch. Easy 45-min walk through ancient Caledonian pine forest.</div><div class="lib-entry-meta">🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦕 Loch Ness</div><div class="lib-entry-desc">Scotland's most famous loch. Urquhart Castle and maybe spot Nessie!</div><div class="lib-entry-meta">🚗 ~60-90 min</div></div><div class="lib-entry"><div class="lib-entry-name">🚡 Cairngorm Funicular</div><div class="lib-entry-desc">Scenic mountain railway to Ptarmigan station. Spectacular views from 1,097m altitude.</div><div class="lib-entry-meta">📍 PH22 1RB &nbsp;·&nbsp; ☎ <a href="tel:+441479861261">+44 1479 861 261</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">⛵ Fort Augustus</div><div class="lib-entry-desc">Charming village where Caledonian Canal meets Loch Ness. Watch boats navigate the locks, spot dolphins, visit the Abbey.</div><div class="lib-entry-meta">🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏖️ Roseisle Beach Car Park</div><div class="lib-entry-desc">Great starting point for a walk to Findhorn and back. Beautiful mix of beach and forest trails.</div><div class="lib-entry-meta">📍 IV36 2UB &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">💧 Lower Fall of Foyers</div><div class="lib-entry-desc">Spectacular waterfall with large car park and café on site. Perfect stop on the way to Fort Augustus / Loch Ness.</div><div class="lib-entry-meta">📍 IV2 6XU &nbsp;·&nbsp; 🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦌 Cairngorm Reindeer Herd</div><div class="lib-entry-desc">Britain's only free-ranging reindeer! Guided hill trips to meet the herd.</div><div class="lib-entry-meta">📍 PH22 1QU &nbsp;·&nbsp; ☎ <a href="tel:+441479861228">+44 1479 861 228</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🐬 Chanonry Point</div><div class="lib-entry-desc">One of the best places in the UK to see bottlenose dolphins from shore!</div><div class="lib-entry-meta">🚗 ~80 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦭 Portgordon</div><div class="lib-entry-desc">Excellent spot for grey seals on the way to Buckie. Beautiful coastal scenery.</div><div class="lib-entry-meta">🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦆 RSPB Loch Spynie</div><div class="lib-entry-desc">A haven for wildlife and birdwatchers alike. Largest freshwater reedbed in Scotland – ideal spot for ducks, geese, and swans.</div><div class="lib-entry-meta">📍 IV30 5PQ &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-spynie" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-spynie</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦅 Loch Garten Osprey Centre</div><div class="lib-entry-desc">Visit during spring and summer and spot breeding Osprey, Crested Tits, Red Squirrels, Bank Voles among the Caledonian forest wildlife.</div><div class="lib-entry-meta">📍 PH25 3EF &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-garten-abernethy" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-garten-abernethy</a> &nbsp;·&nbsp; 🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏰 Loch an Eilein</div><div class="lib-entry-desc">One of Scotland's most beautiful lochside walks. Historic island castle ruins surrounded by Caledonian pine forest. Ideal for walking, photography and wildlife watching.</div><div class="lib-entry-meta">📍 PH22 1QH &nbsp;·&nbsp; 🌐 <a href="https://rothiemurchus.net" target="_blank" rel="noopener">rothiemurchus.net</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🌲 Anagach Woods</div><div class="lib-entry-desc">Anagach Woods provides habitat for rare and endangered species such as the capercaillie, twinflower, and pine hoverfly. Scots pine, birch, juniper, and rowan sit amongst primeval peat-bogs, hidden lochans and ancient eskers. 2 minutes walk from Garden Park Guest House.</div><div class="lib-entry-meta">📍 PH26 3JL &nbsp;·&nbsp; 🌐 <a href="https://anagachwoods.org.uk" target="_blank" rel="noopener">anagachwoods.org.uk</a> &nbsp;·&nbsp; 🚗 ~2 min walk</div></div><div class="lib-entry"><div class="lib-entry-name">🐦 Findhorn Bay Local Nature Reserve</div><div class="lib-entry-desc">Findhorn Bay is a wide sandy estuary of national importance for birds, with significant numbers of migrant wildfowl and waders. Beautiful coastal scenery.</div><div class="lib-entry-meta">📍 IV36 3TD &nbsp;·&nbsp; 🌐 <a href="https://visitforres.scot/listing/findhorn-bay/" target="_blank" rel="noopener">visitforres.scot/listing/findhorn-bay/</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div></div>
             </details>
             <details class="lib-details" id="libCastles">
                 <summary>🏰 Castles &amp; History</summary>
@@ -3815,7 +3866,8 @@
                 postcode: 'PH18 5TW',
                 phone: null,
                 website: 'houseofbruar.com',
-                isWayToGrantownStop: true
+                isWayToGrantownStop: true,
+                wayToOnly: true
             },
             {
                 id: 'dalwhinnie',
@@ -3831,7 +3883,8 @@
                 postcode: 'PH19 1AA',
                 phone: null,
                 website: 'malts.com',
-                isWayToGrantownStop: true
+                isWayToGrantownStop: true,
+                wayToOnly: true
             }
         ];
 
@@ -5174,6 +5227,11 @@
 
         // Create markers for main destinations
         destinations.forEach(dest => {
+            // Way-to-Grantown-only stops (e.g. House of Bruar, Dalwhinnie) are not
+            // part of the normal map / theme browsing — they appear solely inside
+            // the "The Way to Grantown" portal (which builds its own markers).
+            if (dest.wayToOnly) return;
+
             const markerIcon = L.divIcon({
                 className: '',
                 html: '<div style="background: #fff; border: 3px solid #c9a227; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">' + dest.icon + '</div>',
@@ -5234,10 +5292,58 @@
 
         const grid = document.getElementById('destinationsGrid');
 
+        // ── Plan My Day: individual distilleries are selectable stops ──────────
+        // The plan system normally operates on `destinations`; the distilleries
+        // live in their own arrays, so we expose them to the plan flows here.
+        // Each distillery is treated as the 'whisky' plan category (so the
+        // existing whisky filter chip controls them) and gets its own dedicated
+        // plan marker set, kept separate from the Whisky-mode `distilleryMarkers`
+        // so that mode's styling stays untouched.
+        const planDistilleries = allDistilleries;
+        const distilleryPlanMarkers = {};
+        function ensureDistilleryPlanMarkers() {
+            if (Object.keys(distilleryPlanMarkers).length) return;
+            planDistilleries.forEach(dest => {
+                const borderColor = dest.category === 'distillery-gin' ? '#4CAF50' : '#D2691E';
+                const markerIcon = L.divIcon({
+                    className: '',
+                    html: '<div data-destid="' + dest.id + '" style="background:#fff;border:3px solid ' + borderColor + ';border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 3px 10px rgba(0,0,0,0.3);">' + dest.icon + '</div>',
+                    iconSize: [34, 34], iconAnchor: [17, 17]
+                });
+                let tipHtml = dest.tip ? '<div style="color: #c9a227; font-size: 0.85rem; margin-top: 6px;">' + dest.tip + '</div>' : '';
+                let contactHtml = buildContactHtml(dest, true);
+                let popupContactHtml = contactHtml ? '<div class="popup-contact">' + contactHtml + '</div>' : '';
+                const marker = L.marker([dest.lat, dest.lng], { icon: markerIcon })
+                    .bindPopup('<div class="popup-title">' + dest.icon + ' ' + dest.name + '</div><div class="popup-time">' + dest.time + '</div><div class="popup-desc">' + dest.description + '</div>' + tipHtml + popupContactHtml);
+                distilleryPlanMarkers[dest.id] = marker;
+            });
+        }
+        function planDestById(id) {
+            return destinations.find(d => d.id === id) || planDistilleries.find(d => d.id === id) || null;
+        }
+        function planMarkerById(id) {
+            return mainMarkers[id] || distilleryPlanMarkers[id] || null;
+        }
+        function planCategoryOf(dest) {
+            return (dest.category === 'distillery' || dest.category === 'distillery-gin') ? 'whisky' : dest.category;
+        }
+        function planCardDestinations() {
+            // Plan My Day universe: normal destinations minus the whisky portal
+            // (replaced by the individual distilleries) and way-to-Grantown-only
+            // stops, plus the individual distilleries.
+            return destinations.filter(d => !d.isWhiskyPortal && !d.wayToOnly).concat(planDistilleries);
+        }
+        function planStyleTargets() {
+            return planDayMode ? destinations.concat(planDistilleries) : destinations;
+        }
+
         function rebuildMainCards() {
             grid.innerHTML = '';
-            destinations.forEach(dest => {
-                if (planDayMode && typeof planHiddenCategories !== 'undefined' && planHiddenCategories.has(dest.category)) return;
+            grid.dataset.mode = planDayMode ? 'plan' : 'main';
+            const cardList = planDayMode ? planCardDestinations() : destinations.filter(d => !d.wayToOnly);
+            cardList.forEach(dest => {
+                const planCat = planCategoryOf(dest);
+                if (planDayMode && typeof planHiddenCategories !== 'undefined' && planHiddenCategories.has(planCat)) return;
                 let tipHtml = dest.tip ? '<p class="card-description" style="margin-top: 6px; color: #c9a227;">' + dest.tip + '</p>' : '';
                 let contactHtml = buildContactHtml(dest, false);
                 let cardContactHtml = contactHtml ? '<div class="card-contact">' + contactHtml + '</div>' : '';
@@ -5254,8 +5360,9 @@
                     } else if (dest.isDayTripPortal) {
                         enterDayTripMode();
                     } else {
+                        const mk = planDayMode ? planMarkerById(dest.id) : mainMarkers[dest.id];
                         map.setView([dest.lat, dest.lng], 10);
-                        mainMarkers[dest.id].openPopup();
+                        if (mk) mk.openPopup();
                     }
                 });
 
@@ -5278,6 +5385,7 @@
 
         function rebuildDistilleryCards() {
             grid.innerHTML = '';
+            grid.dataset.mode = 'distillery';
             allDistilleries.forEach(dest => {
                 let tipHtml = dest.tip ? '<p class="card-description" style="margin-top: 6px; color: #c9a227;">' + dest.tip + '</p>' : '';
                 let contactHtml = buildContactHtml(dest, false);
@@ -5370,6 +5478,7 @@
         function rebuildDayTripCards() {
             const t = translations[currentLang] || translations.en;
             grid.innerHTML = '';
+            grid.dataset.mode = 'daytrip';
             
             dayTrips.forEach(trip => {
                 const card = document.createElement('div');
@@ -5456,6 +5565,7 @@
 
         function rebuildGrantownCards(categoryFilter) {
             grid.innerHTML = '';
+            grid.dataset.mode = 'grantown';
             
             grantownPlaces.forEach(place => {
                 if (categoryFilter !== 'all' && place.category !== categoryFilter) {
@@ -5532,10 +5642,12 @@
                 });
 
                 destinations.forEach(function(dest) {
+                    const m = mainMarkers[dest.id];
+                    if (!m) return;
                     if (category === 'all' || dest.category === category) {
-                        mainMarkers[dest.id].addTo(map);
+                        m.addTo(map);
                     } else {
-                        map.removeLayer(mainMarkers[dest.id]);
+                        map.removeLayer(m);
                     }
                 });
             });
@@ -5588,6 +5700,7 @@
         function rebuildWayToGrantownCards() {
             const wayDests = destinations.filter(d => d.isWayToGrantownStop);
             grid.innerHTML = '';
+            grid.dataset.mode = 'wayto';
             wayDests.forEach(dest => {
                 let tipHtml = dest.tip ? '<p class="card-description" style="margin-top: 6px; color: #c9a227;">' + dest.tip + '</p>' : '';
                 let contactHtml = buildContactHtml(dest, false);
@@ -5649,6 +5762,7 @@
             if (daytrips) daytrips.style.display = 'none';
             if (highlights) highlights.style.display = 'none';
             grid.innerHTML = '';
+            grid.dataset.mode = 'faq';
             renderFAQ();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -5704,10 +5818,14 @@
 
             destinations.forEach(dest => {
                 if (dest.isWhiskyPortal || dest.isDayTripPortal) return;
-                const elId = catMap[dest.category];
-                if (elId) {
-                    const el = document.getElementById(elId);
-                    if (el) el.innerHTML += buildLibEntry(dest, true);
+                // Way-to-Grantown-only stops belong solely to the Way-to-Grantown
+                // list, never the theme lists (e.g. Nature).
+                if (!dest.wayToOnly) {
+                    const elId = catMap[dest.category];
+                    if (elId) {
+                        const el = document.getElementById(elId);
+                        if (el) el.innerHTML += buildLibEntry(dest, true);
+                    }
                 }
                 if (dest.isWayToGrantownStop) {
                     const el = document.getElementById('libWayToEntries');
@@ -5848,10 +5966,10 @@
         }
 
         function updateMarkerStyle(destId) {
-            const marker = mainMarkers[destId];
+            const marker = planMarkerById(destId);
             if (!marker) return;
             const isAdded = planStops.includes(destId);
-            const dest = destinations.find(d => d.id === destId);
+            const dest = planDestById(destId);
             if (!dest) return;
             const border = isAdded ? '#7eecd8' : '#c9a227';
             const bg = isAdded ? 'rgba(60,180,160,0.25)' : '#fff';
@@ -5888,8 +6006,9 @@
             if (planStops.includes(destId)) removeFromPlan(destId); else addToPlan(destId);
         }
         function bindPlanMarkerClicks() {
-            // Tag all marker icons with data-destid so the delegate can identify them
-            destinations.forEach(d => updateMarkerStyle(d.id));
+            // Tag all marker icons (destinations + distilleries) with data-destid so
+            // the delegate can identify them
+            planStyleTargets().forEach(d => updateMarkerStyle(d.id));
             map.getContainer().addEventListener('click', planMapClickDelegate, true);
         }
         function unbindPlanMarkerClicks() {
@@ -5965,7 +6084,7 @@
 
         // ── Route actions: Google Maps, Share, Print, Weather hint ──────────
         function getPlanStopObjects() {
-            return planStops.map(id => destinations.find(d => d.id === id)).filter(Boolean);
+            return planStops.map(id => planDestById(id)).filter(Boolean);
         }
 
         function openPlanInGoogleMaps() {
@@ -6126,10 +6245,26 @@
             destinations.forEach(dest => {
                 const marker = mainMarkers[dest.id];
                 if (!marker) return;
+                // The whisky portal is replaced by the individual distilleries in
+                // plan mode, so keep it hidden while planning.
+                if (planDayMode && dest.isWhiskyPortal) {
+                    map.removeLayer(marker);
+                    return;
+                }
                 if (planDayMode && planHiddenCategories.has(dest.category)) {
                     map.removeLayer(marker);
                 } else {
                     if (!map.hasLayer(marker)) marker.addTo(map);
+                }
+            });
+            // Individual distilleries follow the 'whisky' plan filter chip.
+            planDistilleries.forEach(dest => {
+                const marker = distilleryPlanMarkers[dest.id];
+                if (!marker) return;
+                if (planDayMode && !planHiddenCategories.has('whisky')) {
+                    if (!map.hasLayer(marker)) marker.addTo(map);
+                } else {
+                    map.removeLayer(marker);
                 }
             });
         }
@@ -6143,7 +6278,7 @@
         }
 
         function updatePlanPanel() {
-            if (planDayMode) destinations.forEach(d => updateMarkerStyle(d.id));
+            if (planDayMode) planStyleTargets().forEach(d => updateMarkerStyle(d.id));
             updatePlanWeatherHint();
             const t = translations[currentLang] || translations.en;
             const stopsEl = document.getElementById('planDayStops');
@@ -6153,7 +6288,7 @@
 
             // Update chips
             const chips = planStops.map((id, idx) => {
-                const dest = destinations.find(d => d.id === id);
+                const dest = planDestById(id);
                 if (!dest) return '';
                 return `<div class="planday-stop-chip">
                     <span class="chip-num">${idx + 1}</span>
@@ -6172,7 +6307,7 @@
                 let total = 0;
                 let allKnown = true;
                 planStops.forEach(id => {
-                    const dest = destinations.find(d => d.id === id);
+                    const dest = planDestById(id);
                     const mins = dest ? parseDriveMinutes(dest.time) : null;
                     if (mins) total += mins; else allKnown = false;
                 });
@@ -6214,7 +6349,7 @@
 
             const allPoints = [GARDEN_PARK].concat(
                 planStops.map(id => {
-                    const d = destinations.find(x => x.id === id);
+                    const d = planDestById(id);
                     return d ? { lat: d.lat, lng: d.lng } : null;
                 }).filter(Boolean)
             );
@@ -6242,6 +6377,11 @@
                 const el = document.getElementById(id); if (el) el.style.display = 'none';
             });
             Object.values(mainMarkers).forEach(marker => marker.addTo(map));
+            // Whisky & Gin: show the individual distilleries as selectable stops
+            // and hide the single whisky portal marker.
+            ensureDistilleryPlanMarkers();
+            if (mainMarkers['speyside']) map.removeLayer(mainMarkers['speyside']);
+            Object.values(distilleryPlanMarkers).forEach(marker => marker.addTo(map));
             map.setView([GARDEN_PARK.lat, GARDEN_PARK.lng], 8);
             bindPlanMarkerClicks();
             buildPlanFilterChips();
