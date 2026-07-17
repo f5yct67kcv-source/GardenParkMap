@@ -5059,30 +5059,6 @@
                 + '<a class="gp-book-btn" href="' + BOOKING_URL + '" target="_blank" rel="noopener">📅 ' + btnLabel + '</a>';
         }
 
-        // Reliable tap handling for the Check availability link: on iOS/Safari a
-        // quick tap's synthetic click inside a Leaflet tooltip gets swallowed
-        // (only a long-press worked). Catch touchend/click in the CAPTURE phase —
-        // before Leaflet can stop it — and open the booking page immediately.
-        (function(){
-            let touchHandledAt = 0;
-            function openBooking(ev){
-                if (ev) { ev.preventDefault(); ev.stopPropagation(); }
-                window.open(BOOKING_URL, '_blank', 'noopener');
-            }
-            function hitBtn(e){
-                return e.target && e.target.closest ? e.target.closest('.gp-book-btn') : null;
-            }
-            document.addEventListener('touchend', function(e){
-                if (hitBtn(e)) { touchHandledAt = Date.now(); openBooking(e); }
-            }, { passive: false, capture: true });
-            document.addEventListener('click', function(e){
-                if (hitBtn(e)) {
-                    if (Date.now() - touchHandledAt < 800) { e.preventDefault(); return; } // already opened via touchend
-                    openBooking(e);
-                }
-            }, true);
-        })();
-
         const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon, zIndexOffset: 1000 })
             .addTo(map)
             .bindTooltip(buildGardenParkTooltipHtml(), {
@@ -5092,9 +5068,14 @@
                 className: 'garden-park-tooltip',
                 maxWidth: 240
             });
-        // Tapping/clicking the heart opens the booking page in a new tab
-        // (reliable on touch/Safari, where a hover-tooltip button is fiddly).
-        gardenParkMarker.on('click', function(e){ if (e && e.originalEvent) { L.DomEvent.stop(e.originalEvent); } window.open(BOOKING_URL, '_blank', 'noopener'); });
+        // Keep the tooltip's native link tappable: stop Leaflet from processing
+        // taps on the tooltip (this only stops propagation to the map, it does NOT
+        // preventDefault), so the real <a> navigates normally — the reliable way to
+        // open a link on iOS/Safari (window.open would be popup-blocked there).
+        gardenParkMarker.on('tooltipopen', function(e){
+            const el = e.tooltip.getElement();
+            if (el) { L.DomEvent.disableClickPropagation(el); L.DomEvent.disableScrollPropagation(el); }
+        });
 
         // Flip the info tooltip below the marker when the marker sits in the
         // upper half of the view (so it never pops off the top / covers the map).
