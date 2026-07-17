@@ -458,6 +458,77 @@
             margin-bottom: 8px;
             border: 1px solid rgba(201, 162, 39, 0.5);
         }
+        /* Check availability CTA button (site CI: gold on dark green) */
+        .gp-book-btn {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #c9a227;
+            color: #1a2f1a;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .gp-book-btn:hover { background: #e0b833; }
+        .gp-book-btn:active { transform: translateY(1px); }
+        /* Booking modal overlay (FreeToBook widget) */
+        .booking-modal-overlay {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 47, 26, 0.75);
+            z-index: 1200;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .booking-modal-overlay.open { display: flex; }
+        .booking-modal {
+            background: #fff;
+            border-radius: 14px;
+            border: 2px solid #c9a227;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            max-width: 420px;
+            width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            padding: 18px 18px 20px;
+            position: relative;
+        }
+        .booking-modal h3 {
+            font-family: 'Playfair Display', serif;
+            color: #1a2f1a;
+            font-size: 1.2rem;
+            margin: 0 0 4px;
+            padding-right: 28px;
+        }
+        .booking-modal p {
+            color: #4a5a4a;
+            font-size: 0.85rem;
+            margin: 0 0 12px;
+        }
+        .booking-modal-close {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: rgba(26, 47, 26, 0.08);
+            color: #1a2f1a;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .booking-modal-close:hover { background: rgba(26, 47, 26, 0.18); }
         /* Hidden cards */
         .destination-card.hidden {
             display: none;
@@ -1537,6 +1608,15 @@
         <div class="map-wrapper">
             <div id="map"></div>
             <div class="watermark">Garden Park Guest House • #ScotlandbyDan</div>
+            <!-- Booking availability overlay (FreeToBook widget) -->
+            <div class="booking-modal-overlay" id="bookingOverlay" onclick="if(event.target===this)closeBookingModal();">
+                <div class="booking-modal" role="dialog" aria-modal="true" aria-label="Check availability">
+                    <button class="booking-modal-close" onclick="closeBookingModal();" aria-label="Close">×</button>
+                    <h3>❤️ Garden Park Guest House</h3>
+                    <p>Check availability &amp; book directly with your hosts Sarah &amp; Daniel.</p>
+                    <div class="ftb-widget" data-id="1478" data-token="JWlrshx8Y7AShqaNtBFe0gcc0CLm1dekXAfrtdNRgOWRZxnLzjyVqw43FyEsX"></div>
+                </div>
+            </div>
         </div>
 
         <div class="distillery-mode-banner" id="distilleryBanner">
@@ -1935,6 +2015,7 @@
                 daylight: "Daylight",
                 readBlog: "Read Daniel's Blog",
                 gardenParkHoverText: "Garden Park Guest House offers traditional Bed and Breakfast in a Victorian building from 1868. As an alternative, you can also book the self-catering Butterfly Cottage, a cottage from the early 1800s that was completely renovated in 2022. 5 parking spaces are available, one with an EV charging station.",
+                checkAvailability: "Check availability",
                 dayTripSubtitle: "Curated itineraries for your Highland adventure",
                 routeLabel: "Route",
                 optionalLabel: "Optional",
@@ -2087,6 +2168,7 @@
                 daylight: "Tageslicht",
                 readBlog: "Daniels Blog lesen",
                 gardenParkHoverText: "Garden Park Guest House bietet traditionelles Bed and Breakfast in einem viktorianischen Gebäude aus dem Jahr 1868. Alternativ können Sie auch das Self-Catering Butterfly Cottage buchen, ein Cottage aus den frühen 1800er-Jahren, das 2022 komplett saniert und renoviert wurde. Es stehen 5 Parkplätze zur Verfügung, einer davon mit einer EV-Ladestation.",
+                checkAvailability: "Verfügbarkeit prüfen",
                 dayTripSubtitle: "Kuratierte Routen für Ihr Highland-Abenteuer",
                 routeLabel: "Route",
                 optionalLabel: "Optional",
@@ -2239,6 +2321,7 @@
                 daylight: "Lumière du jour",
                 readBlog: "Lire le blog de Daniel",
                 gardenParkHoverText: "Garden Park Guest House propose un Bed and Breakfast traditionnel dans un bâtiment victorien datant de 1868. Vous pouvez aussi réserver le Butterfly Cottage en location indépendante, un cottage du début des années 1800 entièrement rénové en 2022. 5 places de parking sont disponibles, dont une avec borne de recharge pour véhicules électriques.",
+                checkAvailability: "Vérifier les disponibilités",
                 dayTripSubtitle: "Itinéraires sélectionnés pour votre aventure Highland",
                 routeLabel: "Itinéraire",
                 optionalLabel: "Optionnel",
@@ -2391,6 +2474,7 @@
                 daylight: "Luce diurna",
                 readBlog: "Leggi il blog di Daniel",
                 gardenParkHoverText: "Garden Park Guest House offre un tradizionale Bed and Breakfast in un edificio vittoriano del 1868. In alternativa, potete prenotare il Butterfly Cottage, un cottage self-catering dei primi anni del 1800, completamente ristrutturato nel 2022. Sono disponibili 5 posti auto, uno dei quali con stazione di ricarica per veicoli elettrici.",
+                checkAvailability: "Verifica disponibilità",
                 dayTripSubtitle: "Itinerari curati per la tua avventura nelle Highlands",
                 routeLabel: "Percorso",
                 optionalLabel: "Opzionale",
@@ -2543,6 +2627,7 @@
                 daylight: "Luz del día",
                 readBlog: "Leer el blog de Daniel",
                 gardenParkHoverText: "Garden Park Guest House ofrece un tradicional Bed and Breakfast en un edificio victoriano de 1868. Como alternativa, también puede reservar el Butterfly Cottage de autoalojamiento, una casa de campo de principios del siglo XIX completamente renovada en 2022. Hay 5 plazas de aparcamiento disponibles, una de ellas con estación de carga para vehículos eléctricos.",
+                checkAvailability: "Ver disponibilidad",
                 dayTripSubtitle: "Itinerarios seleccionados para tu aventura en las Highlands",
                 routeLabel: "Ruta",
                 optionalLabel: "Opcional",
@@ -2695,6 +2780,7 @@
                 daylight: "Daglicht",
                 readBlog: "Lees Daniëls blog",
                 gardenParkHoverText: "Garden Park Guest House biedt traditionele Bed and Breakfast in een Victoriaans pand uit 1868. Als alternatief kunt u ook het self-catering Butterfly Cottage boeken, een cottage uit het begin van de 19e eeuw dat in 2022 volledig is gerenoveerd. Er zijn 5 parkeerplaatsen beschikbaar, waarvan één met een EV-laadstation.",
+                checkAvailability: "Beschikbaarheid controleren",
                 dayTripSubtitle: "Samengestelde routes voor je Highland avontuur",
                 routeLabel: "Route",
                 optionalLabel: "Optioneel",
@@ -5019,9 +5105,11 @@
 
         function buildGardenParkTooltipHtml() {
             const t = (translations[currentLang] && translations[currentLang].gardenParkHoverText) ? translations[currentLang] : translations.en;
+            const btnLabel = (t.checkAvailability || translations.en.checkAvailability || 'Check availability');
             return '<div class="popup-title">❤️ Garden Park Guest House</div>'
                 + '<img class="garden-park-tooltip-photo" src="' + GARDEN_PARK_PHOTO_SRC + '" alt="Sarah and Daniel, your hosts at Garden Park Guest House">'
-                + '<div class="popup-desc">' + t.gardenParkHoverText + '</div>';
+                + '<div class="popup-desc">' + t.gardenParkHoverText + '</div>'
+                + '<button class="gp-book-btn" onclick="openBookingModal();event.stopPropagation();return false;">📅 ' + btnLabel + '</button>';
         }
 
         const gardenParkMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: heartIcon, zIndexOffset: 1000 })
@@ -5030,13 +5118,29 @@
                 direction: 'top',
                 offset: [0, -12],
                 sticky: false,
+                interactive: true,
                 className: 'garden-park-tooltip',
                 maxWidth: 240
             });
+        // Clicking the heart opens the booking widget too (reliable fallback,
+        // since a hover tooltip's button can be fiddly to click).
+        gardenParkMarker.on('click', function(e){ if (e && e.originalEvent) { L.DomEvent.stop(e.originalEvent); } openBookingModal(); });
 
         function updateGardenParkTooltip() {
             gardenParkMarker.setTooltipContent(buildGardenParkTooltipHtml());
         }
+
+        // Booking availability overlay (FreeToBook widget)
+        function openBookingModal() {
+            const ov = document.getElementById('bookingOverlay');
+            if (ov) ov.classList.add('open');
+        }
+        function closeBookingModal() {
+            const ov = document.getElementById('bookingOverlay');
+            if (ov) ov.classList.remove('open');
+        }
+        // Close on Escape
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeBookingModal(); });
 
         const labelIcon = L.divIcon({
             className: 'heart-label',
@@ -6211,6 +6315,9 @@
     </script>
 
     <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
+
+    <!-- FreeToBook booking widget (renders into #bookingOverlay .ftb-widget) -->
+    <script src="https://widget.freetobook.com/widget.js?v=20190925"></script>
 
 </body>
 </html>
