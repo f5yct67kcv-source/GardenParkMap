@@ -1268,6 +1268,11 @@
             position: absolute; inset: 0; width: 100%; height: 100%;
             border-radius: 8px; border: 1px solid rgba(255, 95, 180, 0.45);
         }
+        /* Portrait (YouTube Shorts) — 9:16, centred, so it fills instead of
+           showing big black side-bars in a 16:9 frame. */
+        .dest-media-embed--portrait {
+            aspect-ratio: 9 / 16; max-width: 190px; margin-left: auto; margin-right: auto;
+        }
         .planday-banner {
             display: none;
             background: linear-gradient(135deg, #1a3a3a 0%, #0f2a2a 100%);
@@ -3949,7 +3954,7 @@
                 postcode: 'PH26 3JL',
                 phone: null,
                 website: 'anagachwoods.org.uk',
-                media: { youtube: '' }   /* TODO: YouTube link for the Anagach Woods video (bird sounds) */
+                media: { youtube: '5wKzCQFBVpM', portrait: true }
             },
             {
                 id: 'findhornbay',
@@ -4079,7 +4084,7 @@
                 postcode: 'IV36 2UB',
                 phone: null,
                 website: null,
-                media: { photos: ['media/roseisle-findhorn-1.jpg', 'media/roseisle-findhorn-2.jpg'], youtube: 'p7pYHwzo_yI' }
+                media: { photos: ['media/roseisle-findhorn-1.jpg', 'media/roseisle-findhorn-2.jpg'], youtube: 'ytI0bhn-cEg' }
             },
             {
                 id: 'gem_greenloch',
@@ -5505,7 +5510,8 @@
                 html += '</div>';
             }
             if (ytid) {
-                html += '<div class="dest-media-embed"><iframe src="https://www.youtube-nocookie.com/embed/' + ytid + '" title="' + (dest.name || '') + '" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+                const embedCls = dest.media.portrait ? 'dest-media-embed dest-media-embed--portrait' : 'dest-media-embed';
+                html += '<div class="' + embedCls + '"><iframe src="https://www.youtube-nocookie.com/embed/' + ytid + '" title="' + (dest.name || '') + '" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
             } else if (video) {
                 html += '<video class="dest-media-video" src="' + video + '" controls preload="none" playsinline onerror="this.style.display=\'none\'"></video>';
             }
