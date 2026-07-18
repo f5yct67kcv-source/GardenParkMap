@@ -1014,6 +1014,37 @@
             display: block;
             margin-bottom: 5px;
         }
+        /* Info sections (Golf & Fishing, Getting Here) — same look as highlights */
+        .info-section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(26, 47, 26, 0.95);
+            border-radius: 12px;
+            border: 2px solid #c9a227;
+        }
+        .info-section h2 {
+            color: #c9a227;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .info-section h3 {
+            color: #c9a227;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin: 22px 0 8px;
+        }
+        .info-section h3:first-of-type { margin-top: 0; }
+        .info-section p {
+            color: #f5f5f5;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0 0 12px;
+        }
+        .info-section p:last-child { margin-bottom: 0; }
+        .info-section a { color: #c9a227; text-decoration: underline; }
         /* Way to Grantown Portal Button */
         .filter-btn.portal-btn-waytoGrantown {
             background: linear-gradient(135deg, rgba(121, 85, 72, 0.5) 0%, rgba(161, 136, 127, 0.3) 100%);
@@ -2032,10 +2063,30 @@
             </ol>
         </div>
 
+        <!-- Golf & Fishing -->
+        <div class="info-section" id="golfFishingSection">
+            <h2>⛳ Golf &amp; 🎣 Fishing</h2>
+            <h3>⛳ Golf</h3>
+            <p>Golfamore eine App wo man ein Abo löst, jedoch bei sehr vielen Golfplätze 30-50% Rabatt erhält. Diese App haben wir empfohlen erhalten durch diverse unserer Gäste. Wir erhalten weder Provisionen noch sonstige Anreize. <a href="https://www.golfamore.com/de/golf-courses/" target="_blank" rel="noopener">golfamore.com</a></p>
+            <p>Golfplätze in unserer Region, welche wir aufgrund der Empfehlungen von Gästen, die dort bereits gespielt haben, empfehlen, finden Sie in unserem <a href="https://www.facebook.com/GardenParkGuestHouse/posts/pfbid032ArT4AN3vWgHhbYLervN1GLoKPNzbRasSioo3YhFd4B4KXFMJN6Gbrm3eCafFeyzl" target="_blank" rel="noopener">dedicated Blog auf unserer Garden Park Facebook-Seite</a>.</p>
+            <p>Bei uns im Garden Park Guest House kann die Golfausrüstung in einem abschliessbaren Gartenschuppen aufbewahrt werden, wo man auch aufhängen kann zum Trocknen. Zudem stehen Stromanschlüsse und Schuhtrockner zur Verfügung.</p>
+            <h3>🎣 Fishing</h3>
+            <p>Mortimer's, Grantown on Spey. Hier kann man sich ausrüsten, Fischerei und outdoor Bekleidung ist kein Thema. Mortimer kann perfekt Auskunft darüber geben wo man welche Art von Fischerei betreiben darf. Man kann auch die nötigen Lizenzen lösen. Wir erhalten weder Provisionen noch sonstige Anreize. 📍 PH26 3HB &nbsp;·&nbsp; <a href="https://mortimersofspeyside.co.uk/" target="_blank" rel="noopener">mortimersofspeyside.co.uk</a></p>
+        </div>
+
+        <!-- Getting Here (car / train) -->
+        <div class="info-section" id="travelSection">
+            <h2>🧭 Anreise nach Grantown-on-Spey</h2>
+            <h3>🚗 Anreise mit dem eigenen Auto</h3>
+            <p>Fähre Amsterdam - Newcastle. Dann kann man entweder direkt hochfahren nach Grantown on Spey oder aber man kann einen Zwischenstopp in Stirling oder Queensferry machen, sehr gut um ausserhalb von Edinburgh zu parkieren um dann mit den öffentlichen Verkehrsmitteln nach Edinburgh und oder Glasgow fahren. Man kann aber auch in der Region um Stonehaven schlafen, Beispiel enthalten im Button „The Way to Grantown". Der Weg von Newcastle nach Grantown kann bereits das erste Abenteuer und Erlebnis sein.</p>
+            <h3>🚆 Anreise mit dem Zug</h3>
+            <p>Man kann ab diversen Städten in Europa und der Schweiz anreisen. Beispiel Zug in Olten oder Basel nehmen nach Paris, dann Paris nach London und London nach Aviemore wo man auf Anfrage ein Pick up und auch Drop off Service erhält. Man kann aber ab Aviemore gut mit einem der lokalen Taxis oder mit dem Bus nach Grantown anreisen. Wer länger Zeit hat, kann sehr gut Edinburgh als Zwischenstopp für ein paar Nächte wählen.</p>
+        </div>
+
         <!-- FAQ Section -->
         <section class="faq-section" id="faqSection" aria-label="Frequently Asked Questions">
             <h2 data-translate="faqTitle">❓ Frequently Asked Questions</h2>
-            <div id="faqContent"><details class="faq-item" id="faq-item-0"><summary>Why is Grantown-on-Spey such a good base for exploring the Highlands?</summary><div class="faq-answer">Grantown sits in the centre of multiple regions. Guests can easily make star-shaped day trips into Speyside, the Cairngorms, Moray Coast, Inverness area, Strathspey and Aberdeenshire. Many highlights are reachable within 20–50 minutes. Every day can offer completely different scenery and experiences.</div></details><details class="faq-item" id="faq-item-1"><summary>How far is Inverness from Grantown-on-Spey?</summary><div class="faq-answer">Approximately 52 minutes by car. You can reach Inverness either via Nairn or via the A9. Public transport is also available — regular buses connect Grantown-on-Spey and Inverness.</div></details><details class="faq-item" id="faq-item-2"><summary>What shouldn't you miss in the region?</summary><div class="faq-answer">If time is limited, we recommend combining Inverness, Loch Ness and Speyside. This gives you the historic Highland capital, the famous Loch Ness landscape and the world-famous whisky region of Speyside — a perfect mix of culture, nature and history.</div></details><details class="faq-item" id="faq-item-3"><summary>Is Nairn worth a visit?</summary><div class="faq-answer">Absolutely. Nairn has one of the finest sandy beaches in the region, a pleasant promenade and several cosy cafés. On a clear day the views across the Moray Firth are spectacular, and with a little luck you might even spot dolphins from the shore.</div></details><details class="faq-item" id="faq-item-4"><summary>Where is the best whisky in Scotland?</summary><div class="faq-answer">Who knows? That wasn't very funny, was it? 😉 The truth is nobody can answer that question. Scotland has more than 140 distilleries and everyone has different tastes. You may love a smoky island whisky or perhaps you are completely new to whisky. If so, Speyside is one of the best places to begin. Why not stay with us and explore more than 50 distilleries throughout Speyside and Strathspey? A wonderful adventure for whisky lovers and future whisky lovers alike.</div></details><details class="faq-item" id="faq-item-5"><summary>Why is food quality important at Garden Park?</summary><div class="faq-answer">Daniel and Sarah believe that a great breakfast sets the tone for a great day. At Garden Park they use 100% juice, pasture-raised eggs where possible, and locally sourced produce. Quality at Garden Park is a conviction, not just a compliance box to tick. They are proud holders of the Green Tourism Gold Award.</div></details><details class="faq-item" id="faq-item-6"><summary>Do you have EV charging?</summary><div class="faq-answer">Yes. Garden Park Guest House has an EV charging station located in the car park. Guests can activate it easily using the relevant charging app. The charger has been in use since 2022.</div></details><details class="faq-item" id="faq-item-7"><summary>Can we walk to restaurants and shops?</summary><div class="faq-answer">Yes. Garden Park is located in a quiet side street. The town centre is approximately 2 minutes away on foot. All restaurants can be reached within 1–10 minutes walking distance. Several are less than 4 minutes away.</div></details><details class="faq-item" id="faq-item-8"><summary>Do you offer vegan breakfast options?</summary><div class="faq-answer">Yes. Fresh vegetarian and vegan options are available every day.</div></details><details class="faq-item" id="faq-item-9"><summary>How far is the River Spey?</summary><div class="faq-answer">Approximately 7–9 minutes on foot. The walk leads through beautiful Anagach Woods — home to red squirrels, deer and a variety of woodland birds.</div></details><details class="faq-item" id="faq-item-10"><summary>Can we complete the Speyside Malt Whisky Trail in one day?</summary><div class="faq-answer">Of course you can do the Speyside Malt Whisky Trail in one day. The real question is: will you remember it the next day? 😄 With so many distilleries, visitor centres and tastings, time flies. Our advice: visit fewer distilleries and enjoy each one more. Daniel also offers a driver service for up to 4 people on request. As dates fill up quickly, especially in peak season, booking at least 6 weeks in advance is recommended.</div></details><details class="faq-item" id="faq-item-11"><summary>Are dolphins really visible from the Moray coast?</summary><div class="faq-answer">Yes, really — and they have never charged an entry fee! The best location is Chanonry Point near Fortrose, where Bottlenose Dolphins are regularly spotted, especially 1.5–2 hours after low tide. Bring binoculars and be patient — the reward is worth it.</div></details><details class="faq-item" id="faq-item-12"><summary>Where can I find the official government website to apply for a UK ETA?</summary><div class="faq-answer">To avoid third-party scam sites or unnecessary extra processing fees, you should only apply through official UK government channels. You have two options: apply online directly on the official UK government website at <a href="https://www.gov.uk/eta/apply" target="_blank" rel="noopener">gov.uk/eta/apply</a>, or use the official 'UK ETA' app (Apple App Store and Google Play Store), which lets you easily scan your passport's biometric chip and your face. Important: the official UK ETA application costs £20. Always check that the website address ends exactly in .gov.uk — independent websites often look identical to official government pages but charge large hidden fees on top of the standard rate.</div></details></div>
+            <div id="faqContent"><details class="faq-item" id="faq-item-mortimers"><summary>Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?</summary><div class="faq-answer">In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices.</div></details><details class="faq-item" id="faq-item-0"><summary>Why is Grantown-on-Spey such a good base for exploring the Highlands?</summary><div class="faq-answer">Grantown sits in the centre of multiple regions. Guests can easily make star-shaped day trips into Speyside, the Cairngorms, Moray Coast, Inverness area, Strathspey and Aberdeenshire. Many highlights are reachable within 20–50 minutes. Every day can offer completely different scenery and experiences.</div></details><details class="faq-item" id="faq-item-1"><summary>How far is Inverness from Grantown-on-Spey?</summary><div class="faq-answer">Approximately 52 minutes by car. You can reach Inverness either via Nairn or via the A9. Public transport is also available — regular buses connect Grantown-on-Spey and Inverness.</div></details><details class="faq-item" id="faq-item-2"><summary>What shouldn't you miss in the region?</summary><div class="faq-answer">If time is limited, we recommend combining Inverness, Loch Ness and Speyside. This gives you the historic Highland capital, the famous Loch Ness landscape and the world-famous whisky region of Speyside — a perfect mix of culture, nature and history.</div></details><details class="faq-item" id="faq-item-3"><summary>Is Nairn worth a visit?</summary><div class="faq-answer">Absolutely. Nairn has one of the finest sandy beaches in the region, a pleasant promenade and several cosy cafés. On a clear day the views across the Moray Firth are spectacular, and with a little luck you might even spot dolphins from the shore.</div></details><details class="faq-item" id="faq-item-4"><summary>Where is the best whisky in Scotland?</summary><div class="faq-answer">Who knows? That wasn't very funny, was it? 😉 The truth is nobody can answer that question. Scotland has more than 140 distilleries and everyone has different tastes. You may love a smoky island whisky or perhaps you are completely new to whisky. If so, Speyside is one of the best places to begin. Why not stay with us and explore more than 50 distilleries throughout Speyside and Strathspey? A wonderful adventure for whisky lovers and future whisky lovers alike.</div></details><details class="faq-item" id="faq-item-5"><summary>Why is food quality important at Garden Park?</summary><div class="faq-answer">Daniel and Sarah believe that a great breakfast sets the tone for a great day. At Garden Park they use 100% juice, pasture-raised eggs where possible, and locally sourced produce. Quality at Garden Park is a conviction, not just a compliance box to tick. They are proud holders of the Green Tourism Gold Award.</div></details><details class="faq-item" id="faq-item-6"><summary>Do you have EV charging?</summary><div class="faq-answer">Yes. Garden Park Guest House has an EV charging station located in the car park. Guests can activate it easily using the relevant charging app. The charger has been in use since 2022.</div></details><details class="faq-item" id="faq-item-7"><summary>Can we walk to restaurants and shops?</summary><div class="faq-answer">Yes. Garden Park is located in a quiet side street. The town centre is approximately 2 minutes away on foot. All restaurants can be reached within 1–10 minutes walking distance. Several are less than 4 minutes away.</div></details><details class="faq-item" id="faq-item-8"><summary>Do you offer vegan breakfast options?</summary><div class="faq-answer">Yes. Fresh vegetarian and vegan options are available every day.</div></details><details class="faq-item" id="faq-item-9"><summary>How far is the River Spey?</summary><div class="faq-answer">Approximately 7–9 minutes on foot. The walk leads through beautiful Anagach Woods — home to red squirrels, deer and a variety of woodland birds.</div></details><details class="faq-item" id="faq-item-10"><summary>Can we complete the Speyside Malt Whisky Trail in one day?</summary><div class="faq-answer">Of course you can do the Speyside Malt Whisky Trail in one day. The real question is: will you remember it the next day? 😄 With so many distilleries, visitor centres and tastings, time flies. Our advice: visit fewer distilleries and enjoy each one more. Daniel also offers a driver service for up to 4 people on request. As dates fill up quickly, especially in peak season, booking at least 6 weeks in advance is recommended.</div></details><details class="faq-item" id="faq-item-11"><summary>Are dolphins really visible from the Moray coast?</summary><div class="faq-answer">Yes, really — and they have never charged an entry fee! The best location is Chanonry Point near Fortrose, where Bottlenose Dolphins are regularly spotted, especially 1.5–2 hours after low tide. Bring binoculars and be patient — the reward is worth it.</div></details><details class="faq-item" id="faq-item-12"><summary>Where can I find the official government website to apply for a UK ETA?</summary><div class="faq-answer">To avoid third-party scam sites or unnecessary extra processing fees, you should only apply through official UK government channels. You have two options: apply online directly on the official UK government website at <a href="https://www.gov.uk/eta/apply" target="_blank" rel="noopener">gov.uk/eta/apply</a>, or use the official 'UK ETA' app (Apple App Store and Google Play Store), which lets you easily scan your passport's biometric chip and your face. Important: the official UK ETA application costs £20. Always check that the website address ends exactly in .gov.uk — independent websites often look identical to official government pages but charge large hidden fees on top of the standard rate.</div></details></div>
         </section>
 
 
@@ -5016,6 +5067,10 @@
         const faqData = {
           "en": [
                     {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
+                    {
                               "q": "Why is Grantown-on-Spey such a good base for exploring the Highlands?",
                               "a": "Grantown sits in the centre of multiple regions. Guests can easily make star-shaped day trips into Speyside, the Cairngorms, Moray Coast, Inverness area, Strathspey and Aberdeenshire. Many highlights are reachable within 20–50 minutes. Every day can offer completely different scenery and experiences."
                     },
@@ -5070,6 +5125,10 @@
           ],
           "de": [
                     {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
+                    {
                               "q": "Warum ist Grantown-on-Spey eine so gute Ausgangsbasis für die Highlands?",
                               "a": "Grantown liegt im Zentrum mehrerer Regionen. Von hier aus lassen sich sternförmige Tagesausflüge in die Speyside, den Cairngorms National Park, die Moray Coast, das Inverness-Gebiet, Strathspey und Aberdeenshire unternehmen. Viele Highlights sind innerhalb von 20–50 Minuten erreichbar."
                     },
@@ -5116,6 +5175,10 @@
           ],
           "fr": [
                     {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
+                    {
                               "q": "Pourquoi Grantown-on-Spey est-elle une si bonne base pour explorer les Highlands?",
                               "a": "Grantown est située au centre de plusieurs régions. Les clients peuvent facilement faire des excursions en étoile vers Speyside, les Cairngorms, la côte de Moray, la région d'Inverness, Strathspey et Aberdeenshire. De nombreux sites sont accessibles en 20 à 50 minutes."
                     },
@@ -5150,6 +5213,10 @@
           ],
           "it": [
                     {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
+                    {
                               "q": "Perché Grantown-on-Spey è una base così ottima per esplorare le Highlands?",
                               "a": "Grantown si trova al centro di più regioni. Gli ospiti possono facilmente fare escursioni a raggiera verso Speyside, Cairngorms, costa di Moray, area di Inverness, Strathspey e Aberdeenshire. Molti punti di interesse sono raggiungibili in 20-50 minuti."
                     },
@@ -5180,6 +5247,10 @@
           ],
           "es": [
                     {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
+                    {
                               "q": "¿Por qué Grantown-on-Spey es una base tan buena para explorar las Highlands?",
                               "a": "Grantown está ubicado en el centro de múltiples regiones. Los huéspedes pueden hacer fácilmente excursiones de un día hacia Speyside, los Cairngorms, la costa de Moray, el área de Inverness, Strathspey y Aberdeenshire. Muchos lugares emblemáticos están a 20-50 minutos."
                     },
@@ -5205,6 +5276,10 @@
                     }
           ],
           "nl": [
+                    {
+                              "q": "Where can I buy outdoor gear such as hiking boots, waterproof jackets or other equipment in the Cairngorms?",
+                              "a": "In Grantown-on-Spey, we highly recommend Mortimers. They stock a great selection of high-quality outdoor clothing, walking boots and equipment, and their knowledgeable staff are always happy to offer advice. Mortimers has been serving outdoor and fishing enthusiasts in Speyside for over 50 years. If you're looking for good value, Mountain Warehouse Aviemore is another excellent option, offering a wide range of outdoor clothing and equipment at very competitive prices."
+                    },
                     {
                               "q": "Waarom is Grantown-on-Spey zo'n goede uitvalsbasis voor de Hooglanden?",
                               "a": "Grantown ligt in het centrum van meerdere regio's. Gasten kunnen gemakkelijk dagelijkse uitstapjes maken naar Speyside, de Cairngorms, de Moray-kust, het gebied rond Inverness, Strathspey en Aberdeenshire. Veel hoogtepunten zijn bereikbaar binnen 20-50 minuten."
@@ -6096,10 +6171,14 @@
             const library = document.getElementById('destinationLibrary');
             const daytrips = document.getElementById('dayTripsSection');
             const highlights = document.getElementById('highlightsSection');
+            const golf = document.getElementById('golfFishingSection');
+            const travel = document.getElementById('travelSection');
             if (weather) weather.style.display = 'none';
             if (library) library.style.display = 'none';
             if (daytrips) daytrips.style.display = 'none';
             if (highlights) highlights.style.display = 'none';
+            if (golf) golf.style.display = 'none';
+            if (travel) travel.style.display = 'none';
             grid.innerHTML = '';
             grid.dataset.mode = 'faq';
             renderFAQ();
@@ -6117,10 +6196,14 @@
             const library = document.getElementById('destinationLibrary');
             const daytrips = document.getElementById('dayTripsSection');
             const highlights = document.getElementById('highlightsSection');
+            const golf = document.getElementById('golfFishingSection');
+            const travel = document.getElementById('travelSection');
             if (weather) weather.style.display = '';
             if (library) library.style.display = '';
             if (daytrips) daytrips.style.display = '';
             if (highlights) highlights.style.display = '';
+            if (golf) golf.style.display = '';
+            if (travel) travel.style.display = '';
             rebuildMainCards();
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector('.filter-btn[data-category="all"]').classList.add('active');
@@ -6715,7 +6798,7 @@
             document.getElementById('planDayBanner').classList.add('active');
             document.getElementById('categoryFilter').style.display = 'none';
             document.getElementById('map').style.display = '';
-            ['weatherWidget','destinationLibrary','dayTripsSection','highlightsSection'].forEach(id => {
+            ['weatherWidget','destinationLibrary','dayTripsSection','highlightsSection','golfFishingSection','travelSection'].forEach(id => {
                 const el = document.getElementById(id); if (el) el.style.display = 'none';
             });
             Object.values(mainMarkers).forEach(marker => marker.addTo(map));
@@ -6738,7 +6821,7 @@
             planRouteLines = [];
             document.getElementById('planDayBanner').classList.remove('active');
             document.getElementById('categoryFilter').style.display = 'flex';
-            ['weatherWidget','destinationLibrary','dayTripsSection','highlightsSection'].forEach(id => {
+            ['weatherWidget','destinationLibrary','dayTripsSection','highlightsSection','golfFishingSection','travelSection'].forEach(id => {
                 const el = document.getElementById(id); if (el) el.style.display = '';
             });
             unbindPlanMarkerClicks();
