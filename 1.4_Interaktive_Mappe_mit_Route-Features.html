@@ -117,7 +117,7 @@
             position: relative;
         }
         #map {
-            height: 500px;
+            height: 575px;
             width: 100%;
         }
         /* Watermark */
@@ -395,6 +395,13 @@
         .leaflet-popup-content {
             color: #f5f5f0;
             font-family: 'Open Sans', sans-serif;
+            /* Long, text-heavy popups scroll INSIDE the popup on every device
+               (desktop + mobile) instead of overflowing the map. Mobile tightens
+               this further in the responsive block below. */
+            max-height: min(60vh, 500px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
         }
         .leaflet-popup-tip {
             background: #c9a227;
@@ -2016,11 +2023,11 @@
                 <p class="warning">⚠️ <span data-translate="tripNote">Note: Please check opening hours, tour times, and availability before visiting. Phone numbers and websites are provided for direct planning.</span></p>
             </div>
 
-            <!-- Castles, Cathedrals & Whisky -->
+            <!-- Whiskery -->
             <button class="daytrip-btn" onclick="toggleTrip('castles-cathedrals', this)">
                 <div class="daytrip-btn-header">
                     <div>
-                        <div class="daytrip-btn-title">🏰 <span data-translate="trip6Title">Castles, Cathedrals &amp; Whisky</span></div>
+                        <div class="daytrip-btn-title">🏰 <span data-translate="trip6Title">Whiskery</span></div>
                         <div class="daytrip-btn-subtitle" data-translate="trip6Subtitle">Distillery, medieval cathedral, ancient cairns and Scotland's most important battlefield</div>
                     </div>
                     <div>
@@ -2030,8 +2037,8 @@
                 </div>
             </button>
             <div class="trip-details" id="castles-cathedrals">
-                <h3>🏰 <span data-translate="trip6Title">Castles, Cathedrals &amp; Whisky</span> – ~7 <span data-translate="hours">hours</span></h3>
-                <p data-translate="trip6Desc">A magnificent circular route combining whisky heritage, medieval ruins, ancient prehistory and one of Scotland's most significant historical sites.</p>
+                <h3>🏰 <span data-translate="trip6Title">Whiskery</span> – ~7 <span data-translate="hours">hours</span></h3>
+                <p data-translate="trip6Desc">A magnificent circular route combining whisky heritage, ancient prehistory and one of Scotland's most significant historical sites.</p>
                 <h4 data-translate="route">Route:</h4>
                 <ul>
                     <li>⚗️ <span data-translate="trip6Stop1">Glenfarclas Distillery – Family-owned since 1865, famous for sherry cask maturation</span></li>
@@ -2071,7 +2078,7 @@
             <p>Golfplätze in unserer Region, welche wir aufgrund der Empfehlungen von Gästen, die dort bereits gespielt haben, empfehlen, finden Sie in unserem <a href="https://www.facebook.com/GardenParkGuestHouse/posts/pfbid032ArT4AN3vWgHhbYLervN1GLoKPNzbRasSioo3YhFd4B4KXFMJN6Gbrm3eCafFeyzl" target="_blank" rel="noopener">dedicated Blog auf unserer Garden Park Facebook-Seite</a>.</p>
             <p>Bei uns im Garden Park Guest House kann die Golfausrüstung in einem abschliessbaren Gartenschuppen aufbewahrt werden, wo man auch aufhängen kann zum Trocknen. Zudem stehen Stromanschlüsse und Schuhtrockner zur Verfügung.</p>
             <h3>🎣 Fishing</h3>
-            <p>Mortimer's, Grantown on Spey. Hier kann man sich ausrüsten, Fischerei und outdoor Bekleidung ist kein Thema. Mortimer kann perfekt Auskunft darüber geben wo man welche Art von Fischerei betreiben darf. Man kann auch die nötigen Lizenzen lösen. Wir erhalten weder Provisionen noch sonstige Anreize. 📍 PH26 3HB &nbsp;·&nbsp; <a href="https://mortimersofspeyside.co.uk/" target="_blank" rel="noopener">mortimersofspeyside.co.uk</a></p>
+            <p>Mortimer's, Grantown on Spey. Hier kann man sich ausrüsten, Fischerei und outdoor Bekleidung ist kein Thema. Mortimer kann perfekt Auskunft darüber geben wo man welche Art von Fischerei betreiben darf. In der Region um Grantown-on-Spey kann man zum Beispiel Wildlachs, Forellen oder Hecht fischen. Man kann bei Mortimors die nötigen Lizenzen lösen. Wir erhalten weder Provisionen noch sonstige Anreize. 📍 PH26 3HB &nbsp;·&nbsp; <a href="https://mortimersofspeyside.co.uk/" target="_blank" rel="noopener">mortimersofspeyside.co.uk</a></p>
         </div>
 
         <!-- Getting Here (car / train) -->
@@ -2254,9 +2261,9 @@
                 qrCardTitle: "Explore the Highlands — scan me!",
                 qrLocalHint: "⚠️ This file is opened locally — the QR code will only work once the map is online.",
                 filterRestaurant: "Restaurants & Bistros",
-                trip6Title: "Castles, Cathedrals & Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Distillery, medieval cathedral, ancient cairns and Scotland's most important battlefield",
-                trip6Desc: "A magnificent circular route combining whisky heritage, medieval ruins, ancient prehistory and one of Scotland's most significant historical sites.",
+                trip6Desc: "A magnificent circular route combining whisky heritage, ancient prehistory and one of Scotland's most significant historical sites.",
                 trip6Stop1: "Glenfarclas Distillery – Family-owned since 1865, famous for sherry cask maturation",
                 trip6Stop2: "Elgin Cathedral – The \"Lantern of the North\", magnificent ruins burned by the Wolf of Badenoch in 1390",
                 trip6Stop3: "Clava Cairns – 4,000-year-old Bronze Age burial cairns, mystical stone circles in ancient woodland",
@@ -2408,9 +2415,9 @@
                 qrCardTitle: "Entdecke die Highlands — scann mich!",
                 qrLocalHint: "⚠️ Diese Datei ist lokal geöffnet — der QR-Code funktioniert erst, wenn die Karte online ist.",
                 filterRestaurant: "Restaurants & Bistros",
-                trip6Title: "Schlösser, Kathedralen & Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Destillerie, mittelalterliche Kathedrale, antike Cairns und Schottlands wichtigstes Schlachtfeld",
-                trip6Desc: "Eine wunderbare Rundreise, die Whisky-Erbe, mittelalterliche Ruinen, alte Vorgeschichte und eine der bedeutendsten historischen Stätten Schottlands verbindet.",
+                trip6Desc: "Eine wunderbare Rundreise, die Whisky-Erbe, alte Vorgeschichte und eine der bedeutendsten historischen Stätten Schottlands verbindet.",
                 trip6Stop1: "Glenfarclas Destillerie – Seit 1865 in Familienbesitz, berühmt für Sherryfassreifung",
                 trip6Stop2: "Elgin Cathedral – Die \"Laterne des Nordens\", prachtvolle Ruinen, 1390 vom Wolf von Badenoch verbrannt",
                 trip6Stop3: "Clava Cairns – 4.000 Jahre alte Grabhügel aus der Bronzezeit, mystische Steinkreise im alten Wald",
@@ -2562,9 +2569,9 @@
                 qrCardTitle: "Explorez les Highlands — scannez-moi!",
                 qrLocalHint: "⚠️ Ce fichier est ouvert localement — le code QR fonctionnera une fois la carte en ligne.",
                 filterRestaurant: "Restaurants & Bistrots",
-                trip6Title: "Châteaux, Cathédrales & Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Distillerie, cathédrale médiévale, cairns anciens et le site historique le plus important d'Écosse",
-                trip6Desc: "Un magnifique circuit combinant le patrimoine whisky, des ruines médiévales, la préhistoire ancienne et l'un des sites historiques les plus significatifs d'Écosse.",
+                trip6Desc: "Un magnifique circuit combinant le patrimoine whisky, la préhistoire ancienne et l'un des sites historiques les plus significatifs d'Écosse.",
                 trip6Stop1: "Distillerie Glenfarclas – Propriété familiale depuis 1865, célèbre pour la maturation en fûts de sherry",
                 trip6Stop2: "Cathédrale d'Elgin – La \"Lanterne du Nord\", magnifiques ruines brûlées par le Loup de Badenoch en 1390",
                 trip6Stop3: "Clava Cairns – Cairns funéraires de l'Âge de Bronze vieux de 4 000 ans, cercles de pierres mystiques en forêt ancienne",
@@ -2716,9 +2723,9 @@
                 qrCardTitle: "Esplora le Highlands — scansionami!",
                 qrLocalHint: "⚠️ Questo file è aperto localmente — il codice QR funzionerà quando la mappa sarà online.",
                 filterRestaurant: "Ristoranti & Bistrot",
-                trip6Title: "Castelli, Cattedrali & Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Distilleria, cattedrale medievale, cairn antichi e il campo di battaglia più importante della Scozia",
-                trip6Desc: "Un magnifico itinerario circolare che combina patrimonio whisky, rovine medievali, preistoria antica e uno dei siti storici più significativi della Scozia.",
+                trip6Desc: "Un magnifico itinerario circolare che combina patrimonio whisky, preistoria antica e uno dei siti storici più significativi della Scozia.",
                 trip6Stop1: "Distilleria Glenfarclas – Di proprietà familiare dal 1865, famosa per la maturazione in botti di sherry",
                 trip6Stop2: "Cattedrale di Elgin – La \"Lanterna del Nord\", magnifiche rovine bruciate dal Lupo di Badenoch nel 1390",
                 trip6Stop3: "Clava Cairns – Cairn funerari dell'Età del Bronzo di 4.000 anni, mistici cerchi di pietre nell'antico bosco",
@@ -2870,9 +2877,9 @@
                 qrCardTitle: "¡Explora las Highlands — escanéame!",
                 qrLocalHint: "⚠️ Este archivo está abierto localmente — el código QR funcionará cuando el mapa esté en línea.",
                 filterRestaurant: "Restaurantes y Bistrós",
-                trip6Title: "Castillos, Catedrales y Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Destilería, catedral medieval, antiguos cairns y el campo de batalla más importante de Escocia",
-                trip6Desc: "Una magnífica ruta circular que combina patrimonio whisky, ruinas medievales, prehistoria antigua y uno de los sitios históricos más significativos de Escocia.",
+                trip6Desc: "Una magnífica ruta circular que combina patrimonio whisky, prehistoria antigua y uno de los sitios históricos más significativos de Escocia.",
                 trip6Stop1: "Destilería Glenfarclas – Propiedad familiar desde 1865, famosa por la maduración en barriles de jerez",
                 trip6Stop2: "Catedral de Elgin – La \"Linterna del Norte\", magníficas ruinas quemadas por el Lobo de Badenoch en 1390",
                 trip6Stop3: "Clava Cairns – Cairns funerarios de la Edad de Bronce de 4.000 años, círculos de piedras místicos en bosque antiguo",
@@ -3024,9 +3031,9 @@
                 qrCardTitle: "Ontdek de Highlands — scan mij!",
                 qrLocalHint: "⚠️ Dit bestand is lokaal geopend — de QR-code werkt zodra de kaart online staat.",
                 filterRestaurant: "Restaurants & Bistro's",
-                trip6Title: "Kastelen, Kathedralen & Whisky",
+                trip6Title: "Whiskery",
                 trip6Subtitle: "Distilleerderij, middeleeuwse kathedraal, oude cairns en het belangrijkste slagveld van Schotland",
-                trip6Desc: "Een prachtige rondrit die whisky-erfgoed, middeleeuwse ruïnes, oude prehistorie en een van de meest significante historische plaatsen van Schotland combineert.",
+                trip6Desc: "Een prachtige rondrit die whisky-erfgoed, oude prehistorie en een van de meest significante historische plaatsen van Schotland combineert.",
                 trip6Stop1: "Glenfarclas Distilleerderij – Familiebezit sinds 1865, beroemd om rijping in sherryvaten",
                 trip6Stop2: "Kathedraal van Elgin – De \"Lantaarn van het Noorden\", prachtige ruïnes verbrand door de Wolf van Badenoch in 1390",
                 trip6Stop3: "Clava Cairns – 4.000 jaar oude Bronstijd grafheuvels, mystieke steencirkels in oud woud",
@@ -3346,7 +3353,8 @@
                 tip: null,
                 postcode: 'KW10 6SF',
                 phone: null,
-                website: 'dunrobincastle.co.uk'
+                website: 'dunrobincastle.co.uk',
+                hideFromAll: true
             },
             {
                 id: 'dunnottar',
@@ -5044,10 +5052,10 @@
             },
             {
                 id: 'castles-cathedrals',
-                name: 'Castles, Cathedrals & Whisky',
+                name: 'Whiskery',
                 icon: '🏰',
                 duration: '~7 hours',
-                description: "A magnificent circular route combining whisky heritage, medieval ruins, ancient prehistory and one of Scotland's most significant historical sites.",
+                description: "A magnificent circular route combining whisky heritage, ancient prehistory and one of Scotland's most significant historical sites.",
                 stops: ['glenfarclas', 'elgincathedral', 'clavacairns', 'culloden'],
                 optional: [],
                 eatOut: ['cawdortavern'],
@@ -5486,27 +5494,9 @@
                 offset: [0, -6]
             });
 
-        // Desktop hover behaviour: open on hover, and keep the box open while the
-        // pointer is over the heart, the label, or the popup itself. A short close
-        // delay bridges the small gap between the heart and the popup so moving
-        // toward the button never dismisses it. On touch devices we skip hover and
-        // rely on tap (default popup toggle), so a tap can't flash it open-then-shut.
-        let gpCloseTimer = null;
-        function gpCancelClose() { clearTimeout(gpCloseTimer); gpCloseTimer = null; }
-        function gpScheduleClose() { gpCancelClose(); gpCloseTimer = setTimeout(function () { gardenParkMarker.closePopup(); }, 350); }
-
-        gardenParkMarker.on('popupopen', function (e) {
-            const el = e.popup.getElement();
-            if (el && !L.Browser.mobile) {
-                el.addEventListener('mouseenter', gpCancelClose);
-                el.addEventListener('mouseleave', gpScheduleClose);
-            }
-        });
-
-        if (!L.Browser.mobile) {
-            gardenParkMarker.on('mouseover', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
-            gardenParkMarker.on('mouseout', gpScheduleClose);
-        }
+        // Click/tap only: the info popup opens when you actively click the heart
+        // (or the label box) — the default Leaflet popup click behaviour. Hover no
+        // longer opens it; opening on hover was intrusive, especially when zoomed out.
 
         function updateGardenParkTooltip() {
             gardenParkMarker.setPopupContent(buildGardenParkTooltipHtml());
@@ -5522,13 +5512,8 @@
         const labelMarker = L.marker([GARDEN_PARK.lat, GARDEN_PARK.lng], { icon: labelIcon }).addTo(map);
 
         // The "Garden Park Guest House" label box opens the SAME info popup as the
-        // heart icon. A click/tap opens it on every device; on desktop it also
-        // responds to hover and shares the heart's close-delay bridge.
-        labelMarker.on('click', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
-        if (!L.Browser.mobile) {
-            labelMarker.on('mouseover', function () { gpCancelClose(); gardenParkMarker.openPopup(); });
-            labelMarker.on('mouseout', gpScheduleClose);
-        }
+        // heart icon — a click/tap on every device (no hover).
+        labelMarker.on('click', function () { gardenParkMarker.openPopup(); });
 
         // Helper function to build contact HTML
         function buildContactHtml(dest, isPopup) {
