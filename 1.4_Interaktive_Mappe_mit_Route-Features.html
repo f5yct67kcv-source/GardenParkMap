@@ -1251,6 +1251,13 @@
             margin-top: 6px; width: 100%; max-width: 240px; display: block;
             border-radius: 8px; border: 1px solid rgba(255, 95, 180, 0.45); background: #000;
         }
+        .dest-media-embed {
+            margin-top: 6px; position: relative; width: 100%; max-width: 240px; aspect-ratio: 16 / 9;
+        }
+        .dest-media-embed iframe {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            border-radius: 8px; border: 1px solid rgba(255, 95, 180, 0.45);
+        }
         .planday-banner {
             display: none;
             background: linear-gradient(135deg, #1a3a3a 0%, #0f2a2a 100%);
@@ -3183,7 +3190,8 @@
                 tip: null,
                 postcode: 'AB56 4NN',
                 phone: null,
-                website: 'livebreathescotland.com/bow-fiddle-rock/'
+                website: 'livebreathescotland.com/bow-fiddle-rock/',
+                media: { youtube: '' }   /* TODO: YouTube link for the Bow Fiddle Rock video */
             },
             {
                 id: 'rspblochspynie',
@@ -3554,7 +3562,7 @@
                 postcode: null,
                 phone: null,
                 website: null,
-                media: { video: 'media/moray-coast.mp4' }
+                media: { youtube: '' }   /* TODO: YouTube link for the Moray Coast video */
             },
             {
                 id: 'findhorn',
@@ -3931,7 +3939,7 @@
                 postcode: 'PH26 3JL',
                 phone: null,
                 website: 'anagachwoods.org.uk',
-                media: { video: 'media/anagach-woods.mp4' }
+                media: { youtube: '' }   /* TODO: YouTube link for the Anagach Woods video (bird sounds) */
             },
             {
                 id: 'findhornbay',
@@ -4061,7 +4069,7 @@
                 postcode: 'IV36 2UB',
                 phone: null,
                 website: null,
-                media: { photos: ['media/roseisle-findhorn-1.jpg', 'media/roseisle-findhorn-2.jpg', 'media/roseisle-findhorn-3.jpg'], video: 'media/roseisle-findhorn.mp4' }
+                media: { photos: ['media/roseisle-findhorn-1.jpg', 'media/roseisle-findhorn-2.jpg', 'media/roseisle-findhorn-3.jpg'], youtube: '' }   /* TODO: YouTube link for the Roseisle->Findhorn winter video */
             },
             {
                 id: 'gem_greenloch',
@@ -5466,11 +5474,18 @@
         // Photos + video block for popups/cards. Files are referenced by relative
         // path (media/ folder next to this HTML). Missing files hide themselves via
         // onerror, so the block can be wired now and the media dropped in later.
+        // Extract a YouTube video id from a raw id or any common URL form.
+        function ytId(v) {
+            if (!v) return '';
+            const m = String(v).match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/);
+            return m ? m[1] : (/^[A-Za-z0-9_-]{11}$/.test(v) ? v : '');
+        }
         function buildMediaHtml(dest) {
             if (!dest.media) return '';
             const photos = dest.media.photos || [];
-            const video = dest.media.video;
-            if (!photos.length && !video) return '';
+            const ytid = ytId(dest.media.youtube);      // YouTube id/URL (preferred for video)
+            const video = dest.media.video;             // optional self-hosted fallback
+            if (!photos.length && !ytid && !video) return '';
             let html = '<div class="dest-media">';
             if (photos.length) {
                 html += '<div class="dest-media-photos">';
@@ -5479,7 +5494,9 @@
                 });
                 html += '</div>';
             }
-            if (video) {
+            if (ytid) {
+                html += '<div class="dest-media-embed"><iframe src="https://www.youtube-nocookie.com/embed/' + ytid + '" title="' + (dest.name || '') + '" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+            } else if (video) {
                 html += '<video class="dest-media-video" src="' + video + '" controls preload="none" playsinline onerror="this.style.display=\'none\'"></video>';
             }
             html += '</div>';
