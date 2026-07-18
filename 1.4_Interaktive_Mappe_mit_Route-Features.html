@@ -790,9 +790,10 @@
             .portal-section #whiskyMapBtn      { order: 2; }
             .portal-section #dayTripsBtn       { order: 3; }
             .portal-section #grantownBtn       { order: 4; }
-            .portal-section #wayToGrantownBtn  { order: 5; }
-            .portal-section #faqBtn            { order: 6; }
-            .portal-section #planDayBtn        { order: 7; }
+            .portal-section #gemsBtn           { order: 5; }
+            .portal-section #wayToGrantownBtn  { order: 6; }
+            .portal-section #faqBtn            { order: 7; }
+            .portal-section #planDayBtn        { order: 8; }
             /* Mobile destination (theme) buttons — 2 / 3 / 3:
                Row 1: Nature · Wildlife
                Row 2: Castles & History · Mystic & Ancient · Coast & Villages
@@ -1214,6 +1215,41 @@
             background: linear-gradient(135deg, rgba(39, 100, 100, 0.9) 0%, rgba(60, 140, 130, 0.7) 100%);
             border-color: #7eecd8;
             color: #fff;
+        }
+        /* Sarah's & Daniel's Gems — pulsing portal button in its own (magenta) colour */
+        .filter-btn.portal-btn-gems {
+            background: linear-gradient(135deg, rgba(214, 36, 140, 0.55) 0%, rgba(255, 95, 180, 0.4) 100%);
+            border: 2px solid rgba(255, 95, 180, 0.7);
+            color: #ffd6ee;
+            font-weight: 600;
+            animation: gems-glow 2.5s ease-in-out infinite;
+        }
+        @keyframes gems-glow {
+            0%, 100% { box-shadow: 0 0 0 rgba(255, 95, 180, 0); }
+            50% { box-shadow: 0 0 12px rgba(255, 95, 180, 0.6); }
+        }
+        .filter-btn.portal-btn-gems.active { animation: none; }
+        .filter-btn.portal-btn-gems:hover, .filter-btn.portal-btn-gems.active {
+            background: linear-gradient(135deg, rgba(214, 36, 140, 0.9) 0%, rgba(255, 95, 180, 0.7) 100%);
+            border-color: #ff5fb4;
+            color: #fff;
+        }
+        /* Gems cards carry a subtle magenta accent so they read as "special" */
+        .destination-card.gems-card {
+            background: linear-gradient(135deg, rgba(214, 36, 140, 0.22) 0%, rgba(255, 95, 180, 0.12) 100%);
+            border-color: rgba(255, 95, 180, 0.5);
+        }
+        /* Media block (photos + video) shown in popups and gem cards.
+           Missing files hide themselves gracefully via onerror. */
+        .dest-media { margin-top: 10px; }
+        .dest-media-photos { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+        .dest-media-photo {
+            height: 76px; width: auto; border-radius: 6px;
+            border: 1px solid rgba(255, 95, 180, 0.45); flex: 0 0 auto;
+        }
+        .dest-media-video {
+            margin-top: 6px; width: 100%; max-width: 240px; display: block;
+            border-radius: 8px; border: 1px solid rgba(255, 95, 180, 0.45); background: #000;
         }
         .planday-banner {
             display: none;
@@ -1706,6 +1742,7 @@
                     <button class="filter-btn portal-btn-daytrips" id="dayTripsBtn">🗺️ <span data-translate="filterDayTrips">Day Trips</span></button>
                     <button class="filter-btn portal-btn-waytoGrantown" id="wayToGrantownBtn">🚗 <span data-translate="filterWayToGrantown">The Way to Grantown</span></button>
                     <button class="filter-btn portal-btn-grantown" id="grantownBtn">🏘️ <span data-translate="filterGrantown">Discover Grantown</span></button>
+                    <button class="filter-btn portal-btn-gems" id="gemsBtn">💎 <span data-translate="filterGems">Sarah's &amp; Daniel's Gems</span></button>
                     <button class="filter-btn portal-btn-faq" id="faqBtn">❓ <span data-translate="filterFAQ">FAQ</span></button>
                     <button class="filter-btn portal-btn-planday" id="planDayBtn">🗓️ <span data-translate="filterPlanDay">Plan My Day</span></button>
                 </div>
@@ -1739,6 +1776,10 @@
         <section class="destination-library" id="destinationLibrary" aria-label="Destination Library – All Destinations Around Grantown-on-Spey">
             <h2>🗺️ Explore All Destinations</h2>
             <!-- Library categories populated by buildDestinationLibrary() JS function -->
+            <details class="lib-details" id="libGems">
+                <summary>💎 Sarah's &amp; Daniel's Gems</summary>
+                <div class="lib-entries" id="libGemsEntries"><div class="lib-entry"><div class="lib-entry-name">A walk from 🏖️ Roseisle Beach Car Park to ⛵ Findhorn and back</div><div class="lib-entry-desc">Ein einzigartiger Spaziergang bei Ebbe. Man kann beim Roseisle Beach Car Park parkieren und dann entlang des Strandes nach Findhorn laufen. In Findhorn etwas essen gehen oder einfach am Strand sitzen. Anschliessend zurücklaufen, diesmal auf Waldwegen. Der Roseisle Car Park liegt mitten im Wald. Es gibt eine Toilettenanlage. Der Parkplatz ist kostenpflichtig (eine Schranke ist vor Ort). Bezahlen ist oft mit Karte oder Münzen möglich. Sarah liebt diese Art von Spaziergängen. Achtung: Ein Weg dauert 2 bis 2,25 Stunden. Also genügend Zeit einplanen. Die Strecke ist meist flach, aber das Laufen im Sand macht schneller müde.</div><div class="lib-entry-meta">📍 IV36 2UB &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">🧚 An Lochan Uaine (Green Loch)</div><div class="lib-entry-desc">Einer meiner Lieblingsorte ganz in der Nähe von Grantown-on-Spey. Ein wilder, aber dennoch sanfter und abwechslungsreicher Naturpfad führt hinauf zum berühmten Green Loch. Scheint die Sonne auf das Wasser, wirkt der See wie ein riesiger Smaragd. Es gibt zwei verschiedene Rundwege, was den Ausflug noch schöner macht. Der eine führt durch den Wald hinauf, der andere verläuft entlang eines wilden Bergbachs wieder zurück, oder natürlich auch umgekehrt. Parkieren kann man beim Loch Morlich oder rund 500 Meter weiter Richtung Cairngorm Funicular auf der rechten Seite. Ich persönlich meide die Wochenenden, da es dann oft sehr gut besucht ist. Unter der Woche kann ich die Landschaft, die Ruhe und die Natur viel mehr geniessen.</div><div class="lib-entry-meta">🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">Grantown on Spey, Nigg Ferry to 🏰 Dunrobin Castle</div><div class="lib-entry-desc">Mich fasziniert die Sicht auf das offene Meer vom Dunrobin Castle aus. Hier kann ich tagträumen und mir vorstellen, wie es damals gewesen sein muss. Der Garten ist wunderschön, vor allem im Mai und Juni, wenn bereits vieles blüht. Man kann auch sehr gut rechts am Dunrobin vorbeilaufen und dann entlang der Nordsee spazieren, während das majestätische Dunrobin über die Küste wacht. Aus dieser Perspektive entstehen wunderschöne Fotos ;-)</div><div class="lib-entry-meta">📍 KW10 6SF &nbsp;·&nbsp; 🚗 ~100 min</div></div><div class="lib-entry"><div class="lib-entry-name">⚗️ Speyside Cooperage ein tolles Handwerk</div><div class="lib-entry-desc">Ohne Fässer gibt es keinen Whisky. Zu oft wird dieses tolle Handwerk ausser Acht gelassen. Die harte, präzise und enorm wichtige Arbeit, die in der Cooperage geleistet wird, finde ich persönlich sehr beeindruckend. Ich fahre immer wieder gerne mit meinen Gästen zur Cooperage. Diese kann ich auch Nicht-Whisky-Fans empfehlen.</div><div class="lib-entry-meta">📍 AB38 9RS &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">⛰️ Glen Lyon - a name for liberty!</div><div class="lib-entry-desc">Hier könnte ich oft und viel mehr Zeit verbringen. Das Tal ist wunderschön, aber auch rau und ursprünglich. Der River Lyon ist wild und eindrucksvoll. Ich liebe es, zum Glen Lyon Tea Room (PH15 2PP) zu fahren und dort eine Pause einzulegen. Im Glen Lyon kann man bis zum Lubreoch Dam fahren und von dort aus wandern. Man kann auch Richtung Lawers Dam fahren, die Aussicht geniessen und die Stille der Berge erleben. Glen Lyon hat viele versteckte Orte, die darauf warten, entdeckt zu werden ;-) Aber ACHTUNG: Hier braucht man gutes Schuhwerk und idealerweise ein Fahrzeug mit guter Bodenfreiheit. Ein Ersatzrad ist ebenfalls empfehlenswert. Hilfe ist nicht direkt um die Ecke.</div><div class="lib-entry-meta">📍 PH15 2PT &nbsp;·&nbsp; 🚗 ~2.75 h</div></div></div>
+            </details>
             <details class="lib-details" id="libNature">
                 <summary>🌲 Nature &amp; Wildlife</summary>
                 <div class="lib-entries" id="libNatureEntries"><div class="lib-entry"><div class="lib-entry-name">⛰️ Cairngorms National Park</div><div class="lib-entry-desc">Britain's largest National Park. Skiing, hiking, wildlife – red deer, golden eagles, and red squirrels.</div><div class="lib-entry-meta">🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🧚 An Lochan Uaine (Green Loch)</div><div class="lib-entry-desc">Magical turquoise fairy loch. Easy 45-min walk through ancient Caledonian pine forest.</div><div class="lib-entry-meta">🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦕 Loch Ness</div><div class="lib-entry-desc">Scotland's most famous loch. Urquhart Castle and maybe spot Nessie!</div><div class="lib-entry-meta">🚗 ~60-90 min</div></div><div class="lib-entry"><div class="lib-entry-name">🚡 Cairngorm Funicular</div><div class="lib-entry-desc">Scenic mountain railway to Ptarmigan station. Spectacular views from 1,097m altitude.</div><div class="lib-entry-meta">📍 PH22 1RB &nbsp;·&nbsp; ☎ <a href="tel:+441479861261">+44 1479 861 261</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">⛵ Fort Augustus</div><div class="lib-entry-desc">Charming village where Caledonian Canal meets Loch Ness. Watch boats navigate the locks, spot dolphins, visit the Abbey.</div><div class="lib-entry-meta">🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏖️ Roseisle Beach Car Park</div><div class="lib-entry-desc">Great starting point for a walk to Findhorn and back. Beautiful mix of beach and forest trails.</div><div class="lib-entry-meta">📍 IV36 2UB &nbsp;·&nbsp; 🚗 ~45 min</div></div><div class="lib-entry"><div class="lib-entry-name">💧 Lower Fall of Foyers</div><div class="lib-entry-desc">Spectacular waterfall with large car park and café on site. Perfect stop on the way to Fort Augustus / Loch Ness.</div><div class="lib-entry-meta">📍 IV2 6XU &nbsp;·&nbsp; 🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦌 Cairngorm Reindeer Herd</div><div class="lib-entry-desc">Britain's only free-ranging reindeer! Guided hill trips to meet the herd.</div><div class="lib-entry-meta">📍 PH22 1QU &nbsp;·&nbsp; ☎ <a href="tel:+441479861228">+44 1479 861 228</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🐬 Chanonry Point dolphins</div><div class="lib-entry-desc">One of the best places in the UK to see bottlenose dolphins from shore!</div><div class="lib-entry-meta">📍 IV10 8SD &nbsp;·&nbsp; 🚗 ~80 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦭 Portgordon Grey Seals</div><div class="lib-entry-desc">Excellent spot for grey seals on the way to Buckie. Beautiful coastal scenery.</div><div class="lib-entry-meta">📍 AB56 QQ &nbsp;·&nbsp; 🚗 ~70 min</div></div><div class="lib-entry"><div class="lib-entry-name">🐦 Loch Ruthven</div><div class="lib-entry-desc">Loch Ruthven ist ein abgelegener und ruhiger See in den Hügeln südlich von Inverness. Entstanden am Ende der letzten Eiszeit, liegt er heute eingebettet in eine wunderschöne Moor- und Heidelandschaft. Loch Ruthven ist einer der besten Orte in Grossbritannien, um den seltenen Ohrentaucher (Slavonian Grebe) zu beobachten.</div><div class="lib-entry-meta">📍 IV2 6UA &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-ruthven" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-ruthven</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🪨 Bow Fiddle Rock Viewpoint</div><div class="lib-entry-desc">Der Bow Fiddle Rock entstand durch das Zusammenspiel von tektonischen Plattenbewegungen und Küstenerosion. Während der Kaledonischen Gebirgsbildung, als die Urkontinente Laurentia und Avalonia kollidierten, wurden die Gesteinsschichten gefaltet und gekippt. Über Millionen von Jahren erodierte das Meer die weicheren Gesteinsschichten der Cullen-Quarzit-Formation und formte so den berühmten natürlichen Meeresbogen, der heute als Bow Fiddle Rock bekannt ist. Der Bow Fiddle Rock ist zudem ein bedeutendes Seevogelschutzgebiet. Seine felsigen Vorsprünge bieten wichtige Nistplätze für Eissturmvögel, Dreizehenmöwen, Tordalke, Trottellummen, Krähenscharben und verschiedene Möwenarten.</div><div class="lib-entry-meta">📍 AB56 4NN &nbsp;·&nbsp; 🌐 <a href="https://livebreathescotland.com/bow-fiddle-rock/" target="_blank" rel="noopener">livebreathescotland.com/bow-fiddle-rock/</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦆 RSPB Loch Spynie</div><div class="lib-entry-desc">A haven for wildlife and birdwatchers alike. Largest freshwater reedbed in Scotland – ideal spot for ducks, geese, and swans.</div><div class="lib-entry-meta">📍 IV30 5PQ &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-spynie" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-spynie</a> &nbsp;·&nbsp; 🚗 ~60 min</div></div><div class="lib-entry"><div class="lib-entry-name">🦅 Loch Garten Osprey Centre</div><div class="lib-entry-desc">Visit during spring and summer and spot breeding Osprey, Crested Tits, Red Squirrels, Bank Voles among the Caledonian forest wildlife.</div><div class="lib-entry-meta">📍 PH25 3EF &nbsp;·&nbsp; 🌐 <a href="https://rspb.org.uk/days-out/reserves/loch-garten-abernethy" target="_blank" rel="noopener">rspb.org.uk/days-out/reserves/loch-garten-abernethy</a> &nbsp;·&nbsp; 🚗 ~20 min</div></div><div class="lib-entry"><div class="lib-entry-name">🏰 Loch an Eilein</div><div class="lib-entry-desc">One of Scotland's most beautiful lochside walks. Historic island castle ruins surrounded by Caledonian pine forest. Ideal for walking, photography and wildlife watching.</div><div class="lib-entry-meta">📍 PH22 1QH &nbsp;·&nbsp; 🌐 <a href="https://rothiemurchus.net" target="_blank" rel="noopener">rothiemurchus.net</a> &nbsp;·&nbsp; 🚗 ~40 min</div></div><div class="lib-entry"><div class="lib-entry-name">🌲 Anagach Woods</div><div class="lib-entry-desc">Anagach Woods provides habitat for rare and endangered species such as the capercaillie, twinflower, and pine hoverfly. Scots pine, birch, juniper, and rowan sit amongst primeval peat-bogs, hidden lochans and ancient eskers. 2 minutes walk from Garden Park Guest House.</div><div class="lib-entry-meta">📍 PH26 3JL &nbsp;·&nbsp; 🌐 <a href="https://anagachwoods.org.uk" target="_blank" rel="noopener">anagachwoods.org.uk</a> &nbsp;·&nbsp; 🚗 ~2 min walk</div></div><div class="lib-entry"><div class="lib-entry-name">🐦 Findhorn Bay Local Nature Reserve</div><div class="lib-entry-desc">Findhorn Bay is a wide sandy estuary of national importance for birds, with significant numbers of migrant wildfowl and waders. Beautiful coastal scenery.</div><div class="lib-entry-meta">📍 IV36 3TD &nbsp;·&nbsp; 🌐 <a href="https://visitforres.scot/listing/findhorn-bay/" target="_blank" rel="noopener">visitforres.scot/listing/findhorn-bay/</a> &nbsp;·&nbsp; 🚗 ~45 min</div></div></div>
@@ -2112,6 +2153,7 @@
                 faqSubtitle: "Frequently asked questions about Garden Park & the Highlands",
                 faqTitle: "Frequently Asked Questions",
                 filterPlanDay: "🗓️ Plan My Day",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Plan Your Day",
                 planSubtitle: "Select up to 3 destinations for your route",
                 planAdd: "+ Add",
@@ -2265,6 +2307,7 @@
                 faqSubtitle: "Häufig gestellte Fragen über Garden Park & die Highlands",
                 faqTitle: "Häufig gestellte Fragen",
                 filterPlanDay: "🗓️ Meinen Tag planen",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Meinen Tag planen",
                 planSubtitle: "Wähle bis zu 3 Ziele für deine Route",
                 planAdd: "+ Hinzufügen",
@@ -2418,6 +2461,7 @@
                 faqSubtitle: "Questions fréquemment posées sur Garden Park & les Highlands",
                 faqTitle: "Questions Fréquemment Posées",
                 filterPlanDay: "🗓️ Planifier ma journée",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Planifier ma journée",
                 planSubtitle: "Sélectionnez jusqu'à 3 destinations pour votre itinéraire",
                 planAdd: "+ Ajouter",
@@ -2571,6 +2615,7 @@
                 faqSubtitle: "Domande frequenti su Garden Park e le Highlands",
                 faqTitle: "Domande Frequenti",
                 filterPlanDay: "🗓️ Pianifica la mia giornata",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Pianifica la tua giornata",
                 planSubtitle: "Seleziona fino a 3 destinazioni per il tuo itinerario",
                 planAdd: "+ Aggiungi",
@@ -2724,6 +2769,7 @@
                 faqSubtitle: "Preguntas frecuentes sobre Garden Park y las Highlands",
                 faqTitle: "Preguntas Frecuentes",
                 filterPlanDay: "🗓️ Planificar mi día",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Planifica tu día",
                 planSubtitle: "Selecciona hasta 3 destinos para tu ruta",
                 planAdd: "+ Añadir",
@@ -2877,6 +2923,7 @@
                 faqSubtitle: "Veelgestelde vragen over Garden Park en de Hooglanden",
                 faqTitle: "Veelgestelde Vragen",
                 filterPlanDay: "🗓️ Mijn dag plannen",
+                filterGems: "Sarah's & Daniel's Gems",
                 planTitle: "Plan je dag",
                 planSubtitle: "Selecteer maximaal 3 bestemmingen voor je route",
                 planAdd: "+ Toevoegen",
@@ -3506,7 +3553,8 @@
                 tip: null,
                 postcode: null,
                 phone: null,
-                website: null
+                website: null,
+                media: { video: 'media/moray-coast.mp4' }
             },
             {
                 id: 'findhorn',
@@ -3882,7 +3930,8 @@
                 tip: '💡 Walk through to discover River Spey – approx. 7–9 min on foot',
                 postcode: 'PH26 3JL',
                 phone: null,
-                website: 'anagachwoods.org.uk'
+                website: 'anagachwoods.org.uk',
+                media: { video: 'media/anagach-woods.mp4' }
             },
             {
                 id: 'findhornbay',
@@ -3992,6 +4041,88 @@
                 website: 'malts.com',
                 isWayToGrantownStop: true,
                 wayToOnly: true
+            },
+            // ── Sarah's & Daniel's Gems ──────────────────────────────────────
+            // Personal favourites, category 'gems'. They appear under the pulsing
+            // "Sarah's & Daniel's Gems" portal filter and in ALL (with special
+            // square magenta icons), but in NO other theme filter. Descriptions
+            // are used ONLY here (kept verbatim).
+            {
+                id: 'gem_roseislefindhorn',
+                name: "A walk from 🏖️ Roseisle Beach Car Park to ⛵ Findhorn and back",
+                icon: '🥾',
+                category: 'gems',
+                categoryLabel: "💎 Sarah's Gem",
+                time: '~45 min',
+                description: "Ein einzigartiger Spaziergang bei Ebbe. Man kann beim Roseisle Beach Car Park parkieren und dann entlang des Strandes nach Findhorn laufen. In Findhorn etwas essen gehen oder einfach am Strand sitzen. Anschliessend zurücklaufen, diesmal auf Waldwegen. Der Roseisle Car Park liegt mitten im Wald. Es gibt eine Toilettenanlage. Der Parkplatz ist kostenpflichtig (eine Schranke ist vor Ort). Bezahlen ist oft mit Karte oder Münzen möglich. Sarah liebt diese Art von Spaziergängen. Achtung: Ein Weg dauert 2 bis 2,25 Stunden. Also genügend Zeit einplanen. Die Strecke ist meist flach, aber das Laufen im Sand macht schneller müde.",
+                lat: 57.6600,
+                lng: -3.5560,
+                tip: null,
+                postcode: 'IV36 2UB',
+                phone: null,
+                website: null,
+                media: { photos: ['media/roseisle-findhorn-1.jpg', 'media/roseisle-findhorn-2.jpg', 'media/roseisle-findhorn-3.jpg'], video: 'media/roseisle-findhorn.mp4' }
+            },
+            {
+                id: 'gem_greenloch',
+                name: '🧚 An Lochan Uaine (Green Loch)',
+                icon: '🧚',
+                category: 'gems',
+                categoryLabel: "💎 Sarah's Gem",
+                time: '~40 min',
+                description: "Einer meiner Lieblingsorte ganz in der Nähe von Grantown-on-Spey. Ein wilder, aber dennoch sanfter und abwechslungsreicher Naturpfad führt hinauf zum berühmten Green Loch. Scheint die Sonne auf das Wasser, wirkt der See wie ein riesiger Smaragd. Es gibt zwei verschiedene Rundwege, was den Ausflug noch schöner macht. Der eine führt durch den Wald hinauf, der andere verläuft entlang eines wilden Bergbachs wieder zurück, oder natürlich auch umgekehrt. Parkieren kann man beim Loch Morlich oder rund 500 Meter weiter Richtung Cairngorm Funicular auf der rechten Seite. Ich persönlich meide die Wochenenden, da es dann oft sehr gut besucht ist. Unter der Woche kann ich die Landschaft, die Ruhe und die Natur viel mehr geniessen.",
+                lat: 57.1690,
+                lng: -3.6800,
+                tip: null,
+                postcode: null,
+                phone: null,
+                website: null,
+                media: { photos: ['media/green-loch-1.jpg', 'media/green-loch-2.jpg', 'media/green-loch-3.jpg'] }
+            },
+            {
+                id: 'gem_dunrobin',
+                name: 'Grantown on Spey, Nigg Ferry to 🏰 Dunrobin Castle',
+                icon: '🏰',
+                category: 'gems',
+                categoryLabel: "💎 Daniel's Gem",
+                time: '~100 min',
+                description: "Mich fasziniert die Sicht auf das offene Meer vom Dunrobin Castle aus. Hier kann ich tagträumen und mir vorstellen, wie es damals gewesen sein muss. Der Garten ist wunderschön, vor allem im Mai und Juni, wenn bereits vieles blüht. Man kann auch sehr gut rechts am Dunrobin vorbeilaufen und dann entlang der Nordsee spazieren, während das majestätische Dunrobin über die Küste wacht. Aus dieser Perspektive entstehen wunderschöne Fotos ;-)",
+                lat: 57.9900,
+                lng: -3.9400,
+                tip: null,
+                postcode: 'KW10 6SF',
+                phone: null,
+                website: null
+            },
+            {
+                id: 'gem_cooperage',
+                name: '⚗️ Speyside Cooperage ein tolles Handwerk',
+                icon: '⚗️',
+                category: 'gems',
+                categoryLabel: "💎 Daniel's Gem",
+                time: '~40 min',
+                description: "Ohne Fässer gibt es keinen Whisky. Zu oft wird dieses tolle Handwerk ausser Acht gelassen. Die harte, präzise und enorm wichtige Arbeit, die in der Cooperage geleistet wird, finde ich persönlich sehr beeindruckend. Ich fahre immer wieder gerne mit meinen Gästen zur Cooperage. Diese kann ich auch Nicht-Whisky-Fans empfehlen.",
+                lat: 57.4560,
+                lng: -3.1660,
+                tip: null,
+                postcode: 'AB38 9RS',
+                phone: null,
+                website: null
+            },
+            {
+                id: 'gem_glenlyon',
+                name: '⛰️ Glen Lyon - a name for liberty!',
+                icon: '⛰️',
+                category: 'gems',
+                categoryLabel: "💎 Daniel's Gem",
+                time: '~2.75 h',
+                description: "Hier könnte ich oft und viel mehr Zeit verbringen. Das Tal ist wunderschön, aber auch rau und ursprünglich. Der River Lyon ist wild und eindrucksvoll. Ich liebe es, zum Glen Lyon Tea Room (PH15 2PP) zu fahren und dort eine Pause einzulegen. Im Glen Lyon kann man bis zum Lubreoch Dam fahren und von dort aus wandern. Man kann auch Richtung Lawers Dam fahren, die Aussicht geniessen und die Stille der Berge erleben. Glen Lyon hat viele versteckte Orte, die darauf warten, entdeckt zu werden ;-) Aber ACHTUNG: Hier braucht man gutes Schuhwerk und idealerweise ein Fahrzeug mit guter Bodenfreiheit. Ein Ersatzrad ist ebenfalls empfehlenswert. Hilfe ist nicht direkt um die Ecke.",
+                lat: 56.6100,
+                lng: -4.1500,
+                tip: null,
+                postcode: 'PH15 2PT',
+                phone: null,
+                website: null
             }
         ];
 
@@ -5332,6 +5463,46 @@
             return parts.length > 0 ? parts.join('<br>') : '';
         }
 
+        // Photos + video block for popups/cards. Files are referenced by relative
+        // path (media/ folder next to this HTML). Missing files hide themselves via
+        // onerror, so the block can be wired now and the media dropped in later.
+        function buildMediaHtml(dest) {
+            if (!dest.media) return '';
+            const photos = dest.media.photos || [];
+            const video = dest.media.video;
+            if (!photos.length && !video) return '';
+            let html = '<div class="dest-media">';
+            if (photos.length) {
+                html += '<div class="dest-media-photos">';
+                photos.forEach(function(src) {
+                    html += '<img class="dest-media-photo" src="' + src + '" loading="lazy" alt="' + (dest.name || '') + '" onerror="this.style.display=\'none\'">';
+                });
+                html += '</div>';
+            }
+            if (video) {
+                html += '<video class="dest-media-video" src="' + video + '" controls preload="none" playsinline onerror="this.style.display=\'none\'"></video>';
+            }
+            html += '</div>';
+            return html;
+        }
+
+        // Square magenta icon for Sarah's & Daniel's Gems (stands out from the round
+        // gold standard icons so they are instantly recognisable, incl. in ALL).
+        function makeMarkerIcon(dest) {
+            if (dest.category === 'gems') {
+                return L.divIcon({
+                    className: '',
+                    html: '<div data-destid="' + dest.id + '" style="background:#fff;border:3px solid #d6248c;border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 3px 12px rgba(214,36,140,0.55);">' + dest.icon + '</div>',
+                    iconSize: [34, 34], iconAnchor: [17, 17]
+                });
+            }
+            return L.divIcon({
+                className: '',
+                html: '<div style="background: #fff; border: 3px solid #c9a227; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">' + dest.icon + '</div>',
+                iconSize: [34, 34], iconAnchor: [17, 17]
+            });
+        }
+
         // Create markers for main destinations
         destinations.forEach(dest => {
             // Way-to-Grantown-only stops (e.g. House of Bruar, Dalwhinnie) are not
@@ -5339,19 +5510,18 @@
             // the "The Way to Grantown" portal (which builds its own markers).
             if (dest.wayToOnly) return;
 
-            const markerIcon = L.divIcon({
-                className: '',
-                html: '<div style="background: #fff; border: 3px solid #c9a227; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);">' + dest.icon + '</div>',
-                iconSize: [34, 34],
-                iconAnchor: [17, 17]
-            });
+            const markerIcon = makeMarkerIcon(dest);
 
             let tipHtml = dest.tip ? '<div style="color: #c9a227; font-size: 0.85rem; margin-top: 6px;">' + dest.tip + '</div>' : '';
             let contactHtml = buildContactHtml(dest, true);
             let popupContactHtml = contactHtml ? '<div class="popup-contact">' + contactHtml + '</div>' : '';
+            let mediaHtml = buildMediaHtml(dest);
 
-            const marker = L.marker([dest.lat, dest.lng], { icon: markerIcon, destId: dest.id })
-                .bindPopup('<div class="popup-title">' + dest.icon + ' ' + dest.name + '</div><div class="popup-time">' + dest.time + '</div><div class="popup-desc">' + dest.description + '</div>' + tipHtml + popupContactHtml);
+            // Gem names already carry their own emoji, so don't prepend the marker
+            // icon again in the title (avoids a doubled emoji).
+            const popupTitle = (dest.category === 'gems') ? dest.name : (dest.icon + ' ' + dest.name);
+            const marker = L.marker([dest.lat, dest.lng], { icon: markerIcon, destId: dest.id, zIndexOffset: dest.category === 'gems' ? 600 : 0 })
+                .bindPopup('<div class="popup-title">' + popupTitle + '</div><div class="popup-time">' + dest.time + '</div><div class="popup-desc">' + dest.description + '</div>' + tipHtml + popupContactHtml + mediaHtml, dest.category === 'gems' ? { maxWidth: 280 } : {});
 
             // hideFromAll: a "Way to Grantown" bonus stop that should NOT appear in
             // the default / ALL view, but still shows when its own theme filter is
@@ -5460,7 +5630,7 @@
                 let cardContactHtml = contactHtml ? '<div class="card-contact">' + contactHtml + '</div>' : '';
 
                 const card = document.createElement('div');
-                card.className = 'destination-card' + (dest.isWhiskyPortal ? ' whisky-portal' : '') + (dest.isDayTripPortal ? ' daytrip-portal' : '');
+                card.className = 'destination-card' + (dest.isWhiskyPortal ? ' whisky-portal' : '') + (dest.isDayTripPortal ? ' daytrip-portal' : '') + (dest.category === 'gems' ? ' gems-card' : '');
                 card.dataset.destination = dest.id;
                 card.dataset.category = dest.category;
                 // hideFromAll cards are hidden under the default ALL view and only
@@ -5469,7 +5639,10 @@
                     card.dataset.hideFromAll = '1';
                     if (!planDayMode) card.classList.add('hidden');
                 }
-                card.innerHTML = '<div class="card-header"><span class="card-icon">' + dest.icon + '</span><span class="card-title">' + dest.name + '</span></div><div class="card-meta"><span class="card-time">' + dest.time + '</span><span class="card-category">' + dest.categoryLabel + '</span></div><p class="card-description">' + dest.description + '</p>' + tipHtml + cardContactHtml;
+                let cardMediaHtml = (!planDayMode) ? buildMediaHtml(dest) : '';
+                // Gem names already carry their own emoji — skip the separate card icon.
+                let cardIcon = (dest.category === 'gems') ? '' : dest.icon;
+                card.innerHTML = '<div class="card-header"><span class="card-icon">' + cardIcon + '</span><span class="card-title">' + dest.name + '</span></div><div class="card-meta"><span class="card-time">' + dest.time + '</span><span class="card-category">' + dest.categoryLabel + '</span></div><p class="card-description">' + dest.description + '</p>' + tipHtml + cardContactHtml + cardMediaHtml;
 
                 card.addEventListener('click', function() {
                     if (dest.isWhiskyPortal) {
@@ -5739,8 +5912,24 @@
         document.getElementById('dayTripsBtn').addEventListener('click', enterDayTripMode);
         document.getElementById('grantownBtn').addEventListener('click', enterGrantownMode);
 
+        // Sarah's & Daniel's Gems — a pulsing portal button that filters to the
+        // 'gems' category (personal favourites with special square magenta icons).
+        document.getElementById('gemsBtn').addEventListener('click', function() {
+            if (distilleryMode || dayTripMode || grantownMode || wayToGrantownMode || faqMode || planDayMode) return;
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            document.querySelectorAll('.destination-card').forEach(function(card) {
+                card.classList.toggle('hidden', card.dataset.category !== 'gems');
+            });
+            destinations.forEach(function(dest) {
+                const m = mainMarkers[dest.id];
+                if (!m) return;
+                if (dest.category === 'gems') m.addTo(map); else map.removeLayer(m);
+            });
+        });
+
         // Category filter
-        const filterBtns = document.querySelectorAll('.filter-btn:not(.portal-btn-whisky):not(.portal-btn-daytrips):not(.portal-btn-grantown):not(.portal-btn-waytoGrantown):not(.portal-btn-faq)');
+        const filterBtns = document.querySelectorAll('.filter-btn:not(.portal-btn-whisky):not(.portal-btn-daytrips):not(.portal-btn-grantown):not(.portal-btn-waytoGrantown):not(.portal-btn-faq):not(.portal-btn-gems)');
         filterBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
                 if (distilleryMode || dayTripMode || grantownMode || wayToGrantownMode || faqMode || planDayMode) return;
@@ -5915,7 +6104,9 @@
             if (dest.website) meta.push('🌐 <a href="https://' + dest.website + '" target="_blank" rel="noopener">' + dest.website + '</a>');
             if (dest.phone) meta.push('☎ <a href="tel:' + dest.phone.replace(/\s/g,'') + '">' + dest.phone + '</a>');
             if (includeDriveTime && dest.time) meta.push('🚗 ' + dest.time);
-            return '<div class="lib-entry"><div class="lib-entry-name">' + (dest.icon||'') + ' ' + dest.name + '</div><div class="lib-entry-desc">' + dest.description + '</div>' + (meta.length ? '<div class="lib-entry-meta">' + meta.join(' &nbsp;·&nbsp; ') + '</div>' : '') + '</div>';
+            // Gem names already carry their own emoji — don't prepend the icon again.
+            const libName = (dest.category === 'gems') ? dest.name : ((dest.icon || '') + ' ' + dest.name);
+            return '<div class="lib-entry"><div class="lib-entry-name">' + libName + '</div><div class="lib-entry-desc">' + dest.description + '</div>' + (meta.length ? '<div class="lib-entry-meta">' + meta.join(' &nbsp;·&nbsp; ') + '</div>' : '') + '</div>';
         }
 
         function buildDestinationLibrary() {
@@ -5930,7 +6121,8 @@
                 coast:      'libCoastEntries',
                 family:     'libFamilyEntries',
                 rainy:      'libRainyEntries',
-                restaurant: 'libRestaurantEntries'
+                restaurant: 'libRestaurantEntries',
+                gems:       'libGemsEntries'
             };
 
             destinations.forEach(dest => {
