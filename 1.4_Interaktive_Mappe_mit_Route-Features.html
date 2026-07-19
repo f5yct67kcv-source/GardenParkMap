@@ -1300,6 +1300,25 @@
         .dest-media-photo {
             height: 76px; width: auto; border-radius: 6px;
             border: 1px solid rgba(255, 95, 180, 0.45); flex: 0 0 auto;
+            cursor: zoom-in;
+        }
+        /* Lightbox — tap a destination photo to view it enlarged (not full-screen) */
+        .photo-lightbox {
+            position: fixed; inset: 0; z-index: 100000;
+            display: none; align-items: center; justify-content: center;
+            background: rgba(0, 0, 0, 0.85); padding: 24px;
+            cursor: zoom-out; -webkit-tap-highlight-color: transparent;
+        }
+        .photo-lightbox.open { display: flex; }
+        .photo-lightbox img {
+            max-width: 92vw; max-height: 86vh; width: auto; height: auto;
+            border-radius: 10px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+        .photo-lightbox-close {
+            position: absolute; top: 14px; right: 20px;
+            color: #fff; font-size: 2.2rem; line-height: 1;
+            font-family: Arial, sans-serif; opacity: 0.85; user-select: none;
         }
         .dest-media-video {
             margin-top: 6px; width: 100%; max-width: 240px; display: block;
@@ -6907,6 +6926,46 @@
             html += '</div>';
             return html;
         }
+
+        // Lightbox: tap any destination photo (popup or card) to view it enlarged.
+        // Non-invasive — uses event delegation, so it works for every current and
+        // future .dest-media-photo without touching how popups/cards are built.
+        (function () {
+            let overlay = null;
+            function ensureOverlay() {
+                if (overlay) return overlay;
+                overlay = document.createElement('div');
+                overlay.className = 'photo-lightbox';
+                overlay.innerHTML = '<span class="photo-lightbox-close" aria-label="Close">&times;</span><img alt="">';
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', closeLightbox);
+                return overlay;
+            }
+            function openLightbox(src, alt) {
+                const o = ensureOverlay();
+                const img = o.querySelector('img');
+                img.src = src;
+                img.alt = alt || '';
+                o.classList.add('open');
+            }
+            function closeLightbox() {
+                if (!overlay) return;
+                overlay.classList.remove('open');
+                const img = overlay.querySelector('img');
+                if (img) img.removeAttribute('src');
+            }
+            document.addEventListener('click', function (e) {
+                const t = e.target;
+                if (t && t.classList && t.classList.contains('dest-media-photo')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(t.getAttribute('src'), t.getAttribute('alt'));
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        })();
 
         // Square magenta icon for Sarah's & Daniel's Gems (stands out from the round
         // gold standard icons so they are instantly recognisable, incl. in ALL).
