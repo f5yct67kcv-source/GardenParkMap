@@ -1,99 +1,82 @@
-# Erklärvideo-Briefing — Garden Park Guest House · Interaktive Highland-Karte
+# Erklärvideo-Briefing — Garden Park Guest House & Interaktive Highland-Karte
 
-> Dieses Dokument ist die Vorlage für den Video-Chat. Repo hinzufügen
-> (`add repo f5yct67kcv-source/GardenParkMap`), dieses Briefing liegt unter
-> `erklaervideo/`. Alle Fakten unten stammen direkt aus der finalen Karte
-> `1.4_Interaktive_Mappe_mit_Route-Features.html`.
+> **Zweck dieser Datei:** Kontext-Dokument für die Erstellung eines Erklär-/
+> Imagevideos mit **Higgsfield (via Konnektor)**. Im neuen Chat anhängen, damit
+> der Assistent jederzeit auf alle Details zugreifen kann.
+
+## Auftrag an den Assistenten
+- Erstelle mit mir zusammen ein Erklär-/Imagevideo für unser Gästehaus und
+  unsere interaktive Highland-Karte.
+- Nutze den **Higgsfield-Konnektor** (`generate_video`, `generate_image`,
+  `generate_audio`). Prüfe zuerst mit `get_workflow_instructions`, welcher
+  Explainer-/Werbe-/Story-Workflow am besten passt.
+- **Frag zuerst nach**, falls Angaben fehlen. Mach mir **1–2 Konzept-/
+  Skriptvorschläge**, bevor du generierst.
+- Wenn ich lokale Fotos/Videos beisteuern soll: sag mir Formate/Auflösung und
+  fordere sie über das Media-Upload-Widget an.
 
 ---
 
-## 1. Worum geht es? (in einem Satz)
+## Über uns
+- **Garden Park Guest House** & **Butterfly Cottage** in **Grantown-on-Spey**,
+  im **Cairngorms National Park**, Schottische Highlands.
+- **Gastgeber:** Sarah & Daniel (Daniel Muccio, `#ScotlandbyDan`).
+- **Auszeichnungen:** Traveller Review Awards 2026 – 10/10; Green Tourism
+  Gold Award.
+- **Ausstattung/Qualität:** EV-Ladestation; hochwertiges Frühstück (100 % Saft,
+  Eier aus Freilandhaltung, regionale Produkte); täglich vegan/vegetarisch.
+- **USP:** zentrale Lage als Basis für **„sternförmige" Tagesausflüge** – viele
+  Highlights in **20–50 Min.** erreichbar; ~40 Unterkünfte, Shops, Cafés und
+  Restaurants im Dorf.
+- **Web:** garden-park.co.uk · butterfly-cottage.co.uk
 
-Ein kurzes Erklärvideo, das Gästen des **Garden Park Guest House** in
-Grantown-on-Spey zeigt, wie sie mit der **interaktiven Highland-Karte** ihre
-Ausflüge planen, Whisky- & Gin-Ziele entdecken und mit einem Tipp die Route in
-Google Maps öffnen.
+## Die interaktive Karte
+- **50+** handverlesene Ziele, **6 Sprachen** (EN/DE/FR/IT/ES/NL), eingebettet
+  als iframe auf den Websites.
+- **Kategorien:** Natur · Wildlife · Schlösser & Geschichte · Mystik/Piktisch ·
+  Küste & Dörfer · Familie · Regentage · Restaurants · Whisky & Gin ·
+  Tagesausflüge · „Discover Grantown" · „The Way to Grantown" ·
+  **„Sarah's & Daniel's Gems"** (persönliche Lieblingsorte) · FAQ · Plan My Day.
+- **Regionen ringsum:** Strathspey & Badenoch, Speyside, Morayshire,
+  Nairnshire, Inverness-shire, Moray Firth, Cairngorms.
 
-## 2. Ziel des Videos
+## Inhaltliche Highlights (für Story & Bildmaterial)
+- **Whisky:** Speyside = Whisky-Welthauptstadt, 50+ Destillerien — Glenfiddich,
+  Macallan, Aberlour, Cardhu/Johnnie Walker, Speyside Cooperage (Fassbau-
+  Handwerk).
+- **Schlösser & Geschichte:** Craigievar (rosa „Märchenschloss"), Cawdor,
+  Ballindalloch, Balmoral, Dunrobin (Château-Stil am Meer), Culloden
+  Schlachtfeld, Clava Cairns (4 000 Jahre alte Steinkreise).
+- **Natur:** Loch Ness, Cairngorms, An Lochan Uaine (Green Loch), Anagach
+  Woods (2 Min. vom Haus), Loch an Eilein.
+- **Wildlife:** Delfine bei Chanonry Point, Kegelrobben bei Portgordon/Cullen,
+  Fischadler Loch Garten, Rentiere in den Cairngorms.
+- **Küste:** Bow Fiddle Rock, Cullen, Findhorn, Moray Firth; Küstenwanderung
+  Portknockie–Cullen.
+- **Piktische Steine:** Sueno's Stone, Maiden Stone.
 
-- Gäste sollen die Karte **überhaupt nutzen** (sie ersetzt gedruckte Flyer an
-  Rezeption/Zimmer, erreichbar per QR-Code).
-- Zeigen, dass Ausflugsplanung **einfach und schnell** ist — kein App-Download,
-  keine Anmeldung, funktioniert direkt im Browser des Handys.
-- Aufenthalt aufwerten: „Du wohnst mitten im Cairngorms-Nationalpark und der
-  Speyside Whisky-Region — hier ist alles auf einen Blick.“
+## Marken-Look & Stimmung
+- **Farben:** Gold `#c9a227`, dunkles Waldgrün als Hintergrund.
+- **Schrift:** Playfair Display (elegant, serif).
+- **Symbol:** Herz ❤️ fürs Gästehaus.
+- **Tonalität:** hochwertig, warm, einladend — „Tor zu den Highlands".
+- **Eigenes Material:** echte Fotos vorhanden (Highland-Cows, Schlösser, Küste,
+  Delfine, Whisky) — auf Anfrage lieferbar.
 
-## 3. Zielgruppe
+---
 
-Gäste und potenzielle Gäste des Guest House: Reisende in den schottischen
-Highlands, oft international (Video sollte daher **ohne Text-Wände** auskommen
-und visuell verständlich sein). Karte selbst ist in **6 Sprachen**: English,
-Deutsch, Français, Nederlands, Español, Italiano.
+## Noch zu entscheiden (bitte Vorschläge, dann fixieren)
+| Punkt | Meine Wahl / Vorschlag |
+|---|---|
+| **Ziel** | _z. B. Buchungen fördern **und** Region + Karte bekannt machen_ |
+| **Zielgruppe** | _z. B. Individualreisende, Whisky-Fans, Naturliebhaber_ |
+| **Länge** | _z. B. 30–60 Sek._ |
+| **Sprache** | _z. B. Englisch (ggf. später DE-Version)_ |
+| **Voiceover** | _ja / nein_ |
+| **Musik** | _ja / nein — Stimmung?_ |
+| **Seitenverhältnis** | _16:9 (Website) / 9:16 (Social) / beides_ |
+| **Call-to-Action** | _z. B. „Explore the interactive map at garden-park.co.uk"_ |
 
-## 4. Diese Funktionen im Video zeigen (Kern-Features)
-
-Reihenfolge = empfohlener Ablauf im Video:
-
-1. **QR-Code scannen → Karte öffnet sich** (Rezeption/Zimmer → Handy).
-2. **Interaktive Karte** mit Markern rund um Grantown-on-Spey.
-3. **Top-Highlights & Day-Trip-Ideen** — z. B. Loch Ness, Cawdor Castle,
-   Culloden, Cairngorm Funicular/Mountain, Cairngorm Reindeer Centre, Loch
-   Garten Osprey Centre, Elgin, Aviemore, Inverness.
-4. **Speyside Distilleries** — Whisky & Gin (u. a. Glenfiddich, Macallan,
-   Glenlivet, Speyside Cooperage / Malt Whisky Trail).
-5. **Route-Features** (das Alleinstellungsmerkmal von Version 1.4):
-   - *Route in Google Maps öffnen*
-   - *Route teilen*
-   - *Route drucken*
-   - *Wetter-Hinweis zur Route* (Live-Wetter von open-meteo.com)
-6. **Plan My Day** — Ziele zum eigenen Tagesplan hinzufügen und ausdrucken.
-7. **Sprachauswahl** (kurz einblenden: 6 Sprachen).
-
-## 5. Tonalität & Look
-
-- **Stimmung:** warm, einladend, „Highland-Gastfreundschaft“ — nicht technisch.
-- **Bildwelt:** schottische Landschaft (Cairngorms, Loch, Whisky-Fässer) im
-  Wechsel mit dem Handy-Bildschirm, auf dem die Karte bedient wird.
-- **Farbe/Marke:** an das Design der Karte anlehnen (siehe HTML für die genauen
-  Farben/Logo „❤️ Garden Park Guest House“).
-- **Musik:** ruhig, folk/akustisch, schottisch angehaucht.
-
-## 6. Format & Länge
-
-- **Länge:** 45–75 Sekunden (Social/Website), optional 30-Sek-Kurzschnitt.
-- **Seitenverhältnis:** 9:16 (Handy/Reels) als Primärformat; 16:9 optional für
-  Website-Einbettung.
-- **Sprache Voiceover:** primär **Englisch**; deutsche Fassung optional
-  (Zielgruppe international).
-
-## 7. Vorgeschlagene Szenenfolge (Storyboard-Skizze)
-
-| # | Bild | Off-Text (EN, Vorschlag) |
-|---|------|--------------------------|
-| 1 | Guest House / Zimmer, Gast scannt QR-Code | „Your Highland adventure starts right here.“ |
-| 2 | Karte öffnet sich am Handy, Marker erscheinen | „One tap — no app, no sign-up.“ |
-| 3 | Landschaftsbilder: Loch Ness, Cairngorms, Castle | „Explore the best of the Highlands around Grantown-on-Spey.“ |
-| 4 | Whisky-/Gin-Marker, Fässer | „Discover Speyside's famous distilleries.“ |
-| 5 | „Open in Google Maps“ / Route teilen / Wetter | „Pick a spot, open your route, check the weather — done.“ |
-| 6 | Plan My Day, Sprachauswahl | „Plan your perfect day, in your language.“ |
-| 7 | Logo Garden Park Guest House + Call-to-action | „Garden Park Guest House — scan and explore.“ |
-
-## 8. Call-to-Action
-
-„Scan the QR code in your room and start exploring.“ (bzw. Website-Link zur
-Karte, sobald live — laut README geplant unter `garden-park.co.uk/map`).
-
-## 9. Fakten-Check / Bitte NICHT erfinden
-
-- Karte ist **eigenständiges HTML**, kein App-Download, keine Datenbank.
-- Wetterdaten **live von open-meteo.com**, Kartenmaterial OpenStreetMap/CARTO.
-- ETA-Gebühr (GBP 20) im FAQ vor Go-Live auf gov.uk prüfen — **nicht** als
-  Werbeaussage ins Video.
-- Distillery-/Ziel-Namen bitte exakt so nennen wie in der HTML hinterlegt.
-
-## 10. Assets im Repo
-
-- `1.4_Interaktive_Mappe_mit_Route-Features.html` — die finale Karte
-  (Screenshots/Screen-Recording als Video-Material hier ziehen).
-- `README.txt` — Projektübersicht, Installation, Hinweise.
-- `erklaervideo/` — dieses Briefing.
+## Erster Schritt
+Bitte mach mir **1–2 kurze Konzept-/Skriptvorschläge** (Struktur, Szenen,
+Tonalität), bevor wir generieren.
