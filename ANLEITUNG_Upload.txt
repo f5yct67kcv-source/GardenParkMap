@@ -1,0 +1,75 @@
+GARDEN PARK – INTERAKTIVE KARTE – UPLOAD-ANLEITUNG
+===================================================
+
+INHALT DIESES PAKETS
+--------------------
+- 1.4_Interaktive_Mappe_mit_Route-Features.html   (die Karte, finale Version mit Foto-Zoom)
+- media/                                          (Ordner mit 24 Fotos)
+- ANLEITUNG_Upload.txt                            (diese Datei)
+
+
+DIE WICHTIGSTE REGEL
+--------------------
+Die Karte laedt die Fotos ueber RELATIVE Pfade (media/…jpg).
+Deshalb gilt:
+
+  >> Die HTML-Datei UND der Ordner "media" muessen im
+     SELBEN Verzeichnis auf dem Server liegen. <<
+
+Alles andere (Karte, Schriften, Wetter) kommt automatisch aus dem
+Internet – nur diese beiden Dinge musst du hochladen.
+
+
+SCHRITT FUER SCHRITT
+--------------------
+1. ZIP entpacken. Du hast dann:
+      1.4_Interaktive_Mappe_mit_Route-Features.html
+      media/  (mit 24 Bildern)
+
+2. Beides in dasselbe Verzeichnis auf den Webserver laden
+   (FTP, Hosting-Panel, cPanel/Plesk-Dateimanager o. ae.),
+   z. B. dorthin, wo die Karte jetzt schon liegt:
+      …/grantown-map/1.4_Interaktive_Mappe_mit_Route-Features.html
+      …/grantown-map/media/…  (alle 24 Bilder)
+
+3. Die alte HTML-Datei einfach ueberschreiben / ersetzen.
+
+4. Der <iframe> auf garden-park.co.uk bzw. butterfly-cottage.co.uk
+   bleibt UNVERAENDERT – er zeigt weiter auf dieselbe URL.
+
+
+ZWEI HAEUFIGE STOLPERFALLEN
+---------------------------
+- Gross-/Kleinschreibung: Auf dem Server ist
+      media/Craigievar-1.jpg   NICHT gleich   media/craigievar-1.jpg
+  Meine Dateien sind alle klein geschrieben. Also: 1:1 hochladen,
+  NICHTS umbenennen.
+
+- Ordnername: muss exakt "media" heissen (klein), direkt neben der
+  HTML. Nicht in einen Unterordner packen.
+
+
+KONTROLLE NACH DEM UPLOAD
+-------------------------
+1. Die URL der Karte im Browser oeffnen.
+2. Ein Ziel mit Foto anklicken (z. B. Craigievar Castle).
+   -> Erscheinen die Fotos? Dann liegt "media" richtig.
+3. Auf ein Foto tippen -> es vergroessert sich (Foto-Zoom).
+   Schliessen: daneben tippen, auf das X, oder Esc.
+
+Wenn KEINE Fotos erscheinen:
+   -> Der Ordner "media" liegt nicht im selben Verzeichnis wie die
+      HTML, oder die Schreibweise stimmt nicht.
+
+Auf dem Handy/iPad ggf. die Seite neu laden (Hard-Reload / Cache
+leeren), falls noch die alte Version angezeigt wird.
+
+
+OPTIONAL: SCHOENE URL
+---------------------
+Du kannst die HTML-Datei umbenennen, z. B. zu "map.html", damit die
+Adresse huebscher wird. Das ist kein Problem – der Ordner "media"
+muss nur weiterhin direkt daneben liegen.
+
+
+Fragen? Melde dich einfach.
