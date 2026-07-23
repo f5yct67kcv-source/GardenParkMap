@@ -1,0 +1,46 @@
+name: Deploy Hotel Egerkingen map to GitHub Pages
+
+on:
+  push:
+    branches: [main, claude/guesthaus-interactive-map-m9rru0]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          # map.html als Startseite (index.html) und unter eigenem Namen
+          cp HotelEgerkingenMap/map.html _site/index.html
+          cp HotelEgerkingenMap/map.html _site/map.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
