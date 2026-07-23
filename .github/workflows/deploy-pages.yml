@@ -2,7 +2,7 @@ name: Deploy Hotel Egerkingen map to GitHub Pages
 
 on:
   push:
-    branches: [claude/guesthaus-interactive-map-m9rru0]
+    branches: [main, claude/guesthaus-interactive-map-m9rru0]
   workflow_dispatch:
 
 permissions:
