@@ -759,6 +759,15 @@ a{color:var(--accent)}
 .lib-entry-name{font-weight:600;margin-bottom:4px}
 .lib-entry-desc{font-size:.88rem;color:var(--text-soft);margin-bottom:6px}
 .lib-entry-meta{font-size:.8rem;color:var(--text-soft)}
+/* Merkliste / Tagestour */
+.fav-btn{margin-top:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:4px 10px;font-size:.8rem;cursor:pointer;font-family:'Open Sans',sans-serif}
+.fav-btn.on{background:var(--accent);color:var(--bg1);font-weight:600}
+.poi-popup .fav-btn{margin-top:6px}
+.fav-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.fav-chip{background:var(--accent-soft);border:1px solid rgba(201,162,39,.4);border-radius:20px;padding:5px 10px;font-size:.85rem;display:flex;align-items:center;gap:6px}
+.fav-chip button{background:none;border:none;color:var(--text-soft);cursor:pointer;font-size:1rem;line-height:1;padding:0}
+.fav-empty{color:var(--text-soft);font-style:italic}
+.fav-count{background:var(--accent);color:var(--bg1);border-radius:10px;padding:1px 9px;font-weight:600;font-size:.85rem;margin-left:6px}
 
 .footer{text-align:center;color:var(--text-soft);font-size:.8rem;padding:20px}
 .footer a{color:var(--accent)}
@@ -827,6 +836,18 @@ a{color:var(--accent)}
     <p id="planIntro" style="color:var(--text-soft);margin-bottom:14px">Ein Klick – wir schlagen Ihnen Vormittag, Nachmittag und Abend vor. Bei Regen empfehlen wir passende Alternativen.</p>
     <button class="plan-btn" id="planBtn" onclick="planMyDay()">Tag planen</button>
     <div class="plan-result" id="planResult"></div>
+  </div>
+
+  <div class="section" id="favSection">
+    <h2 id="favTitle">⭐ Meine Merkliste <span class="fav-count" id="favCount">0</span></h2>
+    <p id="favIntro" style="color:var(--text-soft);margin-bottom:6px">Orte über „⭐ Merken" sammeln – dann alle als eine Tagestour ab Hotel öffnen.</p>
+    <div class="fav-chips" id="favChips"></div>
+    <div class="route-actions">
+      <button id="favTourBtn" onclick="tourOpen()">🚗 Tagestour öffnen</button>
+      <button id="favShareBtn" onclick="tourShare()">🔗 Tour teilen</button>
+      <button id="favClearBtn" onclick="clearFavs()">🗑️ Leeren</button>
+    </div>
+    <p class="rain-note" id="favNote" style="display:none"></p>
   </div>
 
   <div class="section" id="routeSection">
@@ -898,6 +919,12 @@ const T = {
   en:{ subtitle:"Your base for Solothurn, the Jura & the region", poi:"Destinations", cat:"Categories", lang:"Languages", all:"All", maxTime:"Max. drive time", weatherTitle:"🌤️ Weather in Egerkingen", weatherLoading:"Loading weather…", today:"Today", tomorrow:"Tomorrow", morning:"Morning", afternoon:"Afternoon", evening:"Evening", sunrise:"Sunrise", sunset:"Sunset", daylight:"Daylight", planTitle:"🗓️ Plan my day", planIntro:"One click – we suggest morning, afternoon and evening. If rain is forecast, we favour sheltered options.", planBtn:"Plan my day", routeTitle:"🧭 Route", routeIntro:"Pick a destination on the map, then open, share or print the route from the hotel.", routeOpen:"🚗 Open in Google Maps", routeShare:"🔗 Share route", routePrint:"🖨️ Print", libraryTitle:"📚 All destinations", drive:"Drive", pickFirst:"Please pick a destination on the map first.", copied:"Link copied!", rainToday:"Rain forecast today – we've favoured weather-protected destinations." },
   it:{ subtitle:"Il vostro punto di partenza per Soletta, il Giura & la regione", poi:"Mete", cat:"Categorie", lang:"Lingue", all:"Tutte", maxTime:"Tempo max. in auto", weatherTitle:"🌤️ Meteo a Egerkingen", weatherLoading:"Caricamento meteo…", today:"Oggi", tomorrow:"Domani", morning:"Mattina", afternoon:"Pomeriggio", evening:"Sera", sunrise:"Alba", sunset:"Tramonto", daylight:"Luce", planTitle:"🗓️ Pianifica la giornata", planIntro:"Un clic – proponiamo mattina, pomeriggio e sera. Se piove, privilegiamo alternative al coperto.", planBtn:"Pianifica", routeTitle:"🧭 Percorso", routeIntro:"Scegli una meta sulla mappa, poi apri, condividi o stampa il percorso dall'hotel.", routeOpen:"🚗 Apri in Google Maps", routeShare:"🔗 Condividi", routePrint:"🖨️ Stampa", libraryTitle:"📚 Tutte le mete", drive:"Auto", pickFirst:"Seleziona prima una meta sulla mappa.", copied:"Link copiato!", rainToday:"Oggi è prevista pioggia – abbiamo privilegiato mete al coperto." }
 };
+
+// Merkliste / Tagestour – Zusatz-Übersetzungen
+Object.assign(T.de, { favTitle:"⭐ Meine Merkliste", favIntro:"Orte über „⭐ Merken\" sammeln – dann alle als eine Tagestour ab Hotel öffnen.", favMark:"⭐ Merken", favMarked:"✓ Gemerkt", favEmpty:"Noch nichts gemerkt – tippen Sie bei einem Ort auf „⭐ Merken\".", favTour:"🚗 Tagestour öffnen", favShareBtn:"🔗 Tour teilen", favClear:"🗑️ Leeren", favTourNote:"Route ab Hotel über alle gemerkten Ziele und zurück.", favTooMany:"Google Maps zeigt max. 9 Zwischenstopps – die ersten 9 werden verwendet.", pickFav:"Bitte zuerst Orte über „⭐ Merken\" hinzufügen." });
+Object.assign(T.fr, { favTitle:"⭐ Ma sélection", favIntro:"Ajoutez des lieux via « ⭐ Garder », puis ouvrez tout comme une excursion depuis l'hôtel.", favMark:"⭐ Garder", favMarked:"✓ Gardé", favEmpty:"Rien de sélectionné – touchez « ⭐ Garder » sur un lieu.", favTour:"🚗 Ouvrir l'excursion", favShareBtn:"🔗 Partager", favClear:"🗑️ Vider", favTourNote:"Itinéraire depuis l'hôtel par tous les lieux gardés, aller-retour.", favTooMany:"Google Maps accepte max. 9 étapes – les 9 premières sont utilisées.", pickFav:"Ajoutez d'abord des lieux via « ⭐ Garder »." });
+Object.assign(T.en, { favTitle:"⭐ My shortlist", favIntro:"Collect places via “⭐ Save”, then open them all as one day tour from the hotel.", favMark:"⭐ Save", favMarked:"✓ Saved", favEmpty:"Nothing saved yet – tap “⭐ Save” on a place.", favTour:"🚗 Open day tour", favShareBtn:"🔗 Share tour", favClear:"🗑️ Clear", favTourNote:"Route from the hotel through all saved stops and back.", favTooMany:"Google Maps allows max. 9 stops – the first 9 are used.", pickFav:"Please add places via “⭐ Save” first." });
+Object.assign(T.it, { favTitle:"⭐ La mia lista", favIntro:"Aggiungi luoghi con « ⭐ Salva », poi aprili tutti come un giro giornaliero dall'hotel.", favMark:"⭐ Salva", favMarked:"✓ Salvato", favEmpty:"Niente salvato – tocca « ⭐ Salva » su un luogo.", favTour:"🚗 Apri il giro", favShareBtn:"🔗 Condividi", favClear:"🗑️ Svuota", favTourNote:"Percorso dall'hotel attraverso tutte le tappe salvate e ritorno.", favTooMany:"Google Maps accetta max. 9 tappe – vengono usate le prime 9.", pickFav:"Aggiungi prima dei luoghi con « ⭐ Salva »." });
 
 /* ============================================================
    DATA – POIs (pro Region austauschen)
@@ -1153,8 +1180,60 @@ function popupHtml(p){
   if(p.drive) meta.push('🚗 '+p.drive+' min');
   if(p.phone) meta.push('☎ <a href="tel:'+p.phone.replace(/\s/g,'')+'">'+p.phone+'</a>');
   if(p.website) meta.push('🌐 <a href="https://'+p.website+'" target="_blank" rel="noopener">Web</a>');
-  return '<div class="poi-popup"><b>'+(p.icon||'')+' '+p.name+'</b><div style="margin-top:4px">'+p.desc+'</div>'+(meta.length?'<div class="meta">'+meta.join(' · ')+'</div>':'')+'</div>';
+  return '<div class="poi-popup"><b>'+(p.icon||'')+' '+p.name+'</b><div style="margin-top:4px">'+p.desc+'</div>'+(meta.length?'<div class="meta">'+meta.join(' · ')+'</div>':'')+favBtnHtml(p.id)+'</div>';
 }
+
+/* ---------- Merkliste / Tagestour ---------- */
+let favorites = new Set();
+const FAV_KEY = 'egerkingen_favs';
+function loadFavs(){ try{ const s=localStorage.getItem(FAV_KEY); if(s) favorites=new Set(JSON.parse(s)); }catch(e){} }
+function saveFavs(){ try{ localStorage.setItem(FAV_KEY, JSON.stringify([...favorites])); }catch(e){} }
+function favBtnHtml(id){
+  const t=T[currentLang]; const on=favorites.has(id);
+  return '<button class="fav-btn'+(on?' on':'')+'" data-id="'+id+'" onclick="toggleFav(\''+id+'\')">'+(on?t.favMarked:t.favMark)+'</button>';
+}
+function toggleFav(id){
+  if(favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  saveFavs();
+  updateFavStars();
+  renderFavs();
+}
+function updateFavStars(){
+  const t=T[currentLang];
+  document.querySelectorAll('.fav-btn').forEach(b=>{
+    const on=favorites.has(b.dataset.id);
+    b.classList.toggle('on',on);
+    b.textContent = on ? t.favMarked : t.favMark;
+  });
+}
+function renderFavs(){
+  const t=T[currentLang];
+  document.getElementById('favCount').textContent = favorites.size;
+  const chips=document.getElementById('favChips');
+  const list=POIS.filter(p=>favorites.has(p.id));
+  if(!list.length){ chips.innerHTML='<span class="fav-empty">'+t.favEmpty+'</span>'; }
+  else{
+    chips.innerHTML = list.map(p=>'<span class="fav-chip">'+(p.icon||'')+' '+p.name+' <button title="entfernen" onclick="toggleFav(\''+p.id+'\')">✕</button></span>').join('');
+  }
+  const note=document.getElementById('favNote');
+  if(list.length>9){ note.style.display='block'; note.textContent='ℹ️ '+t.favTooMany; }
+  else{ note.style.display='none'; }
+}
+function tourUrl(){
+  const list=POIS.filter(p=>favorites.has(p.id)).slice(0,9);
+  if(!list.length) return null;
+  const hotel=CONFIG.anchor.lat+','+CONFIG.anchor.lng;
+  const wp=list.map(p=>p.lat+','+p.lng).join('|');
+  // Rundtour: Start und Ziel = Hotel, dazwischen die gemerkten Orte
+  return 'https://www.google.com/maps/dir/?api=1&origin='+hotel+'&destination='+hotel+'&waypoints='+encodeURIComponent(wp)+'&travelmode=driving';
+}
+function tourOpen(){ const t=T[currentLang]; const u=tourUrl(); if(!u){ alert(t.pickFav); return; } window.open(u,'_blank'); }
+function tourShare(){
+  const t=T[currentLang]; const u=tourUrl(); if(!u){ alert(t.pickFav); return; }
+  if(navigator.share){ navigator.share({title:CONFIG.hotelName+' – Tagestour',url:u}); }
+  else{ navigator.clipboard.writeText(u).then(()=>alert(t.copied)); }
+}
+function clearFavs(){ favorites.clear(); saveFavs(); updateFavStars(); renderFavs(); }
 
 function applyFilters(){
   POIS.forEach(p=>{
@@ -1206,7 +1285,7 @@ function buildLibrary(){
       if(p.drive) meta.push('🚗 '+p.drive+' min');
       if(p.phone) meta.push('☎ <a href="tel:'+p.phone.replace(/\s/g,'')+'">'+p.phone+'</a>');
       if(p.website) meta.push('🌐 <a href="https://'+p.website+'" target="_blank" rel="noopener">'+p.website+'</a>');
-      html += '<div class="lib-entry"><div class="lib-entry-name">'+(p.icon||'')+' '+p.name+'</div><div class="lib-entry-desc">'+p.desc+'</div>'+(meta.length?'<div class="lib-entry-meta">'+meta.join(' · ')+'</div>':'')+'</div>';
+      html += '<div class="lib-entry"><div class="lib-entry-name">'+(p.icon||'')+' '+p.name+'</div><div class="lib-entry-desc">'+p.desc+'</div>'+(meta.length?'<div class="lib-entry-meta">'+meta.join(' · ')+'</div>':'')+favBtnHtml(p.id)+'</div>';
     });
     html += '</div></div>';
   });
@@ -1320,7 +1399,13 @@ function setLang(l){
   document.getElementById('routeShareBtn').textContent = t.routeShare;
   document.getElementById('routePrintBtn').textContent = t.routePrint;
   document.getElementById('libraryTitle').textContent = t.libraryTitle;
+  document.getElementById('favIntro').textContent = t.favIntro;
+  document.getElementById('favTourBtn').textContent = t.favTour;
+  document.getElementById('favShareBtn').textContent = t.favShareBtn;
+  document.getElementById('favClearBtn').textContent = t.favClear;
+  document.querySelector('#favTitle').childNodes[0].nodeValue = t.favTitle + ' ';
   buildFilterBar(); buildLegend(); buildLibrary();
+  renderFavs();
   if(_weatherData) renderWeather(_weatherData);
   document.getElementById('planResult').innerHTML = '';
 }
@@ -1331,6 +1416,7 @@ function updateStats(){
   document.getElementById('statCat').textContent = usedCategories().length;
 }
 // UI zuerst – unabhängig von der Karte (fällt die Karte aus, bleibt der Rest nutzbar)
+loadFavs();
 buildFilterBar();
 buildLegend();
 updateStats();
