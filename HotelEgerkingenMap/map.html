@@ -1120,8 +1120,8 @@ function usedCategories(){
 
 function initMap(){
   map = L.map('map').setView([CONFIG.mapCenter.lat, CONFIG.mapCenter.lng], CONFIG.mapZoom);
-  L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
-    attribution:'&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>', maxZoom:19
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom:19
   }).addTo(map);
 
   // Hotel-Anker
